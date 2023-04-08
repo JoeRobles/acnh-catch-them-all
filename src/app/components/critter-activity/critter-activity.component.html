@@ -1,0 +1,59 @@
+<div class="container">
+  <div style="position: relative; left: -8px" class="col">
+    <div class="col-12">
+      Current Active Hours
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-3">
+            <div class="col-12">AM</div>
+            <div class="col-12">12</div>
+        </div>
+        <div class="col-3">
+          <div class="col-12">&nbsp;</div>
+          <div class="col-12">6</div>
+        </div>
+        <div class="col-3">
+          <div>PM</div>
+          <div>12</div>
+        </div>
+        <div class="col-3">
+          <div class="col-12">&nbsp;</div>
+          <div class="col-12">6</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table">
+    <tbody>
+    <tr>
+      <td [class.current-hour]="hours === 0" style="border-left: 2px solid black;" [class.available]="timeArray.indexOf(0) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 1" [class.available]="timeArray.indexOf(1) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 2" [class.available]="timeArray.indexOf(2) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 3" [class.available]="timeArray.indexOf(3) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 4" [class.available]="timeArray.indexOf(4) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 5" [class.available]="timeArray.indexOf(5) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 6" style="border-left: 2px solid black;" [class.available]="timeArray.indexOf(6) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 7" [class.available]="timeArray.indexOf(7) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 8" [class.available]="timeArray.indexOf(8) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 9" [class.available]="timeArray.indexOf(9) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 10" [class.available]="timeArray.indexOf(10) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 11" [class.available]="timeArray.indexOf(11) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 12" style="border-left: 2px solid black;" [class.available]="timeArray.indexOf(12) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 13" [class.available]="timeArray.indexOf(13) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 14" [class.available]="timeArray.indexOf(14) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 15" [class.available]="timeArray.indexOf(15) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 16" [class.available]="timeArray.indexOf(16) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 17" [class.available]="timeArray.indexOf(17) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 18" style="border-left: 2px solid black;" [class.available]="timeArray.indexOf(18) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 19" [class.available]="timeArray.indexOf(19) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 20" [class.available]="timeArray.indexOf(20) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 21" [class.available]="timeArray.indexOf(21) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 22" [class.available]="timeArray.indexOf(22) > -1">&nbsp;</td>
+      <td [class.current-hour]="hours === 23" style="border-right: 2px solid black;" [class.available]="timeArray.indexOf(23) > -1">&nbsp;</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

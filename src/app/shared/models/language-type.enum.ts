@@ -1,0 +1,16 @@
+export enum LanguageTypeEnum {
+  NameUSen = 'nameUSen',
+  NameEUen = 'nameEUen',
+  NameEUde = 'nameEUde',
+  NameEUes = 'nameEUes',
+  NameUSes = 'nameUSes',
+  NameEUfr = 'nameEUfr',
+  NameUSfr = 'nameUSfr',
+  NameEUit = 'nameEUit',
+  NameEUnl = 'nameEUnl',
+  NameCNzh = 'nameCNzh',
+  NameTWzh = 'nameTWzh',
+  NameJPja = 'nameJPja',
+  NameKRko = 'nameKRko',
+  NameEUru = 'nameEUru',
+}

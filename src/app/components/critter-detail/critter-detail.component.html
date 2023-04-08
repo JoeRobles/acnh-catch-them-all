@@ -1,0 +1,171 @@
+<div class="container">
+  <div *ngIf="bug.id" class="row">
+    <div class="critter-label text-center col-8">
+      <div class="critter-image">
+        <img class="img-fluid" [src]="bug.imageUri">
+      </div>
+      <div class="critter-name">
+        {{bugName}}
+      </div>
+    </div>
+    <div class="critter-detail col-4">
+      <div class="critter-seasonality">
+        <app-critter-seasonality [availability]="bug.availability"></app-critter-seasonality>
+      </div>
+      <div class="critter-activity">
+        <app-critter-activity [timeArray]="bug.availability.timeArray"></app-critter-activity>
+      </div>
+      <div class="critter-location">
+        Location: {{bug.availability.location}}
+      </div>
+      <div class="critter-rarity">
+        Rarity: {{bug.availability.rarity}}
+      </div>
+      <div class="critter-rarity">
+        Price Flick: {{bug.priceFlick}}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="fish.id" class="col">
+    <div class="critter-label text-center col">
+      <div class="critter-image">
+        <img class="img-fluid" [src]="fish.imageUri">
+      </div>
+      <div class="critter-name">
+        {{fishName}}
+      </div>
+    </div>
+    <div class="critter-detail col">
+      <div class="row">
+        <div class="col-6">
+          <div class="critter-seasonality">
+            <app-critter-seasonality [availability]="fish.availability"></app-critter-seasonality>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="critter-activity">
+            <app-critter-activity [timeArray]="fish.availability.timeArray"></app-critter-activity>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="critter-location">
+            Location: {{fish.availability.location}}
+          </div>
+          <div class="critter-rarity">
+            Rarity: {{fish.availability.rarity}}
+          </div>
+          <div class="critter-rarity">
+            Price CJ: {{fish.priceCj}}
+          </div>
+          <div class="critter-rarity">
+            Shadow size: {{fish.shadow}}
+            <div class="table-responsive w-50">
+              <table>
+                <tbody>
+                <tr class="upper-tr">
+                  <td [class.current]="fish.shadow === 'Smallest (1)'">
+                    <img class="img-fluid" src="assets/images/fish-size-1.png">
+                  </td>
+                  <td [class.current]="fish.shadow === 'Small (2)'">
+                    <img class="img-fluid" src="assets/images/fish-size-2.png">
+                  </td>
+                  <td [class.current]="fish.shadow === 'Medium (3)'">
+                    <img class="img-fluid" src="assets/images/fish-size-3.png">
+                  </td>
+                </tr>
+                <tr class="lower-tr text-center">
+                  <td [class.current]="fish.shadow === 'Smallest (1)'">
+                    Smallest (1)
+                  </td>
+                  <td [class.current]="fish.shadow === 'Small (2)'">
+                    Small (2)
+                  </td>
+                  <td [class.current]="fish.shadow === 'Medium (3)'">
+                    Medium (3)
+                  </td>
+                </tr>
+                <tr class="upper-tr text-center">
+                  <td [class.current]="fish.shadow === 'Medium (4)'">
+                    <img class="img-fluid" src="assets/images/fish-size-4.png">
+                  </td>
+                  <td [class.current]="fish.shadow === 'Large (5)'">
+                    <img class="img-fluid" src="assets/images/fish-size-5.png">
+                  </td>
+                  <td [class.current]="fish.shadow === 'Largest (6)'">
+                    <img class="img-fluid" src="assets/images/fish-size-6.png">
+                  </td>
+                </tr>
+                <tr class="lower-tr text-center">
+                  <td [class.current]="fish.shadow === 'Medium (4)'">
+                    Medium (4)
+                  </td>
+                  <td [class.current]="fish.shadow === 'Large (5)'">
+                    Large (5)
+                  </td>
+                  <td [class.current]="fish.shadow === 'Largest (6)'">
+                    Largest (6)
+                  </td>
+                </tr>
+                <tr class="upper-tr text-center">
+                  <td [class.current]="fish.shadow === 'Largest with fin (6)'">
+                    <img class="img-fluid" src="assets/images/fish-size-8.png">
+                  </td>
+                  <td [class.current]="fish.shadow === 'Medium with fin (4)'">
+                    <img class="img-fluid" src="assets/images/fish-size-9.png">
+                  </td>
+                  <td [class.current]="fish.shadow === 'Narrow'">
+                    <img class="img-fluid" src="assets/images/fish-size-7.png">
+                  </td>
+                </tr>
+                <tr class="lower-tr text-center">
+                  <td [class.current]="fish.shadow === 'Largest with fin (6)'">
+                    Largest with fin (6)
+                  </td>
+                  <td [class.current]="fish.shadow === 'Medium with fin (4)'">
+                    Medium with fin (4)
+                  </td>
+                  <td [class.current]="fish.shadow === 'Narrow'">
+                    Narrow
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="sea.id" class="row">
+    <div class="critter-label text-center col-8">
+      <div class="critter-image">
+        <img class="img-fluid" [src]="sea.imageUri">
+      </div>
+      <div class="critter-name">
+        {{seaName}}
+      </div>
+    </div>
+    <div class="critter-detail col-4">
+      <div class="critter-seasonality">
+        <app-critter-seasonality [availability]="sea.availability"></app-critter-seasonality>
+      </div>
+      <div class="critter-activity">
+        <app-critter-activity [timeArray]="sea.availability.timeArray"></app-critter-activity>
+      </div>
+      <div class="critter-rarity">
+        Rarity: {{sea.availability.rarity}}
+      </div>
+      <div class="critter-rarity">
+        Price: {{sea.price}}
+      </div>
+      <div class="critter-rarity">
+        <div>
+          Shadow size: {{sea.shadow}}
+        </div>
+        <div>
+          Speed: {{sea.speed}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

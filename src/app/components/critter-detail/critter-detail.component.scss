@@ -1,0 +1,37 @@
+.critter-name {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: auto;
+  min-width: 0px;
+  max-width: content-box;
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+  background-color: rgb(249, 246, 229);
+  transform: rotate(-4deg);
+  box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 3px 0px;
+  border-width: 12px;
+  border-style: solid;
+  border-color: initial;
+  border-image: url(https://critterpedia-plus.mutoo.im/e454e1632df5c9682fb607bbddcd86ac.svg) 40 / 12px / 0 round;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 700;
+}
+.current {
+  background-color: rgba(0, 153, 0, 0.25);
+}
+.lower-tr {
+  td {
+    border-left: 2px solid rgb(153, 153, 153);
+    border-bottom: 2px solid rgb(153, 153, 153);
+    border-right: 2px solid rgb(153, 153, 153);
+  }
+}
+.upper-tr {
+  td {
+    border-left: 2px solid rgb(153, 153, 153);
+    border-top: 2px solid rgb(153, 153, 153);
+    border-right: 2px solid rgb(153, 153, 153);
+  }
+}

@@ -1,0 +1,11 @@
+<div class="container">
+  <div *ngIf="song.id" class="row">
+    <h1 class="text-center">{{song.name.nameUSen}}</h1>
+    <app-song class="text-center" [song]="song"></app-song>
+    <span *ngIf="song.isOrderable">Buy price: {{song.buyPrice}}</span>
+    <span>Sell price: {{song.sellPrice}}</span>
+    <span *ngIf="song.isOrderable">Is orderable</span>
+    <span *ngIf="!song.isOrderable">Is not orderable</span>
+    <audio id="songPlayer" autoplay controls preload="auto" [src]="song.musicUri"></audio>
+  </div>
+</div>

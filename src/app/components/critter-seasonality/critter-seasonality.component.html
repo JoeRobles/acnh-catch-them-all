@@ -1,0 +1,24 @@
+<div class="table-responsive">
+  <table class="table">
+    <tbody class="text-center">
+      <tr>
+        <td [class.current-month]="month === 1" [class.available]="availability[hemisphere].indexOf(1) > -1">Ene</td>
+        <td [class.current-month]="month === 2" [class.available]="availability[hemisphere].indexOf(2) > -1">Feb</td>
+        <td [class.current-month]="month === 3" [class.available]="availability[hemisphere].indexOf(3) > -1">Mar</td>
+        <td [class.current-month]="month === 4" [class.available]="availability[hemisphere].indexOf(4) > -1">Abr</td>
+      </tr>
+      <tr>
+        <td [class.current-month]="month === 5" [class.available]="availability[hemisphere].indexOf(5) > -1">May</td>
+        <td [class.current-month]="month === 6" [class.available]="availability[hemisphere].indexOf(6) > -1">Jun</td>
+        <td [class.current-month]="month === 7" [class.available]="availability[hemisphere].indexOf(7) > -1">Jul</td>
+        <td [class.current-month]="month === 8" [class.available]="availability[hemisphere].indexOf(8) > -1">Ago</td>
+      </tr>
+      <tr>
+        <td [class.current-month]="month === 9" [class.available]="availability[hemisphere].indexOf(9) > -1">Set</td>
+        <td [class.current-month]="month === 10" [class.available]="availability[hemisphere].indexOf(10) > -1">Oct</td>
+        <td [class.current-month]="month === 11" [class.available]="availability[hemisphere].indexOf(11) > -1">Nov</td>
+        <td [class.current-month]="month === 12" [class.available]="availability[hemisphere].indexOf(12) > -1">Dic</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

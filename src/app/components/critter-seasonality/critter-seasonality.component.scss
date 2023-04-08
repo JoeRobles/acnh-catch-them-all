@@ -1,0 +1,14 @@
+table {
+  td {
+    border: 2px solid rgb(153, 153, 153);
+
+    &.current-month {
+      border: 3px  solid rgba(153, 0, 0);
+    }
+    &.available {
+      padding: 6px;
+      background-color: rgba(0, 153, 0, 0.25);
+      background-clip: content-box;
+    }
+  }
+}

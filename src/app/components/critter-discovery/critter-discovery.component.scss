@@ -1,0 +1,57 @@
+img.not-available {
+  -webkit-filter: grayscale(100%);
+  //filter: grayscale(100%);
+  //opacity: 0.1;
+  transition: opacity 0.3s ease-out 0s, filter 0.3s ease-out 0s;
+  opacity: 1;
+  filter: brightness(0) opacity(0.1);
+}
+img.always-available {
+  background-color : rgba(0, 0, 50, 0.25);
+  border-radius: 50%;
+}
+img.allYear-available {
+  background-color : rgba(0, 0, 255, 0.20);
+  border-radius: 50%;
+}
+img.all-day-available {
+  background-color: rgba(255,215,0, 0.25);
+  border-radius: 50%;
+}
+img.available {
+  background-color: rgba(0, 153, 0, 0.25);
+  border-radius: 5%;
+}
+img.not-now-available {
+  background-color: rgba(153, 0, 0, 0.25);
+  border-radius: 5%;
+}
+img.normal {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 5%;
+}
+.remaining {
+  position: relative;
+  text-align: center;
+}
+.hours-remaining {
+  position: absolute;
+  top: -10px;
+  right: -4px;
+}
+.hours-left {
+  position: absolute;
+  top: -10px;
+  right: -4px;
+}
+.days-remaining {
+  position: absolute;
+  top: -10px;
+  left: -4px;
+}
+.label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

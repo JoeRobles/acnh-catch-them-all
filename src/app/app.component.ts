@@ -36,7 +36,9 @@ export class AppComponent implements OnInit {
   isSouthernHemisphere = true;
   artList: ArtModel[] = [];
   bugsList: BugModel[] = [];
+  bugModelsList: BugModel[] = [];
   fishList: FishModel[] = [];
+  fishModelsList: FishModel[] = [];
   seaList: SeaModel[] = [];
   song: SongModel = {} as SongModel;
   musicUri$: BehaviorSubject<string> = new BehaviorSubject<string>('/assets/music/welcome-horizons.mp3');
@@ -88,6 +90,8 @@ export class AppComponent implements OnInit {
     this.critterService.fish$.subscribe(fish => this.fishList = fish);
     this.critterService.sea$.subscribe(sea => this.seaList = sea);
     this.critterService.songs$.subscribe(song => this.songList = song);
+    this.critterService.fossils$.subscribe(fossil => this.fossilList = fossil);
+    this.critterService.art$.subscribe(art => this.artList = art);
     this.critterService.music$.subscribe(music => this.musicList = music);
     this.critterService.language$.subscribe(l => this.language = l);
     this.critterService.mode$.subscribe(m => this.mode = m);
@@ -190,6 +194,10 @@ export class AppComponent implements OnInit {
 
   toggleAvailableMode() {
     this.critterService.mode$.next(ModeTypeEnum.Available);
+  }
+
+  toggleModelMode() {
+    this.critterService.mode$.next(ModeTypeEnum.Model);
   }
 
   toggleDisplayBugs() {

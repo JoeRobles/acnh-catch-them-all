@@ -4,5 +4,7 @@ export enum CritterTypeEnum {
   Sea = 'sea',
   Songs = 'songs',
   Fossils = 'fossils',
-  Art = 'art'
+  Art = 'art',
+  BugModels = 'bugModels',
+  FishModels = 'fishModels',
 }

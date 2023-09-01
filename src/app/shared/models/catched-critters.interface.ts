@@ -4,5 +4,7 @@ export interface CatchedCrittersInterface {
   sea: number[],
   songs: number[],
   fossils: number[],
-  art: number[]
+  art: number[],
+  bugModels: number[],
+  fishModels: number[]
 }

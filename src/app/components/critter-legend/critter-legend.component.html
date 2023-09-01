@@ -1,9 +1,10 @@
 <div>
   Legend:
-  <div class="table-responsive">
-    <table class="table w-50">
+  <div class="w-50">
+    <table>
       <tbody>
         <tr>
+          <ng-container *ngIf="mode !== ModeTypeEnum.Collection">
           <td>
             <img class="img-fluid always-available" src="assets/images/critter.png">
           </td>
@@ -22,12 +23,18 @@
           <td>
             <img class="img-fluid not-available" src="assets/images/critter.png">
           </td>
-          <td>
-            <img class="img-fluid normal" src="assets/images/default-bug.png">
+          </ng-container>
+          <ng-container *ngIf="[ModeTypeEnum.Collection, ModeTypeEnum.Discovery].indexOf(mode) > -1">
+          <td [ngSwitch]="display">
+            <img *ngSwitchCase="CritterTypeEnum.Bugs" class="img-fluid normal" src="assets/images/default-bug.png">
+            <img *ngSwitchCase="CritterTypeEnum.Fish" class="img-fluid normal" src="assets/images/default-fish.png">
+            <img *ngSwitchCase="CritterTypeEnum.Sea" class="img-fluid normal" src="assets/images/default-sea.png">
           </td>
+          </ng-container>
         </tr>
 
         <tr>
+          <ng-container *ngIf="mode !== ModeTypeEnum.Collection">
           <td class="text-center align-middle">
             Always available
             all year and all day
@@ -38,7 +45,7 @@
           </td>
           <td class="text-center align-middle">
             All day available this month
-            by not all year
+            but not all year
           </td>
           <td class="text-center align-middle">
             Available now
@@ -51,9 +58,13 @@
             Not available
             this month
           </td>
+          </ng-container>
+
+          <ng-container *ngIf="[ModeTypeEnum.Collection, ModeTypeEnum.Discovery].indexOf(mode) > -1">
           <td class="text-center align-middle">
             Catched already
-           </td>
+          </td>
+          </ng-container>
         </tr>
       </tbody>
     </table>

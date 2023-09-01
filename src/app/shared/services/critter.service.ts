@@ -54,10 +54,16 @@ export class CritterService {
   songsAmount = 0;
   fossilsAmount = 0;
   artAmount = 0;
+  bugModelsAmount = 0;
+  fishModelsAmount = 0;
   bugs$: BehaviorSubject<BugModel[]> = new BehaviorSubject<BugModel[]>([]);
   bugsGrid$: BehaviorSubject<BugModel[][]> = new BehaviorSubject<BugModel[][]>([]);
   fish$: BehaviorSubject<FishModel[]> = new BehaviorSubject<FishModel[]>([]);
   fishGrid$: BehaviorSubject<FishModel[][]> = new BehaviorSubject<FishModel[][]>([]);
+  bugModels$: BehaviorSubject<BugModel[]> = new BehaviorSubject<BugModel[]>([]);
+  bugModelsGrid$: BehaviorSubject<BugModel[][]> = new BehaviorSubject<BugModel[][]>([]);
+  fishModels$: BehaviorSubject<FishModel[]> = new BehaviorSubject<FishModel[]>([]);
+  fishModelsGrid$: BehaviorSubject<FishModel[][]> = new BehaviorSubject<FishModel[][]>([]);
   sea$: BehaviorSubject<SeaModel[]> = new BehaviorSubject<SeaModel[]>([]);
   seaGrid$: BehaviorSubject<SeaModel[][]> = new BehaviorSubject<SeaModel[][]>([]);
   songs$: BehaviorSubject<SongModel[]> = new BehaviorSubject<SongModel[]>([]);
@@ -75,7 +81,7 @@ export class CritterService {
     private localStorageService: LocalStorageService,
     private http: HttpClient
   ) {
-    this.critters = {bugs: [], fish: [], sea: [], songs: [], fossils: [], art: []};
+    this.critters = {bugs: [], fish: [], sea: [], songs: [], fossils: [], art: [], bugModels: [], fishModels: []};
     this.getCritters();
   }
 
@@ -119,6 +125,18 @@ export class CritterService {
         this.critters.art = [];
         this.artAmount = 0;
       }
+      if (this.critters?.bugModels) {
+        this.bugModelsAmount = this.critters.bugModels.length;
+      } else {
+        this.critters.bugModels = [];
+        this.bugModelsAmount = 0;
+      }
+      if (this.critters?.fishModels) {
+        this.fishModelsAmount = this.critters.fishModels.length;
+      } else {
+        this.critters.fishModels = [];
+        this.fishModelsAmount = 0;
+      }
     }
     this.localStorageService.setObject('critters', this.critters);
   }
@@ -132,6 +150,7 @@ export class CritterService {
     } else {
       this.critters[critterType]?.push(critterId);
     }
+    console.log('critterType: ', critterType);
     switch (critterType) {
       case CritterTypeEnum.Bugs:
         this.bugsAmount = this.critters[critterType].length;
@@ -150,6 +169,12 @@ export class CritterService {
         break;
       case CritterTypeEnum.Art:
         this.artAmount = this.critters[critterType].length;
+        break;
+      case CritterTypeEnum.BugModels:
+        this.bugModelsAmount = this.critters[critterType].length;
+        break;
+      case CritterTypeEnum.FishModels:
+        this.fishModelsAmount = this.critters[critterType].length;
         break;
       default:
         break;
@@ -170,6 +195,17 @@ export class CritterService {
             })
           })).subscribe();
         break;
+      case CritterTypeEnum.BugModels:
+        this.bugModels$.pipe(
+          map(bugModel => {
+            bugModel.map(b => {
+              if (critterModel.id === b.id) {
+                b.catch = !b.catch;
+                this.updateCritter(critterModel.id, CritterTypeEnum.BugModels);
+              }
+            })
+          })).subscribe();
+        break;
       case CritterTypeEnum.Fish:
         this.fish$.pipe(
           map(fish => {
@@ -177,6 +213,17 @@ export class CritterService {
               if (critterModel.id === f.id) {
                 f.catch = !f.catch;
                 this.updateCritter(critterModel.id, CritterTypeEnum.Fish);
+              }
+            })
+          })).subscribe();
+        break;
+      case CritterTypeEnum.FishModels:
+        this.fishModels$.pipe(
+          map(fishModel => {
+            fishModel.map(f => {
+              if (critterModel.id === f.id) {
+                f.catch = !f.catch;
+                this.updateCritter(critterModel.id, CritterTypeEnum.FishModels);
               }
             })
           })).subscribe();

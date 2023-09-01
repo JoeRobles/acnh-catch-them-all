@@ -22,7 +22,7 @@ export class ArtModel implements ArtInterface {
     this.hasFake = art.hasFake;
     this.buyPrice = art['buy-price'];
     this.sellPrice = art['sell-price'];
-    this.imageUri = '/assets/apiv2/images/art/' + this.fileName + '.png';
+    this.imageUri = '/assets/api/images/art/' + this.fileName + '.png';
     this.museumDesc = art['museum-desc'];
   }
 }

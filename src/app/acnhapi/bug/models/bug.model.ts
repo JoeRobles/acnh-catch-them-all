@@ -8,7 +8,7 @@ export class BugModel extends CritterModel implements BugInterface {
   constructor(bug: BugResponseInterface) {
     super(bug);
     this.priceFlick = bug['price-flick'];
-    this.iconUri = '/assets/apiv2/icons/bugs/' + this.fileName + '.png';
-    this.imageUri = '/assets/apiv2/images/bugs/' + this.fileName + '.png';
+    this.iconUri = '/assets/api/icons/bugs/' + this.fileName + '.png';
+    this.imageUri = '/assets/api/images/bugs/' + this.fileName + '.png';
   }
 }

@@ -19,7 +19,7 @@ export class FossilModel implements FossilInterface {
     this.catch = false;
     this.price = fossil.price;
     this.museumPhrase = fossil['museum-phrase'];
-    this.imageUri = '/assets/apiv2/images/fossils/' + this.fileName + '.png';
+    this.imageUri = '/assets/api/images/fossils/' + this.fileName + '.png';
     this.partOf = fossil['part-of'];
   }
 }

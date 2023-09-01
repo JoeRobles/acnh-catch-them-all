@@ -30,7 +30,7 @@ export class SongModel implements SongInterface {
     this.buyPrice = song['buy-price'];
     this.sellPrice = song['sell-price'];
     this.isOrderable = song['is-orderable'];
-    this.musicUri = '/assets/apiv2/music/kk/' + this.fileName + '.mp3';
-    this.imageUri = '/assets/apiv2/images/music/' + this.fileName + '.png';
+    this.musicUri = '/assets/api/music/kk/' + this.fileName + '.mp3';
+    this.imageUri = '/assets/api/images/music/' + this.fileName + '.png';
   }
 }

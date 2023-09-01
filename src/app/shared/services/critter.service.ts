@@ -278,7 +278,7 @@ export class CritterService {
   }
 
   getBugs(): Observable<BugModel[]> {
-    const url = `/assets/apiv2/v1a/bugs.json`;
+    const url = `/assets/api/v1a/bugs.json`;
     return this.http.get<BugResponseInterface[]>(url)
       .pipe(
         map(bugs => bugs.map(bug => new BugModel(bug)))
@@ -286,7 +286,7 @@ export class CritterService {
   }
 
   getFish(): Observable<FishModel[]> {
-    const url = `/assets/apiv2/v1a/fish.json`;
+    const url = `/assets/api/v1a/fish.json`;
     return this.http.get<FishResponseInterface[]>(url)
       .pipe(
         map(fish => fish.map(f => new FishModel(f)))
@@ -294,7 +294,7 @@ export class CritterService {
   }
 
   getSea(): Observable<SeaModel[]> {
-    const url = `/assets/apiv2/v1a/sea.json`;
+    const url = `/assets/api/v1a/sea.json`;
     return this.http.get<SeaResponseInterface[]>(url)
       .pipe(
         map(sea => sea.map(s => new SeaModel(s)))
@@ -302,7 +302,7 @@ export class CritterService {
   }
 
   getSongs(): Observable<SongModel[]> {
-    const url = `/assets/apiv2/v1a/songs.json`;
+    const url = `/assets/api/v1a/songs.json`;
     return this.http.get<SongResponseInterface[]>(url)
       .pipe(
         map(songs => songs.map(s => new SongModel(s)))
@@ -310,7 +310,7 @@ export class CritterService {
   }
 
   getMusic(): Observable<MusicModel[]> {
-    const url = `/assets/apiv2/v1a/hourly.json`;
+    const url = `/assets/api/v1a/hourly.json`;
     return this.http.get<MusicResponseInterface[]>(url)
       .pipe(
         map(music => music.map(m => new MusicModel(m)))
@@ -318,7 +318,7 @@ export class CritterService {
   }
 
   getFossils(): Observable<FossilModel[]> {
-    const url = `/assets/apiv2/v1a/fossils.json`;
+    const url = `/assets/api/v1a/fossils.json`;
     return this.http.get<FossilResponseInterface[]>(url)
       .pipe(
         map(fossil => fossil.map(f => new FossilModel(f)))
@@ -326,7 +326,7 @@ export class CritterService {
   }
 
   getArt(): Observable<ArtModel[]> {
-    const url = `/assets/apiv2/v1a/art.json`;
+    const url = `/assets/api/v1a/art.json`;
     return this.http.get<ArtResponseInterface[]>(url)
       .pipe(
         map(art => art.map(a => new ArtModel(a)))

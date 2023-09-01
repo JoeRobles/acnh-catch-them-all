@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { ClockNtpResponseInterface } from '../models/clock-ntp-response.interface';
 
 @Injectable({

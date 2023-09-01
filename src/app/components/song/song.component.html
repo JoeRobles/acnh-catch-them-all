@@ -1,1 +1,3 @@
+<ng-container *ngIf="song">
 <img class="img-fluid text-center" [class.not-available]="mode !== modeTypeEnum.All && !song.catch" [src]="song.imageUri" [title]="songName">
+</ng-container>

@@ -11,5 +11,7 @@ export class FishModel extends CritterModel implements FishInterface {
     super(fish);
     this.priceCj = fish['price-cj'];
     this.shadow = fish.shadow;
+    this.iconUri = '/assets/api/icons/fish/' + this.fileName + '.png';
+    this.imageUri = '/assets/api/images/fish/' + this.fileName + '.png';
   }
 }

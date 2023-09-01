@@ -2,5 +2,7 @@ export interface CatchedCrittersInterface {
   bugs: number[],
   fish: number[],
   sea: number[],
-  songs: number[]
+  songs: number[],
+  fossils: number[],
+  art: number[]
 }

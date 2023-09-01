@@ -4,8 +4,10 @@
     <app-song class="text-center" [song]="song"></app-song>
     <span *ngIf="song.isOrderable">Buy price: {{song.buyPrice}}</span>
     <span>Sell price: {{song.sellPrice}}</span>
+    <ng-container *ngIf="song.isOrderable !== undefined">
     <span *ngIf="song.isOrderable">Is orderable</span>
     <span *ngIf="!song.isOrderable">Is not orderable</span>
-    <audio id="songPlayer" autoplay controls preload="auto" [src]="song.musicUri"></audio>
+    </ng-container>
+    <audio *ngIf="song && song.musicUri" id="songPlayer" autoplay controls preload="auto" [src]="song.musicUri"></audio>
   </div>
 </div>

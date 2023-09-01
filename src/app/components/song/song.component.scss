@@ -1,3 +1,7 @@
-img.not-available {
-  -webkit-filter: grayscale(100%);
+img {
+  width: 250px;
+
+  &.not-available {
+    -webkit-filter: grayscale(100%);
+  }
 }

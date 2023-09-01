@@ -40,9 +40,9 @@
     *ngIf="!critter.catch" data-bs-toggle="tooltip" data-bs-placement="top" [title]="critter.name[language]">
   <ng-container *ngIf="critter.catch">
     <ng-container [ngSwitch]="critterType">
-      <img *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid w-25" src="assets/images/default-bug.png">
-      <img *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid w-25" src="assets/images/default-fish.png">
-      <img *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid w-25" src="assets/images/default-sea.png">
+      <img *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid" src="assets/images/default-bug.png">
+      <img *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid" src="assets/images/default-fish.png">
+      <img *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid" src="assets/images/default-sea.png">
     </ng-container>
   </ng-container>
 </ng-container>
@@ -53,12 +53,59 @@
     *ngIf="critter.catch" data-bs-toggle="tooltip" data-bs-placement="top" [title]="critter.name[language]">
   <ng-container *ngIf="!critter.catch">
     <ng-container [ngSwitch]="critterType">
-      <img *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid w-25" src="assets/images/default-bug.png">
-      <img *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid w-25" src="assets/images/default-fish.png">
-      <img *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid w-25" src="assets/images/default-sea.png">
+      <img *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid" src="assets/images/default-bug.png">
+      <img *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid" src="assets/images/default-fish.png">
+      <img *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid" src="assets/images/default-sea.png">
     </ng-container>
   </ng-container>
 </ng-container>
+
+
+
+
+<ng-container *ngIf="mode === modeTypeEnum.Available">
+  <ng-container *ngIf="
+  !(critter.availability[hemisphere].indexOf(month) === -1)
+">
+    <div class="remaining">
+      <div class="days-remaining" *ngIf="critter.availability[hemisphere].length < 12">
+        {{ remainingDays(critter.availability[hemisphere], month) }}
+      </div>
+      <div [ngStyle]="{
+  'background-color': !(critter.availability[hemisphere].length === 12 && critter.availability.timeArray.length !== 24) ? '' : 'rgba(0, 153, 0, 0.25)'}"
+           *ngIf="critter.availability.timeArray.length < 24 && !(critter.availability.timeArray.indexOf(hours) === -1)"
+           class="hours-remaining">{{
+        remainingHours(
+          critter.availability.timeArray,
+          hours
+        ) }}:{{remainingMinutes(minutes)}}
+      </div>
+      <div class="hours-left"
+           [ngStyle]="{'background-color': !(critter.availability[hemisphere].length === 12 && critter.availability.timeArray.length !== 24) ? '' : 'rgba(153, 0, 0, 0.25)' }"
+           *ngIf="critter.availability.timeArray.length < 24 && critter.availability.timeArray.indexOf(hours) === -1">
+        {{ hoursLeft(critter.availability.timeArray,
+        hours)}}:{{remainingMinutes(minutes)}}
+      </div>
+    </div>
+  </ng-container>
+  <img
+    class="img-fluid"
+    [ngClass]="
+    critter.availability[hemisphere].length === 12 && critter.availability.timeArray.length === 24 ? 'always-available' : (
+      (critter.availability[hemisphere].indexOf(month) === -1) ? 'not-available' : (
+        critter.availability[hemisphere].length === 12 ? 'allYear-available' : (
+          critter.availability.timeArray.indexOf(hours) === -1 ? 'not-now-available' : (
+            critter.availability.timeArray.length === 24 ? 'all-day-available' : 'available'
+          )
+        )
+      )
+    )"
+    [src]="critter.iconUri"
+     data-bs-toggle="tooltip" data-bs-placement="top" [title]="critter.name[language]">
+</ng-container>
+
+
+
 <ng-container *ngIf="mode === modeTypeEnum.All">
   <img class="img-fluid" [src]="critter.iconUri" data-bs-toggle="tooltip" data-bs-placement="top"
        [title]="critter.name[language]">

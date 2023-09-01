@@ -4,7 +4,7 @@ img.not-available {
   //opacity: 0.1;
   transition: opacity 0.3s ease-out 0s, filter 0.3s ease-out 0s;
   opacity: 1;
-  filter: brightness(0) opacity(0.1);
+  filter: brightness(0) opacity(0.25);
 }
 img.always-available {
   background-color : rgba(0, 0, 50, 0.25);

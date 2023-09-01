@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CritterDiscoveryComponent } from './components/critter-discovery/critter-discovery.component';
 import { CritterLegendComponent } from './components/critter-legend/critter-legend.component';
 import { CritterDetailComponent } from './components/critter-detail/critter-detail.component';
@@ -11,6 +11,9 @@ import { CritterSeasonalityComponent } from './components/critter-seasonality/cr
 import { CritterActivityComponent } from './components/critter-activity/critter-activity.component';
 import { SongComponent } from './components/song/song.component';
 import { SongDetailComponent } from './components/song-detail/song-detail.component';
+import { FossilComponent } from './components/fossil/fossil.component';
+import { ArtComponent } from './components/art/art.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,12 +24,16 @@ import { SongDetailComponent } from './components/song-detail/song-detail.compon
     CritterSeasonalityComponent,
     CritterActivityComponent,
     SongComponent,
-    SongDetailComponent
+    SongDetailComponent,
+    FossilComponent,
+    ArtComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { SongModel } from '../../acnhapi/song/models/song.model';
 import { CritterService } from '../../shared/services/critter.service';
 

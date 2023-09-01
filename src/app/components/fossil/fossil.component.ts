@@ -1,25 +1,26 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { SongModel } from '../../acnhapi/song/models/song.model';
+import { FossilModel } from '../../acnhapi/fossil/models/fossil.model';
 import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
-import { CritterService } from '../../shared/services/critter.service';
 import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
+import { CritterService } from '../../shared/services/critter.service';
 
 @Component({
-  selector: 'app-song',
-  templateUrl: './song.component.html',
-  styleUrls: ['./song.component.scss']
+  selector: 'app-fossil',
+  templateUrl: './fossil.component.html',
+  styleUrls: ['./fossil.component.scss']
 })
-export class SongComponent implements OnInit {
-  @Input() song: SongModel = {} as SongModel;
-  songName = '';
+export class FossilComponent implements OnInit {
+  @Input() fossil: FossilModel = {} as FossilModel;
+  fossilName = '';
   language: LanguageTypeEnum = LanguageTypeEnum.NameUSen;
   mode: ModeTypeEnum = ModeTypeEnum.Discovery;
   modeTypeEnum = ModeTypeEnum;
   constructor(private critterService: CritterService) {
     this.critterService.mode$.subscribe(m => this.mode = m);
   }
+
   ngOnInit() {
-    this.songName = this.song.name[this.language];
+    this.fossilName = this.fossil?.name[this.language];
   }
 }

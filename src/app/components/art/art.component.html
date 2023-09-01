@@ -1,0 +1,3 @@
+<ng-container *ngIf="art">
+  <img class="img-fluid text-center" [class.not-available]="mode !== modeTypeEnum.All && !art.catch" [src]="art.imageUri" [title]="artName">
+</ng-container>

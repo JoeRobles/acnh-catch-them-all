@@ -1,0 +1,3 @@
+<ng-container *ngIf="fossil">
+  <img class="img-fluid text-center" [class.not-available]="mode !== modeTypeEnum.All && !fossil.catch" [src]="fossil.imageUri" [title]="fossilName">
+</ng-container>

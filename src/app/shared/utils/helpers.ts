@@ -1,5 +1,5 @@
-import * as Chronos from './chronos';
 import { SongModel } from '../../acnhapi/song/models/song.model';
+import { daysUntilDate, isEndOfMonth as IsEndOfMonth, isStartOfMonth as IsStartOfMonth } from './chronos';
 
 export function toFiveRows(items: any[]): any[][] {
   let column: any[] = [[], [], [], [], []];
@@ -14,7 +14,6 @@ export function toFiveRows(items: any[]): any[][] {
   }
   return column;
 }
-
 export function toFiveColumns(items: any[]): any[][] {
   const rowsAmount = 5;
   let rows: SongModel[][] = [] as SongModel[][];
@@ -30,7 +29,26 @@ export function toFiveColumns(items: any[]): any[][] {
   }
   return rows;
 }
-
+export function toTenColumns(items: any[]): any[][] {
+  const rowsAmount = 10;
+  let rows: SongModel[][] = [] as SongModel[][];
+  for (let i = 0; i < items.length; i += rowsAmount) {
+    let columns: SongModel[] = [] as SongModel[];
+    const chunk = items.slice(i, i + rowsAmount);
+    columns.push(chunk[0]);
+    columns.push(chunk[1]);
+    columns.push(chunk[2]);
+    columns.push(chunk[3]);
+    columns.push(chunk[4]);
+    columns.push(chunk[5]);
+    columns.push(chunk[6]);
+    columns.push(chunk[7]);
+    columns.push(chunk[8]);
+    columns.push(chunk[9]);
+    rows.push(columns);
+  }
+  return rows;
+}
 export function isValidDate(date: Date): boolean {
   if (Object.prototype.toString.call(date) === '[object Date]') {
     // it is a date
@@ -39,15 +57,12 @@ export function isValidDate(date: Date): boolean {
     return false;
   }
 }
-
 export function capitalize(phrase: string): string {
   return phrase.charAt(0).toUpperCase() + phrase.slice(1);
 }
-
 // @ts-ignore
 export function hoursLeft(available: number[], current: number): number {
   const limit = available.length - 1;
-  let times = 0;
   if (current > available[0]) {
     if (current > available[limit]) { // /---/ |    /
       return 23 - current + available[0];
@@ -62,7 +77,6 @@ export function hoursLeft(available: number[], current: number): number {
     return available[0] - current;
   }
 }
-
 export function remainingHours(available: number[], current: number): number {
   const limit = available.length - 1;
   let times = 0;
@@ -82,7 +96,6 @@ export function remainingHours(available: number[], current: number): number {
 
   return times;
 }
-
 export function remainingDays(today: Date, available: number[], current: number): number {
   const limit = available.length - 1;
   let times = 0;
@@ -100,9 +113,8 @@ export function remainingDays(today: Date, available: number[], current: number)
     }
   }
 
-  return Chronos.daysUntilDate(today, times);
+  return daysUntilDate(today, times);
 }
-
 export function remainingMinutes(minutes: number): string {
   const remain = 60 - minutes;
   if (remain < 10) {
@@ -111,15 +123,21 @@ export function remainingMinutes(minutes: number): string {
     return String(remain);
   }
 }
-
 export function isStartOfMonth(today: Date): boolean {
-  return Chronos.isStartOfMonth(today);
+  return IsStartOfMonth(today);
 }
-
 export function isEndOfMonth(today: Date): boolean {
-  return Chronos.isEndOfMonth(today);
+  return IsEndOfMonth(today);
 }
-
 export function encodedStr(rawStr: string): string {
   return rawStr.replaceAll("'", "");
+}
+export function ascByNumber(a: SongModel, b: SongModel) {
+  if ( a.number < b.number ){
+    return -1;
+  }
+  if ( a.number > b.number ){
+    return 1;
+  }
+  return 0;
 }

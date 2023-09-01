@@ -13,6 +13,6 @@ export class MusicModel implements MusicInterface {
     this.fileName = music['file-name'];
     this.hour = music.hour;
     this.weather = music.weather;
-    this.musicUri = music.music_uri
+    this.musicUri = '/assets/api/music/hourly/' + this.fileName + '.mp3';
   }
 }

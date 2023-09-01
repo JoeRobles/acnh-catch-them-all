@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+
 import { ClockService } from '../../shared/services/clock.service';
 import { AvailabilityModel } from '../../acnhapi/models/availability.model';
 import { MonthArrayTypeEnum } from '../../shared/models/month-array-type.enum';

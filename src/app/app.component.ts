@@ -12,7 +12,11 @@ import { SongModel } from './acnhapi/song/models/song.model';
 import { LanguageTypeEnum } from './shared/models/language-type.enum';
 import { Languages } from './shared/models/languages.const';
 import { ModeTypeEnum } from './shared/models/mode-type.enum';
-import { MusicModel } from './acnhapi/models/music.model';
+import { MusicModel } from './acnhapi/music/models/music.model';
+import { SongGenreTypeEnum } from './shared/models/song-genre-type.enum';
+import { FossilModel } from './acnhapi/fossil/models/fossil.model';
+import { ArtModel } from './acnhapi/art/models/art.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 declare var window: any;
 
@@ -30,23 +34,42 @@ export class AppComponent implements OnInit {
   critterType: CritterTypeEnum = CritterTypeEnum.Bugs;
   display: CritterTypeEnum = CritterTypeEnum.Bugs;
   isSouthernHemisphere = true;
+  artList: ArtModel[] = [];
   bugsList: BugModel[] = [];
   fishList: FishModel[] = [];
   seaList: SeaModel[] = [];
   song: SongModel = {} as SongModel;
   musicUri$: BehaviorSubject<string> = new BehaviorSubject<string>('/assets/music/welcome-horizons.mp3');
   songList: SongModel[] = [];
+  fossilList: FossilModel[] = [];
   musicList: MusicModel[] = [];
   musicBackground$: BehaviorSubject<MusicModel[]> = new BehaviorSubject<MusicModel[]>([]);
   musicBackground: MusicModel[] = [];
   datetime: Date = new Date();
   subscriptions: Subscription[] = [];
+  songGenreTypeEnum = SongGenreTypeEnum;
+  songGenresFilter = [
+    SongGenreTypeEnum.Classic,
+    SongGenreTypeEnum.Animal,
+    SongGenreTypeEnum.Dance,
+    SongGenreTypeEnum.Japanese,
+    SongGenreTypeEnum.Jazz,
+    SongGenreTypeEnum.Rock,
+    SongGenreTypeEnum.Soul,
+    SongGenreTypeEnum.Soundtrack,
+    SongGenreTypeEnum.World
+  ];
   language: LanguageTypeEnum = LanguageTypeEnum.NameUSen;
   languages = Languages;
 
+  searchForm: FormGroup = this.fb.group({
+    key: [''],
+  });
+
   constructor(
     public clockService: ClockService,
-    public critterService: CritterService
+    public critterService: CritterService,
+    private fb: FormBuilder,
   ) {
     const datetime = new Date();
     this.hours = datetime.getHours();
@@ -93,13 +116,13 @@ export class AppComponent implements OnInit {
     // @ts-ignore
     myMusicPlayerEl.addEventListener('ended', () => {
       console.log('audio Ended');
-    // @ts-ignore
+      // @ts-ignore
       myMusicPlayerEl.pause();
-    // @ts-ignore
+      // @ts-ignore
       myMusicPlayerEl.src = this.musicBackground[0];
-    // @ts-ignore
+      // @ts-ignore
       myMusicPlayerEl.load();
-    // @ts-ignore
+      // @ts-ignore
       myMusicPlayerEl.play();
     });
   }
@@ -108,6 +131,7 @@ export class AppComponent implements OnInit {
     this.critterService.critterType$.next(critterType);
     switch (this.mode) {
       case ModeTypeEnum.Discovery:
+      case ModeTypeEnum.Available:
       case ModeTypeEnum.All:
         switch (critterType) {
           case CritterTypeEnum.Bugs:
@@ -164,6 +188,10 @@ export class AppComponent implements OnInit {
     this.critterService.mode$.next(ModeTypeEnum.All);
   }
 
+  toggleAvailableMode() {
+    this.critterService.mode$.next(ModeTypeEnum.Available);
+  }
+
   toggleDisplayBugs() {
     this.critterService.display$.next(CritterTypeEnum.Bugs);
   }
@@ -176,6 +204,12 @@ export class AppComponent implements OnInit {
     this.critterService.display$.next(CritterTypeEnum.Sea);
   }
 
+  toggleDisplayFossil() {
+    this.critterService.display$.next(CritterTypeEnum.Fossils);
+  }
+  toggleDisplayArt() {
+    this.critterService.display$.next(CritterTypeEnum.Art);
+  }
   toggleDisplaySongs() {
     this.critterService.display$.next(CritterTypeEnum.Songs);
   }
@@ -183,5 +217,35 @@ export class AppComponent implements OnInit {
   // @ts-ignore
   selectLanguage(event) {
     this.critterService.language$.next(event.target.value);
+  }
+
+  toggleGenreAll() {
+    if (this.songGenresFilter.length === 0) {
+      this.songGenresFilter = [
+        SongGenreTypeEnum.Classic,
+        SongGenreTypeEnum.Animal,
+        SongGenreTypeEnum.Dance,
+        SongGenreTypeEnum.Japanese,
+        SongGenreTypeEnum.Jazz,
+        SongGenreTypeEnum.Rock,
+        SongGenreTypeEnum.Soul,
+        SongGenreTypeEnum.Soundtrack,
+        SongGenreTypeEnum.World
+      ];
+    } else {
+      this.songGenresFilter = [];
+    }
+    const filtered = this.songList.filter(s => this.songGenresFilter.includes(s.genre));
+    this.critterService.songsGrid$.next(filtered);
+  }
+  toggleGenre(genre: SongGenreTypeEnum) {
+    const genreIndex = this.songGenresFilter.indexOf(genre);
+    if (genreIndex > -1) {
+      this.songGenresFilter.splice(genreIndex, 1);
+    } else {
+      this.songGenresFilter.push(genre);
+    }
+    const filtered = this.songList.filter(s => this.songGenresFilter.includes(s.genre));
+    this.critterService.songsGrid$.next(filtered);
   }
 }

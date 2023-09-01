@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+
 import { ClockService } from '../../shared/services/clock.service';
 
 @Component({

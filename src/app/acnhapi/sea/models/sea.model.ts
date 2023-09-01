@@ -12,5 +12,7 @@ export class SeaModel extends CritterModel implements SeaInterface {
     this.priceCj = sea['price-cj'];
     this.shadow = sea.shadow;
     this.speed = sea.speed;
+    this.iconUri = '/assets/api/icons/sea/' + this.fileName + '.png';
+    this.imageUri = '/assets/api/images/sea/' + this.fileName + '.png';
   }
 }

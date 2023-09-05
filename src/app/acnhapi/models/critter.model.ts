@@ -1,6 +1,6 @@
 import { AvailabilityModel } from './availability.model';
 import { NameModel } from './name.model';
-import { CritterInterface } from './critter-interface';
+import { CritterInterface } from './critter.interface';
 import { CritterResponseInterface } from './critter-response.interface';
 
 export class CritterModel implements CritterInterface {

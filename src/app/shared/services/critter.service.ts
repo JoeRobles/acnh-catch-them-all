@@ -24,6 +24,9 @@ import { ArtModel } from '../../acnhapi/art/models/art.model';
 import { FossilResponseInterface } from '../../acnhapi/fossil/models/fossils-response.interface';
 import { ArtResponseInterface } from '../../acnhapi/art/models/art-response.interface';
 import { SongGenreTypeEnum } from '../models/song-genre-type.enum';
+import { BugModelModel } from '../../acnhapi/bug-model/models/bug-model.model';
+import { ModelResponseInterface } from '../../acnhapi/models/model-response.interface';
+import { FishModelModel } from '../../acnhapi/fish-model/models/fish-model.model';
 
 @Injectable({
   providedIn: 'root'
@@ -60,10 +63,10 @@ export class CritterService {
   bugsGrid$: BehaviorSubject<BugModel[][]> = new BehaviorSubject<BugModel[][]>([]);
   fish$: BehaviorSubject<FishModel[]> = new BehaviorSubject<FishModel[]>([]);
   fishGrid$: BehaviorSubject<FishModel[][]> = new BehaviorSubject<FishModel[][]>([]);
-  bugModels$: BehaviorSubject<BugModel[]> = new BehaviorSubject<BugModel[]>([]);
-  bugModelsGrid$: BehaviorSubject<BugModel[][]> = new BehaviorSubject<BugModel[][]>([]);
-  fishModels$: BehaviorSubject<FishModel[]> = new BehaviorSubject<FishModel[]>([]);
-  fishModelsGrid$: BehaviorSubject<FishModel[][]> = new BehaviorSubject<FishModel[][]>([]);
+  bugModels$: BehaviorSubject<BugModelModel[]> = new BehaviorSubject<BugModelModel[]>([]);
+  bugModelsGrid$: BehaviorSubject<BugModelModel[][]> = new BehaviorSubject<BugModelModel[][]>([]);
+  fishModels$: BehaviorSubject<FishModelModel[]> = new BehaviorSubject<FishModelModel[]>([]);
+  fishModelsGrid$: BehaviorSubject<FishModelModel[][]> = new BehaviorSubject<FishModelModel[][]>([]);
   sea$: BehaviorSubject<SeaModel[]> = new BehaviorSubject<SeaModel[]>([]);
   seaGrid$: BehaviorSubject<SeaModel[][]> = new BehaviorSubject<SeaModel[][]>([]);
   songs$: BehaviorSubject<SongModel[]> = new BehaviorSubject<SongModel[]>([]);
@@ -198,9 +201,9 @@ export class CritterService {
       case CritterTypeEnum.BugModels:
         this.bugModels$.pipe(
           map(bugModel => {
-            bugModel.map(b => {
-              if (critterModel.id === b.id) {
-                b.catch = !b.catch;
+            bugModel.map(bM => {
+              if (critterModel.id === bM.id) {
+                bM.catch = !bM.catch;
                 this.updateCritter(critterModel.id, CritterTypeEnum.BugModels);
               }
             })
@@ -220,9 +223,9 @@ export class CritterService {
       case CritterTypeEnum.FishModels:
         this.fishModels$.pipe(
           map(fishModel => {
-            fishModel.map(f => {
-              if (critterModel.id === f.id) {
-                f.catch = !f.catch;
+            fishModel.map(fM => {
+              if (critterModel.id === fM.id) {
+                fM.catch = !fM.catch;
                 this.updateCritter(critterModel.id, CritterTypeEnum.FishModels);
               }
             })
@@ -285,11 +288,27 @@ export class CritterService {
       );
   }
 
+  getBugModels(): Observable<BugModelModel[]> {
+    const url = `/assets/api/v1a/bug-models.json`;
+    return this.http.get<ModelResponseInterface[]>(url)
+      .pipe(
+        map(bugModels => bugModels.map(bugModel => new BugModelModel(bugModel)))
+      );
+  }
+
   getFish(): Observable<FishModel[]> {
     const url = `/assets/api/v1a/fish.json`;
     return this.http.get<FishResponseInterface[]>(url)
       .pipe(
         map(fish => fish.map(f => new FishModel(f)))
+      );
+  }
+
+  getFishModels(): Observable<FishModelModel[]> {
+    const url = `/assets/api/v1a/fish-models.json`;
+    return this.http.get<ModelResponseInterface[]>(url)
+      .pipe(
+        map(fishModels => fishModels.map(fishModel => new FishModelModel(fishModel)))
       );
   }
 
@@ -336,7 +355,9 @@ export class CritterService {
   resolveCritters() {
     const observable = forkJoin({
       bugs: this.getBugs(),
+      bugModels: this.getBugModels(),
       fish: this.getFish(),
+      fishModels: this.getFishModels(),
       sea: this.getSea(),
       songs: this.getSongs(),
       music: this.getMusic(),
@@ -346,7 +367,9 @@ export class CritterService {
     observable.subscribe({
       next: data => {
         this.setCritterList(data.bugs, CritterTypeEnum.Bugs);
+        this.setCritterList(data.bugModels, CritterTypeEnum.BugModels);
         this.setCritterList(data.fish, CritterTypeEnum.Fish);
+        this.setCritterList(data.fishModels, CritterTypeEnum.FishModels);
         this.setCritterList(data.sea, CritterTypeEnum.Sea);
         this.setCritterList(data.songs, CritterTypeEnum.Songs);
         this.setCritterList(data.fossils, CritterTypeEnum.Fossils);
@@ -357,7 +380,10 @@ export class CritterService {
     })
   }
 
-  setCritterList(critters: BugModel[] | FishModel[] | SeaModel[] | SongModel[] | FossilModel[] | ArtModel[], critterType: CritterTypeEnum) {
+  setCritterList(
+    critters: BugModel[] | BugModelModel[] | FishModel[] | FishModelModel[] | SeaModel[] | SongModel[] | FossilModel[] | ArtModel[],
+    critterType: CritterTypeEnum.Art | CritterTypeEnum.Bugs | CritterTypeEnum.BugModels | CritterTypeEnum.Fish | CritterTypeEnum.FishModels | CritterTypeEnum.Fossils | CritterTypeEnum.Sea | CritterTypeEnum.Songs
+  ) {
     critters.map((b, i) => {
       if (this.critters[critterType]?.length > 0) {
         critters[i].catch = (this.critters[critterType].indexOf(b.id) > -1);
@@ -368,9 +394,17 @@ export class CritterService {
         this.bugs$.next(critters as BugModel[]);
         this.bugsGrid$.next(toFiveRows(critters));
         break;
+      case CritterTypeEnum.BugModels:
+        this.bugModels$.next(critters as BugModelModel[]);
+        this.bugModelsGrid$.next(toFiveRows(critters));
+        break;
       case CritterTypeEnum.Fish:
         this.fish$.next(critters as FishModel[]);
         this.fishGrid$.next(toFiveRows(critters));
+        break;
+      case CritterTypeEnum.FishModels:
+        this.fishModels$.next(critters as FishModelModel[]);
+        this.fishModelsGrid$.next(toFiveRows(critters));
         break;
       case CritterTypeEnum.Sea:
         this.sea$.next(critters as SeaModel[]);

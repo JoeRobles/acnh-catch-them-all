@@ -1,0 +1,3 @@
+<ng-container *ngIf="model">
+  <img class="img-fluid text-center" [class.not-available]="mode !== modeTypeEnum.All && !model.catch" [src]="model.imageUri" [title]="modelName">
+</ng-container>

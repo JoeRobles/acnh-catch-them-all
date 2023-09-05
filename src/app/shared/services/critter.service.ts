@@ -35,7 +35,9 @@ export class CritterService {
   mode$: BehaviorSubject<ModeTypeEnum> = new BehaviorSubject<ModeTypeEnum>(ModeTypeEnum.Discovery);
   critters: CatchedCrittersInterface;
   bug: BehaviorSubject<BugModel> = new BehaviorSubject<BugModel>({} as BugModel);
+  bugModel: BehaviorSubject<BugModelModel> = new BehaviorSubject<BugModelModel>({} as BugModelModel);
   fish: BehaviorSubject<FishModel> = new BehaviorSubject<FishModel>({} as FishModel);
+  fishModel: BehaviorSubject<FishModelModel> = new BehaviorSubject<FishModelModel>({} as FishModelModel);
   sea: BehaviorSubject<SeaModel> = new BehaviorSubject<SeaModel>({} as SeaModel);
   song: BehaviorSubject<SongModel> = new BehaviorSubject<SongModel>({} as SongModel);
   critterType$: BehaviorSubject<CritterTypeEnum> = new BehaviorSubject<CritterTypeEnum>('' as CritterTypeEnum);

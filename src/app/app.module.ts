@@ -14,6 +14,7 @@ import { SongDetailComponent } from './components/song-detail/song-detail.compon
 import { FossilComponent } from './components/fossil/fossil.component';
 import { ArtComponent } from './components/art/art.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModelComponent } from './components/model/model.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SongComponent,
     SongDetailComponent,
     FossilComponent,
-    ArtComponent
+    ArtComponent,
+    ModelComponent
   ],
   imports: [
     BrowserModule,

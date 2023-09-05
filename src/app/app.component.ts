@@ -196,10 +196,6 @@ export class AppComponent implements OnInit {
     this.critterService.mode$.next(ModeTypeEnum.Available);
   }
 
-  toggleModelMode() {
-    this.critterService.mode$.next(ModeTypeEnum.Model);
-  }
-
   toggleDisplayBugs() {
     this.critterService.display$.next(CritterTypeEnum.Bugs);
   }
@@ -210,6 +206,7 @@ export class AppComponent implements OnInit {
 
   toggleDisplaySea() {
     this.critterService.display$.next(CritterTypeEnum.Sea);
+    this.critterService.mode$.next(ModeTypeEnum.Discovery);
   }
 
   toggleDisplayFossil() {
@@ -220,6 +217,14 @@ export class AppComponent implements OnInit {
   }
   toggleDisplaySongs() {
     this.critterService.display$.next(CritterTypeEnum.Songs);
+  }
+
+  toggleDisplayBugModels() {
+    this.critterService.display$.next(CritterTypeEnum.BugModels);
+  }
+
+  toggleDisplayFishModels() {
+    this.critterService.display$.next(CritterTypeEnum.FishModels);
   }
 
   // @ts-ignore

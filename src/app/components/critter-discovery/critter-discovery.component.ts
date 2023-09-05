@@ -8,6 +8,8 @@ import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
 import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
 import { MonthArrayTypeEnum } from '../../shared/models/month-array-type.enum';
 import { CritterTypeEnum } from '../../shared/models/critter-type.enum';
+import { BugModelModel } from '../../acnhapi/bug-model/models/bug-model.model';
+import { FishModelModel } from '../../acnhapi/fish-model/models/fish-model.model';
 
 @Component({
   selector: 'app-critter-discovery',

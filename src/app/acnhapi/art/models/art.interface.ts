@@ -10,4 +10,5 @@ export interface ArtInterface {
   sellPrice: number;
   imageUri: string;
   museumDesc: string;
+  realName: string;
 }

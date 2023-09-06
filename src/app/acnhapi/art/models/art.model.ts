@@ -13,7 +13,7 @@ export class ArtModel implements ArtInterface {
   public sellPrice: number;
   public imageUri: string;
   public museumDesc: string;
-
+  public realName: string;
   constructor(art: ArtResponseInterface) {
     this.id = art.id;
     this.fileName = art['file-name'];
@@ -24,5 +24,6 @@ export class ArtModel implements ArtInterface {
     this.sellPrice = art['sell-price'];
     this.imageUri = '/assets/api/images/art/' + this.fileName + '.png';
     this.museumDesc = art['museum-desc'];
+    this.realName = art['real-name'];
   }
 }

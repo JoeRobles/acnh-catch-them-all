@@ -1,0 +1,15 @@
+<div class="container">
+  <div *ngIf="art.id" class="row">
+    <h1 class="text-center">{{art.name[language]}}</h1>
+    <div class="text-center">
+      <ng-container *ngIf="art">
+        <img class="img-fluid text-center" [src]="art.imageUri" [title]="art.name[language]">
+      </ng-container>
+    </div>
+    <span>{{art.hasFake ? 'Has fake' : 'Always original'}}</span>
+    <span>{{art.realName}}</span>
+    <span>Description: {{art.museumDesc}}</span>
+    <span>Buy price: {{art.buyPrice}}</span>
+    <span>Sell price: {{art.sellPrice}}</span>
+  </div>
+</div>

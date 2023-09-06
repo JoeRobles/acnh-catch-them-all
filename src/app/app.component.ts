@@ -17,6 +17,7 @@ import { SongGenreTypeEnum } from './shared/models/song-genre-type.enum';
 import { FossilModel } from './acnhapi/fossil/models/fossil.model';
 import { ArtModel } from './acnhapi/art/models/art.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ModelModel } from './acnhapi/models/model.model';
 
 declare var window: any;
 
@@ -142,25 +143,65 @@ export class AppComponent implements OnInit {
             this.critterService.bug.next(critterModel);
             this.critterService.fish.next({} as FishModel);
             this.critterService.sea.next({} as SeaModel);
+            this.critterService.fossil.next({} as FossilModel);
+            this.critterService.art.next({} as ArtModel);
             this.critterService.song.next({} as SongModel);
+            this.critterService.model.next({} as ModelModel);
             break;
           case CritterTypeEnum.Fish:
             this.critterService.bug.next({} as BugModel);
             this.critterService.fish.next(critterModel);
             this.critterService.sea.next({} as SeaModel);
+            this.critterService.fossil.next({} as FossilModel);
+            this.critterService.art.next({} as ArtModel);
             this.critterService.song.next({} as SongModel);
+            this.critterService.model.next({} as ModelModel);
             break;
           case CritterTypeEnum.Sea:
             this.critterService.bug.next({} as BugModel);
             this.critterService.fish.next({} as FishModel);
             this.critterService.sea.next(critterModel);
+            this.critterService.fossil.next({} as FossilModel);
+            this.critterService.art.next({} as ArtModel);
             this.critterService.song.next({} as SongModel);
+            this.critterService.model.next({} as ModelModel);
+            break;
+          case CritterTypeEnum.Fossils:
+            this.critterService.bug.next({} as BugModel);
+            this.critterService.fish.next({} as FishModel);
+            this.critterService.sea.next({} as SeaModel);
+            this.critterService.fossil.next(critterModel);
+            this.critterService.art.next({} as ArtModel);
+            this.critterService.song.next({} as SongModel);
+            this.critterService.model.next({} as ModelModel);
+            break;
+          case CritterTypeEnum.Art:
+            this.critterService.bug.next({} as BugModel);
+            this.critterService.fish.next({} as FishModel);
+            this.critterService.sea.next({} as SeaModel);
+            this.critterService.fossil.next({} as FossilModel);
+            this.critterService.art.next(critterModel);
+            this.critterService.song.next({} as SongModel);
+            this.critterService.model.next({} as ModelModel);
             break;
           case CritterTypeEnum.Songs:
             this.critterService.bug.next({} as BugModel);
             this.critterService.fish.next({} as FishModel);
             this.critterService.sea.next({} as SeaModel);
+            this.critterService.fossil.next({} as FossilModel);
+            this.critterService.art.next({} as ArtModel);
             this.critterService.song.next(critterModel);
+            this.critterService.model.next({} as ModelModel);
+            break;
+          case CritterTypeEnum.BugModels:
+          case CritterTypeEnum.FishModels:
+            this.critterService.bug.next({} as BugModel);
+            this.critterService.fish.next({} as FishModel);
+            this.critterService.sea.next({} as SeaModel);
+            this.critterService.fossil.next({} as FossilModel);
+            this.critterService.art.next({} as ArtModel);
+            this.critterService.song.next({} as SongModel);
+            this.critterService.model.next(critterModel);
             break;
           default:
             break;
@@ -177,7 +218,11 @@ export class AppComponent implements OnInit {
 
   toggleHemisphere() {
     this.isSouthernHemisphere = !this.isSouthernHemisphere;
-    this.critterService.hemisphere$.next(this.isSouthernHemisphere ? MonthArrayTypeEnum.MonthArraySouthern : MonthArrayTypeEnum.MonthArrayNorthern);
+    this.critterService.hemisphere$.next(
+      this.isSouthernHemisphere ?
+        MonthArrayTypeEnum.MonthArraySouthern :
+        MonthArrayTypeEnum.MonthArrayNorthern
+    );
   }
 
   toggleDiscoveryMode() {
@@ -206,7 +251,6 @@ export class AppComponent implements OnInit {
 
   toggleDisplaySea() {
     this.critterService.display$.next(CritterTypeEnum.Sea);
-    this.critterService.mode$.next(ModeTypeEnum.Discovery);
   }
 
   toggleDisplayFossil() {

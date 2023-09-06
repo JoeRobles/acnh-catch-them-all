@@ -1,0 +1,13 @@
+<div class="container">
+  <div *ngIf="fossil.id" class="row">
+    <h1 class="text-center">{{fossil.name[language]}}</h1>
+    <div class="text-center">
+      <ng-container *ngIf="fossil">
+        <img class="img-fluid text-center" [src]="fossil.imageUri" [title]="fossil.name[language]">
+      </ng-container>
+    </div>
+    <span>Price: {{fossil.price}}</span>
+    <span>Part of: {{fossil.partOf}}</span>
+    <span>Museum phrase: {{fossil.museumPhrase}}</span>
+  </div>
+</div>

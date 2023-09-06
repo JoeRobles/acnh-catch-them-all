@@ -27,6 +27,8 @@ import { SongGenreTypeEnum } from '../models/song-genre-type.enum';
 import { BugModelModel } from '../../acnhapi/bug-model/models/bug-model.model';
 import { ModelResponseInterface } from '../../acnhapi/models/model-response.interface';
 import { FishModelModel } from '../../acnhapi/fish-model/models/fish-model.model';
+import { ModelModel } from '../../acnhapi/models/model.model';
+import { CritterType } from '../models/critter.type';
 
 @Injectable({
   providedIn: 'root'
@@ -35,11 +37,12 @@ export class CritterService {
   mode$: BehaviorSubject<ModeTypeEnum> = new BehaviorSubject<ModeTypeEnum>(ModeTypeEnum.Discovery);
   critters: CatchedCrittersInterface;
   bug: BehaviorSubject<BugModel> = new BehaviorSubject<BugModel>({} as BugModel);
-  bugModel: BehaviorSubject<BugModelModel> = new BehaviorSubject<BugModelModel>({} as BugModelModel);
+  model: BehaviorSubject<ModelModel> = new BehaviorSubject<ModelModel>({} as ModelModel);
   fish: BehaviorSubject<FishModel> = new BehaviorSubject<FishModel>({} as FishModel);
-  fishModel: BehaviorSubject<FishModelModel> = new BehaviorSubject<FishModelModel>({} as FishModelModel);
   sea: BehaviorSubject<SeaModel> = new BehaviorSubject<SeaModel>({} as SeaModel);
   song: BehaviorSubject<SongModel> = new BehaviorSubject<SongModel>({} as SongModel);
+  fossil: BehaviorSubject<FossilModel> = new BehaviorSubject<FossilModel>({} as FossilModel);
+  art: BehaviorSubject<ArtModel> = new BehaviorSubject<ArtModel>({} as ArtModel);
   critterType$: BehaviorSubject<CritterTypeEnum> = new BehaviorSubject<CritterTypeEnum>('' as CritterTypeEnum);
   display$: BehaviorSubject<CritterTypeEnum> = new BehaviorSubject<CritterTypeEnum>(CritterTypeEnum.Bugs);
   songGenresFilter$: BehaviorSubject<SongGenreTypeEnum[]> = new BehaviorSubject<SongGenreTypeEnum[]>([
@@ -146,7 +149,7 @@ export class CritterService {
     this.localStorageService.setObject('critters', this.critters);
   }
 
-  updateCritter(critterId: number, critterType: CritterTypeEnum) {
+  updateCritter(critterId: number, critterType: CritterType) {
     const index = this.critters[critterType]?.indexOf(critterId);
     if (index > -1) {
       if (index != null) {
@@ -155,7 +158,7 @@ export class CritterService {
     } else {
       this.critters[critterType]?.push(critterId);
     }
-    console.log('critterType: ', critterType);
+
     switch (critterType) {
       case CritterTypeEnum.Bugs:
         this.bugsAmount = this.critters[critterType].length;
@@ -187,101 +190,48 @@ export class CritterService {
     this.localStorageService.setObject('critters', this.critters);
   }
 
-  updateCritterList(critterModel: BugModel | FishModel | SeaModel, critterType: CritterTypeEnum) {
+  updateCritterList(critterModel: BugModel | FishModel | SeaModel, critterType: CritterType) {
     switch (critterType) {
       case CritterTypeEnum.Bugs:
-        this.bugs$.pipe(
-          map(bug => {
-            bug.map(b => {
-              if (critterModel.id === b.id) {
-                b.catch = !b.catch;
-                this.updateCritter(critterModel.id, CritterTypeEnum.Bugs);
-              }
-            })
-          })).subscribe();
-        break;
-      case CritterTypeEnum.BugModels:
-        this.bugModels$.pipe(
-          map(bugModel => {
-            bugModel.map(bM => {
-              if (critterModel.id === bM.id) {
-                bM.catch = !bM.catch;
-                this.updateCritter(critterModel.id, CritterTypeEnum.BugModels);
-              }
-            })
-          })).subscribe();
+        this.iterateCritterType(this.bugs$, critterModel.id, CritterTypeEnum.Bugs);
         break;
       case CritterTypeEnum.Fish:
-        this.fish$.pipe(
-          map(fish => {
-            fish.map(f => {
-              if (critterModel.id === f.id) {
-                f.catch = !f.catch;
-                this.updateCritter(critterModel.id, CritterTypeEnum.Fish);
-              }
-            })
-          })).subscribe();
-        break;
-      case CritterTypeEnum.FishModels:
-        this.fishModels$.pipe(
-          map(fishModel => {
-            fishModel.map(fM => {
-              if (critterModel.id === fM.id) {
-                fM.catch = !fM.catch;
-                this.updateCritter(critterModel.id, CritterTypeEnum.FishModels);
-              }
-            })
-          })).subscribe();
+        this.iterateCritterType(this.fish$, critterModel.id, CritterTypeEnum.Fish);
         break;
       case CritterTypeEnum.Sea:
-        this.sea$.pipe(
-          map(sea => {
-            sea.map(s => {
-              if (critterModel.id === s.id) {
-                s.catch = !s.catch;
-                this.updateCritter(critterModel.id, CritterTypeEnum.Sea);
-              }
-            })
-          })).subscribe();
-        break;
-      case CritterTypeEnum.Songs:
-        this.songs$.pipe(
-          map(songs => {
-            songs.map(s => {
-              if (critterModel.id === s.id) {
-                s.catch = !s.catch;
-                this.updateCritter(critterModel.id, CritterTypeEnum.Songs);
-              }
-            })
-          })).subscribe();
+        this.iterateCritterType(this.sea$, critterModel.id, CritterTypeEnum.Sea);
         break;
       case CritterTypeEnum.Fossils:
-        this.fossils$.pipe(
-          map(fossils => {
-            fossils.map(f => {
-              if (critterModel.id === f.id) {
-                f.catch = !f.catch;
-                this.updateCritter(critterModel.id, CritterTypeEnum.Fossils);
-              }
-            })
-          })).subscribe();
+        this.iterateCritterType(this.fossils$, critterModel.id, CritterTypeEnum.Fossils);
         break;
       case CritterTypeEnum.Art:
-        this.art$.pipe(
-          map(arts => {
-            arts.map(a => {
-              if (critterModel.id === a.id) {
-                a.catch = !a.catch;
-                this.updateCritter(critterModel.id, CritterTypeEnum.Art);
-              }
-            })
-          })).subscribe();
+        this.iterateCritterType(this.art$, critterModel.id, CritterTypeEnum.Art);
+        break;
+      case CritterTypeEnum.Songs:
+        this.iterateCritterType(this.songs$, critterModel.id, CritterTypeEnum.Songs);
+        break;
+      case CritterTypeEnum.BugModels:
+        this.iterateCritterType(this.bugModels$, critterModel.id, CritterTypeEnum.BugModels);
+        break;
+      case CritterTypeEnum.FishModels:
+        this.iterateCritterType(this.fishModels$, critterModel.id, CritterTypeEnum.FishModels);
         break;
       default:
         break;
     }
   }
 
+  iterateCritterType<T>(critter$: BehaviorSubject<any[]>, critterModelId: number, critterType: CritterType) {
+    critter$.pipe(
+      map(bug => {
+        bug.forEach(b => {
+          if (critterModelId === b.id) {
+            b.catch = !b.catch;
+            this.updateCritter(critterModelId, critterType);
+          }
+        })
+      })).subscribe();
+  }
   getBugs(): Observable<BugModel[]> {
     const url = `/assets/api/v1a/bugs.json`;
     return this.http.get<BugResponseInterface[]>(url)

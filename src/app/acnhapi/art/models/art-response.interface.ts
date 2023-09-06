@@ -9,4 +9,5 @@ export interface ArtResponseInterface {
   'sell-price': number;
   'image_uri': string;
   'museum-desc': string;
+  'real-name': string;
 }

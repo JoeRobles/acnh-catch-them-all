@@ -15,6 +15,9 @@ import { FossilComponent } from './components/fossil/fossil.component';
 import { ArtComponent } from './components/art/art.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModelComponent } from './components/model/model.component';
+import { ModelDetailComponent } from './components/model-detail/model-detail.component';
+import { FossilDetailComponent } from './components/fossil-detail/fossil-detail.component';
+import { ArtDetailComponent } from './components/art-detail/art-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { ModelComponent } from './components/model/model.component';
     SongDetailComponent,
     FossilComponent,
     ArtComponent,
-    ModelComponent
+    ModelComponent,
+    ModelDetailComponent,
+    FossilDetailComponent,
+    ArtDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { SongModel } from '../../acnhapi/song/models/song.model';
 import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
@@ -10,16 +10,15 @@ import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
   templateUrl: './song.component.html',
   styleUrls: ['./song.component.scss']
 })
-export class SongComponent implements OnInit {
+export class SongComponent {
   @Input() song: SongModel = {} as SongModel;
-  songName = '';
+
   language: LanguageTypeEnum = LanguageTypeEnum.NameUSen;
   mode: ModeTypeEnum = ModeTypeEnum.Discovery;
   modeTypeEnum = ModeTypeEnum;
+
   constructor(private critterService: CritterService) {
     this.critterService.mode$.subscribe(m => this.mode = m);
-  }
-  ngOnInit() {
-    this.songName = this.song.name[this.language];
+    this.critterService.language$.subscribe(l => this.language = l);
   }
 }

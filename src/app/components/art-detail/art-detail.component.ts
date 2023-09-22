@@ -11,6 +11,7 @@ import { CritterService } from '../../shared/services/critter.service';
 export class ArtDetailComponent {
   language: LanguageTypeEnum = LanguageTypeEnum.NameUSen;
   art: ArtModel = {} as ArtModel;
+
   constructor(private critterService: CritterService) {
     this.critterService.art.subscribe(a => this.art = a);
     this.critterService.language$.subscribe(l => this.language = l);

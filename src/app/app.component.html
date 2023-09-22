@@ -210,39 +210,6 @@
   </div>
 </div>
 
-<div *ngIf="display === critterTypeEnum.BugModels">
-  Bug models: {{ critterService.bugModelsAmount }} / {{ bugModelsList.length }}
-  <div class="table-responsive">
-    <table class="table">
-      <tbody>
-      <tr *ngFor="let fiveBugModels of critterService.bugModelsGrid$ | async">
-        <td class="text-center align-middle" *ngFor="let bugModel of fiveBugModels"
-            (click)="selectCritter(bugModel, critterTypeEnum.BugModels)">
-          <app-model [model]="bugModel"></app-model>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div *ngIf="display === critterTypeEnum.FishModels">
-  Fish: {{ critterService.fishModelsAmount }} / {{ fishModelsList.length }}
-  <div class="table-responsive">
-    <table class="table">
-      <tbody>
-      <tr *ngFor="let fiveFishModels of critterService.fishModelsGrid$ | async">
-        <td class="text-center align-middle" *ngFor="let fishModel of fiveFishModels"
-            (click)="selectCritter(fishModel, critterTypeEnum.FishModels)">
-          <app-model [model]="fishModel"></app-model>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
 <div *ngIf="display === critterTypeEnum.Fish">
   Fish: {{ critterService.fishAmount }} / {{ fishList.length }}
   <div class="table-responsive">
@@ -319,6 +286,38 @@
          (click)="selectCritter(song, critterTypeEnum.Songs)">
       <app-song [song]="song"></app-song>
     </div>
+  </div>
+</div>
+
+<div *ngIf="display === critterTypeEnum.BugModels">
+  Bug models: {{ critterService.bugModelsAmount }} / {{ bugModelsList.length }}
+  <div class="table-responsive">
+    <table class="table">
+      <tbody>
+      <tr *ngFor="let fiveBugModels of critterService.bugModelsGrid$ | async">
+        <td class="text-center align-middle" *ngFor="let bugModel of fiveBugModels"
+            (click)="selectCritter(bugModel, critterTypeEnum.BugModels)">
+          <app-model [model]="bugModel"></app-model>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="display === critterTypeEnum.FishModels">
+  Fish: {{ critterService.fishModelsAmount }} / {{ fishModelsList.length }}
+  <div class="table-responsive">
+    <table class="table">
+      <tbody>
+      <tr *ngFor="let fiveFishModels of critterService.fishModelsGrid$ | async">
+        <td class="text-center align-middle" *ngFor="let fishModel of fiveFishModels"
+            (click)="selectCritter(fishModel, critterTypeEnum.FishModels)">
+          <app-model [model]="fishModel"></app-model>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 

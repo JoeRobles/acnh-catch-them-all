@@ -18,6 +18,8 @@ import { FossilModel } from './acnhapi/fossil/models/fossil.model';
 import { ArtModel } from './acnhapi/art/models/art.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModelModel } from './acnhapi/models/model.model';
+import { BugModelModel } from './acnhapi/bug-model/models/bug-model.model';
+import { FishModelModel } from './acnhapi/fish-model/models/fish-model.model';
 
 declare var window: any;
 
@@ -37,9 +39,9 @@ export class AppComponent implements OnInit {
   isSouthernHemisphere = true;
   artList: ArtModel[] = [];
   bugsList: BugModel[] = [];
-  bugModelsList: BugModel[] = [];
+  bugModelsList: BugModelModel[] = [];
   fishList: FishModel[] = [];
-  fishModelsList: FishModel[] = [];
+  fishModelsList: FishModelModel[] = [];
   seaList: SeaModel[] = [];
   song: SongModel = {} as SongModel;
   musicUri$: BehaviorSubject<string> = new BehaviorSubject<string>('/assets/music/welcome-horizons.mp3');
@@ -94,6 +96,8 @@ export class AppComponent implements OnInit {
     this.critterService.fossils$.subscribe(fossil => this.fossilList = fossil);
     this.critterService.art$.subscribe(art => this.artList = art);
     this.critterService.music$.subscribe(music => this.musicList = music);
+    this.critterService.bugModels$.subscribe(bugModel => this.bugModelsList = bugModel);
+    this.critterService.fishModels$.subscribe(fishModel => this.fishModelsList = fishModel);
     this.critterService.language$.subscribe(l => this.language = l);
     this.critterService.mode$.subscribe(m => this.mode = m);
     this.critterService.critterType$.subscribe(c => this.critterType = c);

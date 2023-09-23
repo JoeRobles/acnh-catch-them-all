@@ -34,18 +34,41 @@ import { CritterType } from '../models/critter.type';
   providedIn: 'root'
 })
 export class CritterService {
-  mode$: BehaviorSubject<ModeTypeEnum> = new BehaviorSubject<ModeTypeEnum>(ModeTypeEnum.Discovery);
+  art = new BehaviorSubject<ArtModel>({} as ArtModel);
+  art$ = new BehaviorSubject<ArtModel[]>([]);
+  artAmount = 0;
+  artsGrid$ = new BehaviorSubject<ArtModel[]>([]);
+  bug = new BehaviorSubject<BugModel>({} as BugModel);
+  bugModels$ = new BehaviorSubject<BugModelModel[]>([]);
+  bugModelsAmount = 0;
+  bugModelsGrid$ = new BehaviorSubject<BugModelModel[][]>([]);
+  bugs$ = new BehaviorSubject<BugModel[]>([]);
+  bugsAmount = 0;
+  bugsGrid$ = new BehaviorSubject<BugModel[][]>([]);
   critters: CatchedCrittersInterface;
-  bug: BehaviorSubject<BugModel> = new BehaviorSubject<BugModel>({} as BugModel);
-  model: BehaviorSubject<ModelModel> = new BehaviorSubject<ModelModel>({} as ModelModel);
-  fish: BehaviorSubject<FishModel> = new BehaviorSubject<FishModel>({} as FishModel);
-  sea: BehaviorSubject<SeaModel> = new BehaviorSubject<SeaModel>({} as SeaModel);
-  song: BehaviorSubject<SongModel> = new BehaviorSubject<SongModel>({} as SongModel);
-  fossil: BehaviorSubject<FossilModel> = new BehaviorSubject<FossilModel>({} as FossilModel);
-  art: BehaviorSubject<ArtModel> = new BehaviorSubject<ArtModel>({} as ArtModel);
-  critterType$: BehaviorSubject<CritterTypeEnum> = new BehaviorSubject<CritterTypeEnum>('' as CritterTypeEnum);
-  display$: BehaviorSubject<CritterTypeEnum> = new BehaviorSubject<CritterTypeEnum>(CritterTypeEnum.Bugs);
-  songGenresFilter$: BehaviorSubject<SongGenreTypeEnum[]> = new BehaviorSubject<SongGenreTypeEnum[]>([
+  critterType$ = new BehaviorSubject<CritterTypeEnum>('' as CritterTypeEnum);
+  display$ = new BehaviorSubject<CritterTypeEnum>(CritterTypeEnum.Bugs);
+  fish = new BehaviorSubject<FishModel>({} as FishModel);
+  fish$ = new BehaviorSubject<FishModel[]>([]);
+  fishAmount = 0;
+  fishGrid$ = new BehaviorSubject<FishModel[][]>([]);
+  fishModels$ = new BehaviorSubject<FishModelModel[]>([]);
+  fishModelsAmount = 0;
+  fishModelsGrid$ = new BehaviorSubject<FishModelModel[][]>([]);
+  fossil = new BehaviorSubject<FossilModel>({} as FossilModel);
+  fossils$ = new BehaviorSubject<FossilModel[]>([]);
+  fossilsAmount = 0;
+  fossilsGrid$ = new BehaviorSubject<FossilModel[]>([]);
+  language$ = new BehaviorSubject<LanguageTypeEnum>(LanguageTypeEnum.NameUSen);
+  mode$ = new BehaviorSubject<ModeTypeEnum>(ModeTypeEnum.Discovery);
+  model = new BehaviorSubject<ModelModel>({} as ModelModel);
+  sea = new BehaviorSubject<SeaModel>({} as SeaModel);
+  sea$ = new BehaviorSubject<SeaModel[]>([]);
+  seaAmount = 0;
+  seaGrid$ = new BehaviorSubject<SeaModel[][]>([]);
+  shadow: string[] = [];
+  song = new BehaviorSubject<SongModel>({} as SongModel);
+  songGenresFilter$ = new BehaviorSubject<SongGenreTypeEnum[]>([
     SongGenreTypeEnum.Animal,
     SongGenreTypeEnum.Classic,
     SongGenreTypeEnum.Dance,
@@ -56,34 +79,9 @@ export class CritterService {
     SongGenreTypeEnum.Soundtrack,
     SongGenreTypeEnum.World,
   ]);
-  bugsAmount = 0;
-  fishAmount = 0;
-  seaAmount = 0;
+  songs$ = new BehaviorSubject<SongModel[]>([]);
   songsAmount = 0;
-  fossilsAmount = 0;
-  artAmount = 0;
-  bugModelsAmount = 0;
-  fishModelsAmount = 0;
-  bugs$: BehaviorSubject<BugModel[]> = new BehaviorSubject<BugModel[]>([]);
-  bugsGrid$: BehaviorSubject<BugModel[][]> = new BehaviorSubject<BugModel[][]>([]);
-  fish$: BehaviorSubject<FishModel[]> = new BehaviorSubject<FishModel[]>([]);
-  fishGrid$: BehaviorSubject<FishModel[][]> = new BehaviorSubject<FishModel[][]>([]);
-  bugModels$: BehaviorSubject<BugModelModel[]> = new BehaviorSubject<BugModelModel[]>([]);
-  bugModelsGrid$: BehaviorSubject<BugModelModel[][]> = new BehaviorSubject<BugModelModel[][]>([]);
-  fishModels$: BehaviorSubject<FishModelModel[]> = new BehaviorSubject<FishModelModel[]>([]);
-  fishModelsGrid$: BehaviorSubject<FishModelModel[][]> = new BehaviorSubject<FishModelModel[][]>([]);
-  sea$: BehaviorSubject<SeaModel[]> = new BehaviorSubject<SeaModel[]>([]);
-  seaGrid$: BehaviorSubject<SeaModel[][]> = new BehaviorSubject<SeaModel[][]>([]);
-  songs$: BehaviorSubject<SongModel[]> = new BehaviorSubject<SongModel[]>([]);
-  songsGrid$: BehaviorSubject<SongModel[]> = new BehaviorSubject<SongModel[]>([]);
-  fossils$: BehaviorSubject<FossilModel[]> = new BehaviorSubject<FossilModel[]>([]);
-  fossilsGrid$: BehaviorSubject<FossilModel[]> = new BehaviorSubject<FossilModel[]>([]);
-  art$: BehaviorSubject<ArtModel[]> = new BehaviorSubject<ArtModel[]>([]);
-  artsGrid$: BehaviorSubject<ArtModel[]> = new BehaviorSubject<ArtModel[]>([]);
-  music$: BehaviorSubject<MusicModel[]> = new BehaviorSubject<MusicModel[]>([]);
-  hemisphere$: BehaviorSubject<MonthArrayTypeEnum> = new BehaviorSubject<MonthArrayTypeEnum>(MonthArrayTypeEnum.MonthArraySouthern);
-  language$: BehaviorSubject<LanguageTypeEnum> = new BehaviorSubject<LanguageTypeEnum>(LanguageTypeEnum.NameUSen);
-  shadow: string[] = [];
+  songsGrid$ = new BehaviorSubject<SongModel[]>([]);
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -280,14 +278,6 @@ export class CritterService {
       );
   }
 
-  getMusic(): Observable<MusicModel[]> {
-    const url = `/assets/api/v1a/hourly.json`;
-    return this.http.get<MusicResponseInterface[]>(url)
-      .pipe(
-        map(music => music.map(m => new MusicModel(m)))
-      );
-  }
-
   getFossils(): Observable<FossilModel[]> {
     const url = `/assets/api/v1a/fossils.json`;
     return this.http.get<FossilResponseInterface[]>(url)
@@ -312,7 +302,6 @@ export class CritterService {
       fishModels: this.getFishModels(),
       sea: this.getSea(),
       songs: this.getSongs(),
-      music: this.getMusic(),
       fossils: this.getFossils(),
       art: this.getArt(),
     });
@@ -326,9 +315,8 @@ export class CritterService {
         this.setCritterList(data.songs, CritterTypeEnum.Songs);
         this.setCritterList(data.fossils, CritterTypeEnum.Fossils);
         this.setCritterList(data.art, CritterTypeEnum.Art);
-        this.setMusicList(data.music);
       },
-      error: err => console.log('ACNH API not available: ', err)
+      error: error => console.log('ACNH API not available: ', error)
     })
   }
 
@@ -382,9 +370,5 @@ export class CritterService {
       default:
         break;
     }
-  }
-
-  setMusicList(songs: MusicModel[]) {
-    this.music$.next(songs);
   }
 }

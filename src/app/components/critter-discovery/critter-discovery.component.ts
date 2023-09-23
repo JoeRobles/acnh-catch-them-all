@@ -6,10 +6,9 @@ import { CritterModel } from '../../acnhapi/models/critter.model';
 import { CritterService } from '../../shared/services/critter.service';
 import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
 import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
-import { MonthArrayTypeEnum } from '../../shared/models/month-array-type.enum';
 import { CritterTypeEnum } from '../../shared/models/critter-type.enum';
-import { BugModelModel } from '../../acnhapi/bug-model/models/bug-model.model';
-import { FishModelModel } from '../../acnhapi/fish-model/models/fish-model.model';
+import { HemisphereSelectService } from '../../shared/services/hemisphere-select.service';
+import { MonthArrayTypeEnum } from '../../shared/models/month-array-type.enum';
 
 @Component({
   selector: 'app-critter-discovery',
@@ -30,9 +29,11 @@ export class CritterDiscoveryComponent implements OnInit, OnDestroy {
   minutes: number;
   hemisphere: MonthArrayTypeEnum.MonthArrayNorthern | MonthArrayTypeEnum.MonthArraySouthern = MonthArrayTypeEnum.MonthArraySouthern;
   language: LanguageTypeEnum = LanguageTypeEnum.NameUSen;
+
   constructor(
     public clockService: ClockService,
-    public critterService: CritterService
+    public critterService: CritterService,
+    public hemisphereSelectionService: HemisphereSelectService
   ) {
     const datetime = new Date();
     this.month = datetime.getMonth() + 1;
@@ -45,9 +46,7 @@ export class CritterDiscoveryComponent implements OnInit, OnDestroy {
     this.clockService.month$.subscribe(m => this.month = m);
     this.clockService.hours$.subscribe(h => this.hours = h);
     this.clockService.minutes$.subscribe(m => this.minutes = m);
-    this.critterService.hemisphere$.subscribe(h => {
-      this.hemisphere = h;
-    });
+    this.hemisphereSelectionService.isSouthernHemisphere$.subscribe(h => this.hemisphere = h);
     this.critterService.language$.subscribe(l => this.language = l);
     this.critterService.mode$.subscribe(m => this.mode = m);
   }

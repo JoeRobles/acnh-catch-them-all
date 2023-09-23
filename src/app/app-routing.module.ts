@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CritterResolver } from './resolvers/critter.resolver';
+import { HourlyMusicResolver } from './resolvers/hourly-music.resolver';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     component: AppComponent,
     resolve: {
       critters: CritterResolver,
+      hourlyMusic: HourlyMusicResolver
     }
   }
 ];

@@ -1,0 +1,9 @@
+<div style="text-align: center; font-size: 24px; height: 40px; margin-top: 32px">
+  <p *ngIf="clockService.datetime$ | async;else loading">{{clockService.datetime$ | async | date: 'MMMM dd, HH:mm'}}</p>
+</div>
+
+<ng-template #loading>
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</ng-template>

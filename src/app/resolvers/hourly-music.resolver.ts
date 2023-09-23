@@ -4,16 +4,16 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 
-import { CritterService } from '../shared/services/critter.service';
+import { HourlyMusicService } from '../shared/services/hourly-music.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CritterResolver {
+export class HourlyMusicResolver {
   constructor(
-    private critterService: CritterService) {
+    private hourlyMusicService: HourlyMusicService) {
   }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): void {
-    this.critterService.resolveCritters();
+    this.hourlyMusicService.resolveMusic();
   }
 }

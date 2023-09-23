@@ -18,29 +18,39 @@ import { ModelComponent } from './components/model/model.component';
 import { ModelDetailComponent } from './components/model-detail/model-detail.component';
 import { FossilDetailComponent } from './components/fossil-detail/fossil-detail.component';
 import { ArtDetailComponent } from './components/art-detail/art-detail.component';
+import { DatetimeDisplayComponent } from './components/datetime-display/datetime-display.component';
+import { LanguageSelectComponent } from './components/language-select/language-select.component';
+import { HemisphereSelectComponent } from './components/hemisphere-select/hemisphere-select.component';
+import { HourlyMusicComponent } from './components/hourly-music/hourly-music.component';
+import { MaterialModule } from './shared/modules/material/material.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ArtComponent,
+    ArtDetailComponent,
+    CritterActivityComponent,
+    CritterDetailComponent,
     CritterDiscoveryComponent,
     CritterLegendComponent,
-    CritterDetailComponent,
     CritterSeasonalityComponent,
-    CritterActivityComponent,
-    SongComponent,
-    SongDetailComponent,
+    DatetimeDisplayComponent,
     FossilComponent,
-    ArtComponent,
+    FossilDetailComponent,
+    HemisphereSelectComponent,
+    HourlyMusicComponent,
+    LanguageSelectComponent,
     ModelComponent,
     ModelDetailComponent,
-    FossilDetailComponent,
-    ArtDetailComponent
+    SongComponent,
+    SongDetailComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    BrowserModule,
     FormsModule,
+    MaterialModule,
     ReactiveFormsModule
   ],
   providers: [],

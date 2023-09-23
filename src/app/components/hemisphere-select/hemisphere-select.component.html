@@ -1,0 +1,1 @@
+<mat-slide-toggle color="primary" (change)="toggleHemisphere()" [checked]="(hemisphereSelectService.isSouthernHemisphere$ | async) === monthArrayTypeEnum.MonthArraySouthern">{{(hemisphereSelectService.isSouthernHemisphere$ | async) === monthArrayTypeEnum.MonthArraySouthern ? 'Southern hemisphere' : 'Northern hemisphere' }}</mat-slide-toggle>

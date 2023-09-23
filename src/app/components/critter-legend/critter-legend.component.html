@@ -1,4 +1,11 @@
-<div *ngIf="(toggleControlsService.mode$ | async) !== modeTypeEnum.All && (display === critterTypeEnum.Bugs || display === critterTypeEnum.Fish || display === critterTypeEnum.Sea)">
+<div *ngIf="
+  (toggleControlsService.mode$ | async) !== modeTypeEnum.All &&
+  (
+    (toggleControlsService.display$ | async) === critterTypeEnum.Bugs ||
+    (toggleControlsService.display$ | async) === critterTypeEnum.Fish ||
+    (toggleControlsService.display$ | async) === critterTypeEnum.Sea
+  )
+">
   Legend:
   <div class="w-50">
     <table>
@@ -24,8 +31,11 @@
             <img alt="default critter" class="img-fluid not-available" src="assets/images/critter.png">
           </td>
           </ng-container>
-          <ng-container *ngIf="(toggleControlsService.mode$ | async) === modeTypeEnum.Collection || (toggleControlsService.mode$ | async) === modeTypeEnum.Discovery">
-          <td [ngSwitch]="display">
+          <ng-container *ngIf="
+            (toggleControlsService.mode$ | async) === modeTypeEnum.Collection ||
+            (toggleControlsService.mode$ | async) === modeTypeEnum.Discovery
+          ">
+          <td [ngSwitch]="toggleControlsService.display$ | async">
             <img alt="default bug" *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid normal" src="assets/images/default-bug.png">
             <img alt="default fish" *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid normal" src="assets/images/default-fish.png">
             <img alt="default sea creature" *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid normal" src="assets/images/default-sea.png">
@@ -60,7 +70,10 @@
           </td>
           </ng-container>
 
-          <ng-container *ngIf="(toggleControlsService.mode$ | async) === modeTypeEnum.Collection || (toggleControlsService.mode$ | async) === modeTypeEnum.Discovery">
+          <ng-container *ngIf="
+            (toggleControlsService.mode$ | async) === modeTypeEnum.Collection ||
+            (toggleControlsService.mode$ | async) === modeTypeEnum.Discovery
+          ">
           <td class="text-center align-middle">
             Catched already
           </td>

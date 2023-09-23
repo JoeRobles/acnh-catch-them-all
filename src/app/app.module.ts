@@ -24,6 +24,7 @@ import { HemisphereSelectComponent } from './components/hemisphere-select/hemisp
 import { HourlyMusicComponent } from './components/hourly-music/hourly-music.component';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { ToggleControlsComponent } from './components/toggle-controls/toggle-controls.component';
+import { CritterDisplayComponent } from './components/critter-display/critter-display.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ToggleControlsComponent } from './components/toggle-controls/toggle-con
     SongComponent,
     SongDetailComponent,
     ToggleControlsComponent,
+    CritterDisplayComponent,
   ],
   imports: [
     AppRoutingModule,

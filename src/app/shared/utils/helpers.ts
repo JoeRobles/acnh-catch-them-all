@@ -60,7 +60,6 @@ export function isValidDate(date: Date): boolean {
 export function capitalize(phrase: string): string {
   return phrase.charAt(0).toUpperCase() + phrase.slice(1);
 }
-// @ts-ignore
 export function hoursLeft(available: number[], current: number): number {
   const limit = available.length - 1;
   if (current > available[0]) {
@@ -76,6 +75,7 @@ export function hoursLeft(available: number[], current: number): number {
   } else { // /    | /---/
     return available[0] - current;
   }
+  return 0;
 }
 export function remainingHours(available: number[], current: number): number {
   const limit = available.length - 1;

@@ -228,6 +228,7 @@ export class CritterService {
         })
       })).subscribe();
   }
+
   getBugs(): Observable<BugModel[]> {
     const url = `/assets/api/v1a/bugs.json`;
     return this.http.get<BugResponseInterface[]>(url)

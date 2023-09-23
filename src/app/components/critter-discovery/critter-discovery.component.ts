@@ -9,6 +9,7 @@ import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
 import { CritterTypeEnum } from '../../shared/models/critter-type.enum';
 import { HemisphereSelectService } from '../../shared/services/hemisphere-select.service';
 import { MonthArrayTypeEnum } from '../../shared/models/month-array-type.enum';
+import { ToggleControlsService } from '../../shared/services/toggle-controls.service';
 
 @Component({
   selector: 'app-critter-discovery',
@@ -33,6 +34,7 @@ export class CritterDiscoveryComponent implements OnInit, OnDestroy {
   constructor(
     public clockService: ClockService,
     public critterService: CritterService,
+    private toggleControlsService: ToggleControlsService,
     public hemisphereSelectionService: HemisphereSelectService
   ) {
     const datetime = new Date();
@@ -48,7 +50,7 @@ export class CritterDiscoveryComponent implements OnInit, OnDestroy {
     this.clockService.minutes$.subscribe(m => this.minutes = m);
     this.hemisphereSelectionService.isSouthernHemisphere$.subscribe(h => this.hemisphere = h);
     this.critterService.language$.subscribe(l => this.language = l);
-    this.critterService.mode$.subscribe(m => this.mode = m);
+    this.toggleControlsService.mode$.subscribe(m => this.mode = m);
   }
   remainingMinutes(minutes: number): string {
     return Helpers.remainingMinutes(minutes);

@@ -1,40 +1,40 @@
-<div>
+<div *ngIf="(toggleControlsService.mode$ | async) !== modeTypeEnum.All && (display === critterTypeEnum.Bugs || display === critterTypeEnum.Fish || display === critterTypeEnum.Sea)">
   Legend:
   <div class="w-50">
     <table>
       <tbody>
         <tr>
-          <ng-container *ngIf="mode !== ModeTypeEnum.Collection">
+          <ng-container *ngIf="(toggleControlsService.mode$ | async) !== modeTypeEnum.Collection">
           <td>
-            <img class="img-fluid always-available" src="assets/images/critter.png">
+            <img alt="default critter" class="img-fluid always-available" src="assets/images/critter.png">
           </td>
           <td>
-            <img class="img-fluid allYear-available" src="assets/images/critter.png">
+            <img alt="default critter" class="img-fluid allYear-available" src="assets/images/critter.png">
           </td>
           <td>
-            <img class="img-fluid all-day-available" src="assets/images/critter.png">
+            <img alt="default critter" class="img-fluid all-day-available" src="assets/images/critter.png">
           </td>
           <td>
-            <img class="img-fluid available" src="assets/images/critter.png">
+            <img alt="default critter" class="img-fluid available" src="assets/images/critter.png">
           </td>
           <td>
-            <img class="img-fluid not-now-available" src="assets/images/critter.png">
+            <img alt="default critter" class="img-fluid not-now-available" src="assets/images/critter.png">
           </td>
           <td>
-            <img class="img-fluid not-available" src="assets/images/critter.png">
+            <img alt="default critter" class="img-fluid not-available" src="assets/images/critter.png">
           </td>
           </ng-container>
-          <ng-container *ngIf="[ModeTypeEnum.Collection, ModeTypeEnum.Discovery].indexOf(mode) > -1">
+          <ng-container *ngIf="(toggleControlsService.mode$ | async) === modeTypeEnum.Collection || (toggleControlsService.mode$ | async) === modeTypeEnum.Discovery">
           <td [ngSwitch]="display">
-            <img *ngSwitchCase="CritterTypeEnum.Bugs" class="img-fluid normal" src="assets/images/default-bug.png">
-            <img *ngSwitchCase="CritterTypeEnum.Fish" class="img-fluid normal" src="assets/images/default-fish.png">
-            <img *ngSwitchCase="CritterTypeEnum.Sea" class="img-fluid normal" src="assets/images/default-sea.png">
+            <img alt="default bug" *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid normal" src="assets/images/default-bug.png">
+            <img alt="default fish" *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid normal" src="assets/images/default-fish.png">
+            <img alt="default sea creature" *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid normal" src="assets/images/default-sea.png">
           </td>
           </ng-container>
         </tr>
 
         <tr>
-          <ng-container *ngIf="mode !== ModeTypeEnum.Collection">
+          <ng-container *ngIf="(toggleControlsService.mode$ | async) !== modeTypeEnum.Collection">
           <td class="text-center align-middle">
             Always available
             all year and all day
@@ -60,7 +60,7 @@
           </td>
           </ng-container>
 
-          <ng-container *ngIf="[ModeTypeEnum.Collection, ModeTypeEnum.Discovery].indexOf(mode) > -1">
+          <ng-container *ngIf="(toggleControlsService.mode$ | async) === modeTypeEnum.Collection || (toggleControlsService.mode$ | async) === modeTypeEnum.Discovery">
           <td class="text-center align-middle">
             Catched already
           </td>

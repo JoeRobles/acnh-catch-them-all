@@ -4,6 +4,7 @@ import { SongModel } from '../../acnhapi/song/models/song.model';
 import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
 import { CritterService } from '../../shared/services/critter.service';
 import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
+import { ToggleControlsService } from '../../shared/services/toggle-controls.service';
 
 @Component({
   selector: 'app-song',
@@ -17,8 +18,11 @@ export class SongComponent {
   mode: ModeTypeEnum = ModeTypeEnum.Discovery;
   modeTypeEnum = ModeTypeEnum;
 
-  constructor(private critterService: CritterService) {
-    this.critterService.mode$.subscribe(m => this.mode = m);
+  constructor(
+    private critterService: CritterService,
+    private toggleControlsService: ToggleControlsService
+  ) {
+    this.toggleControlsService.mode$.subscribe(m => this.mode = m);
     this.critterService.language$.subscribe(l => this.language = l);
   }
 }

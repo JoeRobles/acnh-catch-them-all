@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CritterService } from '../../shared/services/critter.service';
 import { CritterTypeEnum } from '../../shared/models/critter-type.enum';
 import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
+import { ToggleControlsService } from '../../shared/services/toggle-controls.service';
 
 @Component({
   selector: 'app-critter-legend',
@@ -10,15 +11,15 @@ import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
 })
 export class CritterLegendComponent {
   display: CritterTypeEnum = CritterTypeEnum.Bugs;
-  mode: ModeTypeEnum = ModeTypeEnum.Discovery;
-  constructor(private critterService: CritterService) {
+  critterTypeEnum = CritterTypeEnum;
+  modeTypeEnum = ModeTypeEnum;
+
+  constructor(
+    public critterService: CritterService,
+    public toggleControlsService: ToggleControlsService) {
 
   }
   ngOnInit() {
-    this.critterService.display$.subscribe(d => this.display = d);
-    this.critterService.mode$.subscribe(m => this.mode = m);
+    this.toggleControlsService.display$.subscribe(d => this.display = d);
   }
-
-  protected readonly CritterTypeEnum = CritterTypeEnum;
-  protected readonly ModeTypeEnum = ModeTypeEnum;
 }

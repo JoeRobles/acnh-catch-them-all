@@ -23,6 +23,7 @@ import { LanguageSelectComponent } from './components/language-select/language-s
 import { HemisphereSelectComponent } from './components/hemisphere-select/hemisphere-select.component';
 import { HourlyMusicComponent } from './components/hourly-music/hourly-music.component';
 import { MaterialModule } from './shared/modules/material/material.module';
+import { ToggleControlsComponent } from './components/toggle-controls/toggle-controls.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { MaterialModule } from './shared/modules/material/material.module';
     ModelDetailComponent,
     SongComponent,
     SongDetailComponent,
+    ToggleControlsComponent,
   ],
   imports: [
     AppRoutingModule,

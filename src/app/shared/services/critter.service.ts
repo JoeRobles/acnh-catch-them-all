@@ -47,7 +47,6 @@ export class CritterService {
   bugsGrid$ = new BehaviorSubject<BugModel[][]>([]);
   critters: CatchedCrittersInterface;
   critterType$ = new BehaviorSubject<CritterTypeEnum>('' as CritterTypeEnum);
-  display$ = new BehaviorSubject<CritterTypeEnum>(CritterTypeEnum.Bugs);
   fish = new BehaviorSubject<FishModel>({} as FishModel);
   fish$ = new BehaviorSubject<FishModel[]>([]);
   fishAmount = 0;
@@ -60,7 +59,6 @@ export class CritterService {
   fossilsAmount = 0;
   fossilsGrid$ = new BehaviorSubject<FossilModel[]>([]);
   language$ = new BehaviorSubject<LanguageTypeEnum>(LanguageTypeEnum.NameUSen);
-  mode$ = new BehaviorSubject<ModeTypeEnum>(ModeTypeEnum.Discovery);
   model = new BehaviorSubject<ModelModel>({} as ModelModel);
   sea = new BehaviorSubject<SeaModel>({} as SeaModel);
   sea$ = new BehaviorSubject<SeaModel[]>([]);

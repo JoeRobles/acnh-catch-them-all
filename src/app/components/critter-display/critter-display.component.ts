@@ -66,9 +66,9 @@ export class CritterDisplayComponent implements OnInit {
   selectCritter(critterModel: any, critterType: CritterTypeEnum) {
     this.critterService.critterType$.next(critterType);
     switch (this.toggleControlsService.mode$.value) {
-      case ModeTypeEnum.Discovery:
-      case ModeTypeEnum.Available:
       case ModeTypeEnum.All:
+      case ModeTypeEnum.Available:
+      case ModeTypeEnum.Discovery:
         switch (critterType) {
           case CritterTypeEnum.Bugs:
             this.critterService.bug.next(critterModel);

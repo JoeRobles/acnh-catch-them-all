@@ -29,6 +29,7 @@ import { ModelResponseInterface } from '../../acnhapi/models/model-response.inte
 import { FishModelModel } from '../../acnhapi/fish-model/models/fish-model.model';
 import { ModelModel } from '../../acnhapi/models/model.model';
 import { CritterType } from '../models/critter.type';
+import { PreferencesService } from './preferences.service';
 
 @Injectable({
   providedIn: 'root'
@@ -83,10 +84,12 @@ export class CritterService {
 
   constructor(
     private localStorageService: LocalStorageService,
-    private http: HttpClient
+    private http: HttpClient,
+    private preferencesService: PreferencesService
   ) {
     this.critters = {bugs: [], fish: [], sea: [], songs: [], fossils: [], art: [], bugModels: [], fishModels: []};
     this.getCritters();
+    this.preferencesService.getPreferences();
   }
 
   getCritters(): void {
@@ -333,21 +336,21 @@ export class CritterService {
         this.bugs$.next(critters as BugModel[]);
         this.bugsGrid$.next(toFiveRows(critters));
         break;
-      case CritterTypeEnum.BugModels:
-        this.bugModels$.next(critters as BugModelModel[]);
-        this.bugModelsGrid$.next(toFiveRows(critters));
-        break;
       case CritterTypeEnum.Fish:
         this.fish$.next(critters as FishModel[]);
         this.fishGrid$.next(toFiveRows(critters));
         break;
-      case CritterTypeEnum.FishModels:
-        this.fishModels$.next(critters as FishModelModel[]);
-        this.fishModelsGrid$.next(toFiveRows(critters));
-        break;
       case CritterTypeEnum.Sea:
         this.sea$.next(critters as SeaModel[]);
         this.seaGrid$.next(toFiveRows(critters));
+        break;
+      case CritterTypeEnum.Fossils:
+        this.fossils$.next(critters as FossilModel[]);
+        this.fossilsGrid$.next(critters as FossilModel[]);
+        break;
+      case CritterTypeEnum.Art:
+        this.art$.next(critters as ArtModel[]);
+        this.artsGrid$.next(critters as ArtModel[]);
         break;
       case CritterTypeEnum.Songs:
         // @ts-ignore
@@ -358,13 +361,13 @@ export class CritterService {
           this.songsGrid$.next(this.songs$.value.filter((s: SongModel) => genres.indexOf(s.genre) > -1))
         );
         break;
-      case CritterTypeEnum.Fossils:
-        this.fossils$.next(critters as FossilModel[]);
-        this.fossilsGrid$.next(critters as FossilModel[]);
+      case CritterTypeEnum.BugModels:
+        this.bugModels$.next(critters as BugModelModel[]);
+        this.bugModelsGrid$.next(toFiveRows(critters));
         break;
-      case CritterTypeEnum.Art:
-        this.art$.next(critters as ArtModel[]);
-        this.artsGrid$.next(critters as ArtModel[]);
+      case CritterTypeEnum.FishModels:
+        this.fishModels$.next(critters as FishModelModel[]);
+        this.fishModelsGrid$.next(toFiveRows(critters));
         break;
       default:
         break;

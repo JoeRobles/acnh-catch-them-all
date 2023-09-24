@@ -1,5 +1,9 @@
+import { MonthArrayType } from './hemisphere.type';
+import { LanguageType } from './language.type';
+
 export interface PreferencesInterface {
-  hemisphere: string;
-  language: string;
   autoplay: boolean;
+  hemisphere: MonthArrayType;
+  language: LanguageType;
+  mood: number;
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MonthArrayTypeEnum } from '../../shared/models/month-array-type.enum';
-import { HemisphereSelectService } from '../../shared/services/hemisphere-select.service';
+import { PreferencesService } from '../../shared/services/preferences.service';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { MonthArrayType } from '../../shared/models/hemisphere.type';
 
 @Component({
   selector: 'app-hemisphere-select',
@@ -9,17 +11,16 @@ import { HemisphereSelectService } from '../../shared/services/hemisphere-select
 })
 export class HemisphereSelectComponent {
   monthArrayTypeEnum = MonthArrayTypeEnum;
+  preference: MonthArrayType = MonthArrayTypeEnum.MonthArraySouthern;
 
   constructor(
-    public hemisphereSelectService: HemisphereSelectService
+    public preferencesService: PreferencesService
   ) {
+    this.preferencesService.hemisphere$.subscribe(h => this.preference = h);
   }
 
-  toggleHemisphere() {
-    this.hemisphereSelectService.isSouthernHemisphere$.next(
-      this.hemisphereSelectService.isSouthernHemisphere$.value === MonthArrayTypeEnum.MonthArrayNorthern ?
-        MonthArrayTypeEnum.MonthArraySouthern :
-        MonthArrayTypeEnum.MonthArrayNorthern
-    );
+  toggleHemisphere(hemisphere: MatSlideToggleChange) {
+    this.preference = hemisphere.checked ? MonthArrayTypeEnum.MonthArraySouthern : MonthArrayTypeEnum.MonthArrayNorthern
+    this.preferencesService.updatePreferences(this.preference, 'hemisphere');
   }
 }

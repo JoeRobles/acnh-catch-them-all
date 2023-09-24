@@ -8,10 +8,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HourlyMusicService {
-  autoplay$ = new BehaviorSubject<boolean>(false);
   music$ = new BehaviorSubject<MusicModel[]>([]);
   musicUri$: BehaviorSubject<string> = new BehaviorSubject<string>('/assets/music/welcome-horizons.mp3');
-  mood$ = new BehaviorSubject<number>(2);
 
   constructor(private http: HttpClient) { }
 

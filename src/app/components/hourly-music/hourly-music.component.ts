@@ -5,6 +5,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ClockService } from '../../shared/services/clock.service';
 import { MusicModel } from '../../acnhapi/music/models/music.model';
 import { HourlyMusicService } from '../../shared/services/hourly-music.service';
+import { PreferencesService } from '../../shared/services/preferences.service';
 
 @Component({
   selector: 'app-hourly-music',
@@ -15,11 +16,11 @@ export class HourlyMusicComponent {
   datetime: Date = new Date();
   hour = 1;
   musicList: MusicModel[] = [];
-  mood = 2;
 
   constructor(
     private clockService: ClockService,
-    public hourlyMusicService: HourlyMusicService
+    public hourlyMusicService: HourlyMusicService,
+    public preferencesService: PreferencesService
   ) {
   }
 
@@ -29,29 +30,27 @@ export class HourlyMusicComponent {
     this.clockService.hours$.subscribe(h => {
       this.hour = h;
       const music = this.musicList.filter(m => m.hour === h);
-      this.hourlyMusicService.musicUri$.next(music[this.mood].musicUri);
+      this.hourlyMusicService.musicUri$.next(music[this.preferencesService.mood$.value].musicUri);
     });
   }
   onAutoplayChange(autoplay: MatSlideToggleChange) {
-    this.hourlyMusicService.autoplay$.next(autoplay.checked);
+    this.preferencesService.updatePreferences(autoplay.checked, 'autoplay');
   }
   onMoodChange(mood: MatChipListboxChange) {
+    let moodValue = 2;
     switch (mood.value) {
       case 'Rainy':
-        this.mood = 0;
+        moodValue = 0;
         break;
       case 'Snowy':
-        this.mood = 1;
+        moodValue = 1;
         break;
       default:
-        this.mood = 2;
+        moodValue = 2;
         break;
     }
-    this.hourlyMusicService.mood$.next(this.mood);
-    console.log('mood: ', mood.value);
+    this.preferencesService.updatePreferences(moodValue, 'mood');
     const music = this.musicList.filter(m => m.hour === this.hour);
-    console.log('music: ', music);
-    console.log('music[mood.value].musicUri: ', music[this.mood].musicUri);
-    this.hourlyMusicService.musicUri$.next(music[this.mood].musicUri);
+    this.hourlyMusicService.musicUri$.next(music[moodValue].musicUri);
   }
 }

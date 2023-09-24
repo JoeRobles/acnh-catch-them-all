@@ -1,4 +1,4 @@
-<div *ngIf="(toggleControlsService.display$ | async) === critterTypeEnum.Bugs">
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Bugs">
   Bugs: {{ critterService.bugsAmount }} / {{ (critterService.bugs$ |async)?.length }}
   <div class="table-responsive">
     <table class="table">
@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<div *ngIf="(toggleControlsService.display$ | async) === critterTypeEnum.Fish">
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Fish">
   Fish: {{ critterService.fishAmount }} / {{ (critterService.fish$ |async)?.length }}
   <div class="table-responsive">
     <table class="table">
@@ -30,7 +30,7 @@
   </div>
 </div>
 
-<div *ngIf="(toggleControlsService.display$ | async) === critterTypeEnum.Sea">
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Sea">
   Sea Creatures: {{ critterService.seaAmount }} / {{ (critterService.sea$ | async)?.length }}
   <div class="table-responsive">
     <table class="table w-50">
@@ -46,7 +46,7 @@
   </div>
 </div>
 
-<div class="container-fluid" *ngIf="(toggleControlsService.display$ | async) === critterTypeEnum.Fossils">
+<div class="container-fluid" *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Fossils">
   Fossils: {{ critterService.fossilsAmount }} / {{ (critterService.fossils$ | async)?.length }}
   <div class="row row-cols-auto">
     <div *ngFor="let fossil of critterService.fossilsGrid$ | async"
@@ -57,7 +57,7 @@
   </div>
 </div>
 
-<div class="container-fluid" *ngIf="(toggleControlsService.display$ | async) === critterTypeEnum.Art">
+<div class="container-fluid" *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Art">
   Art: {{ critterService.artAmount }} / {{ (critterService.art$ | async)?.length }}
   <div class="row row-cols-auto">
     <div *ngFor="let art of critterService.artsGrid$ | async"
@@ -68,7 +68,7 @@
   </div>
 </div>
 
-<div class="container-fluid" *ngIf="(toggleControlsService.display$ | async) === critterTypeEnum.Songs">
+<div class="container-fluid" *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Songs">
   Songs: {{ critterService.songsAmount }} / {{ (critterService.songs$ | async)?.length }}
   <div class="row row-cols-auto">
     <div style="border: 1px solid black !important; cursor: pointer"
@@ -90,7 +90,7 @@
   </div>
 </div>
 
-<div *ngIf="(toggleControlsService.display$ | async) === critterTypeEnum.BugModels">
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.BugModels">
   Bug models: {{ critterService.bugModelsAmount }} / {{ (critterService.bugModels$ | async)?.length }}
   <div class="table-responsive">
     <table class="table">
@@ -106,7 +106,7 @@
   </div>
 </div>
 
-<div *ngIf="(toggleControlsService.display$ | async) === critterTypeEnum.FishModels">
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.FishModels">
   Fish: {{ critterService.fishModelsAmount }} / {{ (critterService.fishModels$ | async)?.length }}
   <div class="table-responsive">
     <table class="table">

@@ -10,6 +10,7 @@ import { ArtModel } from '../../acnhapi/art/models/art.model';
 import { SongModel } from '../../acnhapi/song/models/song.model';
 import { ModelModel } from '../../acnhapi/models/model.model';
 import { BugModel } from '../../acnhapi/bug/models/bug.model';
+import { PreferencesService } from '../../shared/services/preferences.service';
 declare var window: any;
 
 @Component({
@@ -24,7 +25,8 @@ export class CritterDisplayComponent implements OnInit {
 
   constructor(
     public critterService: CritterService,
-    public toggleControlsService: ToggleControlsService
+    public toggleControlsService: ToggleControlsService,
+    public preferencesService: PreferencesService
   ) {
   }
 
@@ -65,7 +67,7 @@ export class CritterDisplayComponent implements OnInit {
 
   selectCritter(critterModel: any, critterType: CritterTypeEnum) {
     this.critterService.critterType$.next(critterType);
-    switch (this.toggleControlsService.mode$.value) {
+    switch (this.preferencesService.mode$.value) {
       case ModeTypeEnum.All:
       case ModeTypeEnum.Available:
       case ModeTypeEnum.Discovery:

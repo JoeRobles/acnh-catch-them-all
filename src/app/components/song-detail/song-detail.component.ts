@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { SongModel } from '../../acnhapi/song/models/song.model';
 import { CritterService } from '../../shared/services/critter.service';
 import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
+import { PreferencesService } from '../../shared/services/preferences.service';
+import { LanguageType } from '../../shared/models/language.type';
 
 @Component({
   selector: 'app-song-detail',
@@ -12,12 +14,15 @@ import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
 export class SongDetailComponent implements OnInit {
   formModal: any;
   song: SongModel = {} as SongModel;
-  songMusicUri = '';
-  language: LanguageTypeEnum = LanguageTypeEnum.NameUSen;
-  constructor(private critterService: CritterService) {
+  language: LanguageType = LanguageTypeEnum.NameUSen;
+
+  constructor(
+    private critterService: CritterService,
+    public preferencesService: PreferencesService,
+    ) {
   }
   ngOnInit() {
     this.critterService.song.subscribe(s => this.song = s);
-    this.critterService.language$.subscribe(l => this.language = l);
+    this.preferencesService.language$.subscribe(l => this.language = l);
   }
 }

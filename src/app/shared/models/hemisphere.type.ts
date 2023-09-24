@@ -1,1 +1,1 @@
-export type MonthArrayType = 'monthArraySouthern' | 'monthArrayNorthern';
+export type HemisphereType = 'monthArraySouthern' | 'monthArrayNorthern';

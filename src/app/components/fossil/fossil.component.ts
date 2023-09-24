@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 import { FossilModel } from '../../acnhapi/fossil/models/fossil.model';
-import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
+import { PreferencesService } from '../../shared/services/preferences.service';
 import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
-import { CritterService } from '../../shared/services/critter.service';
-import { ToggleControlsService } from '../../shared/services/toggle-controls.service';
+import { LanguageType } from '../../shared/models/language.type';
+import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
 
 @Component({
   selector: 'app-fossil',
@@ -14,15 +14,12 @@ import { ToggleControlsService } from '../../shared/services/toggle-controls.ser
 export class FossilComponent {
   @Input() fossil: FossilModel = {} as FossilModel;
 
-  language: LanguageTypeEnum = LanguageTypeEnum.NameUSen;
-  mode: ModeTypeEnum = ModeTypeEnum.Discovery;
+  language: LanguageType = LanguageTypeEnum.NameUSen;
   modeTypeEnum = ModeTypeEnum;
 
   constructor(
-    private critterService: CritterService,
-    private toggleControlsService: ToggleControlsService
+    public preferencesService: PreferencesService,
   ) {
-    this.toggleControlsService.mode$.subscribe(m => this.mode = m);
-    this.critterService.language$.subscribe(l => this.language = l);
+    this.preferencesService.language$.subscribe(l => this.language = l);
   }
 }

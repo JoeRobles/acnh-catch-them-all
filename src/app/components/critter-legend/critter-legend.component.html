@@ -1,9 +1,9 @@
 <div *ngIf="
-  (toggleControlsService.mode$ | async) !== modeTypeEnum.All &&
+  (preferencesService.mode$ | async) !== modeTypeEnum.All &&
   (
-    (toggleControlsService.display$ | async) === critterTypeEnum.Bugs ||
-    (toggleControlsService.display$ | async) === critterTypeEnum.Fish ||
-    (toggleControlsService.display$ | async) === critterTypeEnum.Sea
+    (preferencesService.display$ | async) === critterTypeEnum.Bugs ||
+    (preferencesService.display$ | async) === critterTypeEnum.Fish ||
+    (preferencesService.display$ | async) === critterTypeEnum.Sea
   )
 ">
   Legend:
@@ -11,7 +11,7 @@
     <table>
       <tbody>
         <tr>
-          <ng-container *ngIf="(toggleControlsService.mode$ | async) !== modeTypeEnum.Collection">
+          <ng-container *ngIf="(preferencesService.mode$ | async) !== modeTypeEnum.Collection">
           <td>
             <img alt="default critter" class="img-fluid always-available" src="assets/images/critter.png">
           </td>
@@ -32,10 +32,10 @@
           </td>
           </ng-container>
           <ng-container *ngIf="
-            (toggleControlsService.mode$ | async) === modeTypeEnum.Collection ||
-            (toggleControlsService.mode$ | async) === modeTypeEnum.Discovery
+            (preferencesService.mode$ | async) === modeTypeEnum.Collection ||
+            (preferencesService.mode$ | async) === modeTypeEnum.Discovery
           ">
-          <td [ngSwitch]="toggleControlsService.display$ | async">
+          <td [ngSwitch]="preferencesService.display$ | async">
             <img alt="default bug" *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid normal" src="assets/images/default-bug.png">
             <img alt="default fish" *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid normal" src="assets/images/default-fish.png">
             <img alt="default sea creature" *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid normal" src="assets/images/default-sea.png">
@@ -44,7 +44,7 @@
         </tr>
 
         <tr>
-          <ng-container *ngIf="(toggleControlsService.mode$ | async) !== modeTypeEnum.Collection">
+          <ng-container *ngIf="(preferencesService.mode$ | async) !== modeTypeEnum.Collection">
           <td class="text-center align-middle">
             Always available
             all year and all day
@@ -71,8 +71,8 @@
           </ng-container>
 
           <ng-container *ngIf="
-            (toggleControlsService.mode$ | async) === modeTypeEnum.Collection ||
-            (toggleControlsService.mode$ | async) === modeTypeEnum.Discovery
+            (preferencesService.mode$ | async) === modeTypeEnum.Collection ||
+            (preferencesService.mode$ | async) === modeTypeEnum.Discovery
           ">
           <td class="text-center align-middle">
             Catched already

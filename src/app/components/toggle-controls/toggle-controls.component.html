@@ -1,6 +1,6 @@
 <div class="btn-group" role="group" aria-label="Critter display radio toggle button group">
-  <input (change)="toggleDisplayBugs()" type="radio" class="btn-check" name="btnradio1" id="btnradio1"
-         autocomplete="off" [checked]="(toggleControlsService.display$ | async) === critterTypeEnum.Bugs">
+  <input (change)="toggleDisplay(critterTypeEnum.Bugs)" type="radio" class="btn-check" name="btnradio1" id="btnradio1"
+         autocomplete="off" [checked]="(preferencesService.display$ | async) === critterTypeEnum.Bugs">
   <label class="btn btn-outline-primary" for="btnradio1" title="Bugs">
     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
       <path
@@ -9,8 +9,8 @@
     </svg>
   </label>
 
-  <input (change)="toggleDisplayFish()" type="radio" class="btn-check" name="btnradio2" id="btnradio2"
-         autocomplete="off" [checked]="(toggleControlsService.display$ | async) === critterTypeEnum.Fish">
+  <input (change)="toggleDisplay(critterTypeEnum.Fish)" type="radio" class="btn-check" name="btnradio2" id="btnradio2"
+         autocomplete="off" [checked]="(preferencesService.display$ | async) === critterTypeEnum.Fish">
   <label class="btn btn-outline-primary" for="btnradio2" title="Fishes">
     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
       <path
@@ -19,8 +19,8 @@
     </svg>
   </label>
 
-  <input (change)="toggleDisplaySea()" type="radio" class="btn-check" name="btnradio3" id="btnradio3"
-         autocomplete="off" [checked]="(toggleControlsService.display$ | async) === critterTypeEnum.Sea">
+  <input (change)="toggleDisplay(critterTypeEnum.Sea)" type="radio" class="btn-check" name="btnradio3" id="btnradio3"
+         autocomplete="off" [checked]="(preferencesService.display$ | async) === critterTypeEnum.Sea">
   <label class="btn btn-outline-primary" for="btnradio3" title="Sea creatures">
     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
       <path
@@ -29,8 +29,8 @@
     </svg>
   </label>
 
-  <input (change)="toggleDisplayFossil()" type="radio" class="btn-check" name="btnradio4" id="btnradio4"
-         autocomplete="off" [checked]="(toggleControlsService.display$ | async) === critterTypeEnum.Fossils">
+  <input (change)="toggleDisplay(critterTypeEnum.Fossils)" type="radio" class="btn-check" name="btnradio4" id="btnradio4"
+         autocomplete="off" [checked]="(preferencesService.display$ | async) === critterTypeEnum.Fossils">
   <label class="btn btn-outline-primary" for="btnradio4" title="Fossils">
     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
       <path
@@ -39,8 +39,8 @@
     </svg>
   </label>
 
-  <input (change)="toggleDisplayArt()" type="radio" class="btn-check" name="btnradio5" id="btnradio5"
-         autocomplete="off" [checked]="(toggleControlsService.display$ | async) === critterTypeEnum.Art">
+  <input (change)="toggleDisplay(critterTypeEnum.Art)" type="radio" class="btn-check" name="btnradio5" id="btnradio5"
+         autocomplete="off" [checked]="(preferencesService.display$ | async) === critterTypeEnum.Art">
   <label class="btn btn-outline-primary" for="btnradio5" title="Art">
     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
       <path
@@ -49,8 +49,8 @@
     </svg>
   </label>
 
-  <input (change)="toggleDisplaySongs()" type="radio" class="btn-check" name="btnradio6" id="btnradio6"
-         autocomplete="off" [checked]="(toggleControlsService.display$ | async) === critterTypeEnum.Songs">
+  <input (change)="toggleDisplay(critterTypeEnum.Songs)" type="radio" class="btn-check" name="btnradio6" id="btnradio6"
+         autocomplete="off" [checked]="(preferencesService.display$ | async) === critterTypeEnum.Songs">
   <label class="btn btn-outline-primary" for="btnradio6" title="Songs">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="16px" width="16px"
          version="1.1" id="Capa_1" viewBox="0 0 1.107 1.107" xml:space="preserve"><g><g><path fill="currentColor" cx="27.667" cy="27.667" r="3.618" d="M0.626 0.553A0.072 0.072 0 0 1 0.553 0.626A0.072 0.072 0 0 1 0.481 0.553A0.072 0.072 0 0 1 0.626 0.553z"/><path
@@ -58,8 +58,8 @@
       d="M0.553 0C0.248 0 0 0.248 0 0.553s0.248 0.553 0.553 0.553 0.553 -0.248 0.553 -0.553S0.859 0 0.553 0zM0.342 0.138a0.464 0.464 0 0 1 0.224 -0.05c0.007 0 0.012 0.018 0.011 0.041l-0.006 0.114c-0.001 0.022 -0.006 0.04 -0.01 0.04a0.272 0.272 0 0 0 -0.121 0.024c-0.02 0.009 -0.044 0.004 -0.055 -0.015l-0.058 -0.098c-0.011 -0.019 -0.005 -0.044 0.014 -0.054zm-0.023 0.208 -0.086 -0.075c-0.017 -0.015 -0.018 -0.04 -0.002 -0.055l0.001 -0.001c0.016 -0.015 0.041 -0.012 0.055 0.005l0.07 0.09c0.014 0.017 0.017 0.038 0.008 0.046 -0.009 0.009 -0.029 0.004 -0.046 -0.01zm0.038 0.207c0 -0.108 0.088 -0.196 0.196 -0.196s0.196 0.088 0.196 0.196 -0.088 0.196 -0.196 0.196 -0.196 -0.088 -0.196 -0.196zM0.763 0.97a0.464 0.464 0 0 1 -0.225 0.05c-0.008 0 -0.014 -0.019 -0.013 -0.041l0.006 -0.114c0.001 -0.022 0.006 -0.04 0.012 -0.039a0.272 0.272 0 0 0 0.113 -0.02c0.02 -0.008 0.045 -0.003 0.058 0.016l0.062 0.095c0.012 0.019 0.007 0.043 -0.013 0.053zm0.109 -0.076c-0.015 0.014 -0.04 0.011 -0.054 -0.006l-0.072 -0.088c-0.014 -0.017 -0.018 -0.037 -0.009 -0.045 0.009 -0.008 0.029 -0.004 0.045 0.011l0.086 0.075c0.017 0.015 0.019 0.039 0.003 0.053z"/></g></g></svg>
   </label>
 
-  <input (change)="toggleDisplayBugModels()" type="radio" class="btn-check" name="btnradio7" id="btnradio7"
-         autocomplete="off" [checked]="(toggleControlsService.display$ | async) === critterTypeEnum.BugModels">
+  <input (change)="toggleDisplay(critterTypeEnum.BugModels)" type="radio" class="btn-check" name="btnradio7" id="btnradio7"
+         autocomplete="off" [checked]="(preferencesService.display$ | async) === critterTypeEnum.BugModels">
   <label class="btn btn-outline-primary" for="btnradio7" title="Bug models">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px">
       <path
@@ -68,8 +68,8 @@
     </svg>
   </label>
 
-  <input (change)="toggleDisplayFishModels()" type="radio" class="btn-check" name="btnradio8" id="btnradio8"
-         autocomplete="off" [checked]="(toggleControlsService.display$ | async) === critterTypeEnum.FishModels">
+  <input (change)="toggleDisplay(critterTypeEnum.FishModels)" type="radio" class="btn-check" name="btnradio8" id="btnradio8"
+         autocomplete="off" [checked]="(preferencesService.display$ | async) === critterTypeEnum.FishModels">
   <label class="btn btn-outline-primary" for="btnradio8" title="Fish models">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px">
       <path
@@ -82,8 +82,8 @@
 </div>
 <div class="btn-group" role="group" aria-label="Display mode toggle button group">
 
-  <input (change)="toggleDiscoveryMode()" type="radio" class="btn-check" name="btnradio9" id="btnradio9"
-         autocomplete="off" [checked]="(toggleControlsService.mode$ | async) === modeTypeEnum.Discovery">
+  <input (change)="toggleMode(modeTypeEnum.Discovery)" type="radio" class="btn-check" name="btnradio9" id="btnradio9"
+         autocomplete="off" [checked]="(preferencesService.mode$ | async) === modeTypeEnum.Discovery">
   <label class="btn btn-outline-primary" for="btnradio9" title="Discovery">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
       <path
@@ -92,8 +92,8 @@
     </svg>
   </label>
 
-  <input (change)="toggleCollectionMode()" type="radio" class="btn-check" name="btnradio10" id="btnradio10"
-         autocomplete="off" [checked]="(toggleControlsService.mode$ | async) === modeTypeEnum.Collection">
+  <input (change)="toggleMode(modeTypeEnum.Collection)" type="radio" class="btn-check" name="btnradio10" id="btnradio10"
+         autocomplete="off" [checked]="(preferencesService.mode$ | async) === modeTypeEnum.Collection">
   <label class="btn btn-outline-primary" for="btnradio10" title="Collection">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.001 16.001" width="14.001" height="16.001">
       <path
@@ -102,12 +102,12 @@
     </svg>
   </label>
   <ng-container *ngIf="
-    (toggleControlsService.display$ | async) === critterTypeEnum.Bugs ||
-    (toggleControlsService.display$ | async) === critterTypeEnum.Fish ||
-    (toggleControlsService.display$ | async) === critterTypeEnum.Sea
+    (preferencesService.display$ | async) === critterTypeEnum.Bugs ||
+    (preferencesService.display$ | async) === critterTypeEnum.Fish ||
+    (preferencesService.display$ | async) === critterTypeEnum.Sea
   ">
-    <input (change)="toggleAvailableMode()" type="radio" class="btn-check" name="btnradio11" id="btnradio11"
-           autocomplete="off" [checked]="(toggleControlsService.mode$ | async) === modeTypeEnum.Available">
+    <input (change)="toggleMode(modeTypeEnum.Available)" type="radio" class="btn-check" name="btnradio11" id="btnradio11"
+           autocomplete="off" [checked]="(preferencesService.mode$ | async) === modeTypeEnum.Available">
     <label class="btn btn-outline-primary" for="btnradio11" title="Available">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
         <path
@@ -116,8 +116,8 @@
       </svg>
     </label>
   </ng-container>
-  <input (change)="toggleAllMode()" type="radio" class="btn-check" name="btnradio12" id="btnradio12"
-         autocomplete="off" [checked]="(toggleControlsService.mode$ | async) === modeTypeEnum.All">
+  <input (change)="toggleMode(modeTypeEnum.All)" type="radio" class="btn-check" name="btnradio12" id="btnradio12"
+         autocomplete="off" [checked]="(preferencesService.mode$ | async) === modeTypeEnum.All">
   <label class="btn btn-outline-primary" for="btnradio12" title="All">
     <svg viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg" width="18" height="16">
       <path
@@ -127,7 +127,7 @@
   </label>
 </div>
 
-<div *ngIf="(toggleControlsService.display$ | async) === critterTypeEnum.Songs">
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Songs">
   <input hidden (change)="toggleGenreAll()" type="checkbox" class="btn-check" id="btncheck0"
          autocomplete="off" [checked]="songGenresFilter.length === 9">
   <label class="btn btn-outline-primary" for="btncheck0">All</label>
@@ -180,18 +180,18 @@
 
 <div
   *ngIf="
-    (toggleControlsService.display$ | async) === critterTypeEnum.Songs ||
-    (toggleControlsService.display$ | async) === critterTypeEnum.Fossils ||
-    (toggleControlsService.display$ | async) === critterTypeEnum.Art
+    (preferencesService.display$ | async) === critterTypeEnum.Songs ||
+    (preferencesService.display$ | async) === critterTypeEnum.Fossils ||
+    (preferencesService.display$ | async) === critterTypeEnum.Art
   ">
   <form class="form-search" [formGroup]="searchForm" novalidate>
     <label for="searchText" class="form-label">Search:</label>&nbsp;
     <span
-      *ngIf="(toggleControlsService.display$ | async) === critterTypeEnum.Songs">{{critterService.songsGrid$.value.length}}</span>
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Songs">{{critterService.songsGrid$.value.length}}</span>
     <span
-      *ngIf="(toggleControlsService.display$ | async) === critterTypeEnum.Fossils">{{critterService.fossilsGrid$.value.length}}</span>
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Fossils">{{critterService.fossilsGrid$.value.length}}</span>
     <span
-      *ngIf="(toggleControlsService.display$ | async) === critterTypeEnum.Art">{{critterService.artsGrid$.value.length}}</span>
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Art">{{critterService.artsGrid$.value.length}}</span>
     <input aria-describedby="search-text" formControlName="key" type="text" class="form-control" id="searchText"
            autocomplete="off">
   </form>

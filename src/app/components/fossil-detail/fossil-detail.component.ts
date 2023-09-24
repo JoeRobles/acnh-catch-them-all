@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
 import { CritterService } from '../../shared/services/critter.service';
 import { FossilModel } from '../../acnhapi/fossil/models/fossil.model';
+import { PreferencesService } from '../../shared/services/preferences.service';
 
 @Component({
   selector: 'app-fossil-detail',
@@ -11,8 +12,12 @@ import { FossilModel } from '../../acnhapi/fossil/models/fossil.model';
 export class FossilDetailComponent {
   language: LanguageTypeEnum = LanguageTypeEnum.NameUSen;
   fossil: FossilModel = {} as FossilModel;
-  constructor(private critterService: CritterService) {
+
+  constructor(
+    private critterService: CritterService,
+    public preferencesService: PreferencesService,
+    ) {
     this.critterService.fossil.subscribe(f => this.fossil = f);
-    this.critterService.language$.subscribe(l => this.language = l);
+    this.preferencesService.language$.subscribe(l => this.language = l);
   }
 }

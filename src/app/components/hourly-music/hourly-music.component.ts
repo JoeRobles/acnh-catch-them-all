@@ -6,6 +6,7 @@ import { ClockService } from '../../shared/services/clock.service';
 import { MusicModel } from '../../acnhapi/music/models/music.model';
 import { HourlyMusicService } from '../../shared/services/hourly-music.service';
 import { PreferencesService } from '../../shared/services/preferences.service';
+import { PreferenceTypeEnum } from '../../shared/models/preference-type.enum';
 
 @Component({
   selector: 'app-hourly-music',
@@ -34,7 +35,7 @@ export class HourlyMusicComponent {
     });
   }
   onAutoplayChange(autoplay: MatSlideToggleChange) {
-    this.preferencesService.updatePreferences(autoplay.checked, 'autoplay');
+    this.preferencesService.updatePreferences(autoplay.checked, PreferenceTypeEnum.Autoplay);
   }
   onMoodChange(mood: MatChipListboxChange) {
     let moodValue = 2;
@@ -49,7 +50,7 @@ export class HourlyMusicComponent {
         moodValue = 2;
         break;
     }
-    this.preferencesService.updatePreferences(moodValue, 'mood');
+    this.preferencesService.updatePreferences(moodValue, PreferenceTypeEnum.Mood);
     const music = this.musicList.filter(m => m.hour === this.hour);
     this.hourlyMusicService.musicUri$.next(music[moodValue].musicUri);
   }

@@ -10,10 +10,12 @@ import { ClockService } from '../../shared/services/clock.service';
 export class CritterActivityComponent implements OnInit, OnDestroy {
   @Input() timeArray: number[] = [];
   hours: number;
+
   constructor(private clockService: ClockService) {
     const datetime = new Date();
     this.hours = datetime.getHours();
   }
+
   ngOnInit() {
     this.clockService.hours$.subscribe(h => this.hours = h);
   }

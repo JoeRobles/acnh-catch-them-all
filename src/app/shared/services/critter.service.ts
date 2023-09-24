@@ -12,7 +12,7 @@ import { BugModel } from '../../acnhapi/bug/models/bug.model';
 import { BugResponseInterface } from '../../acnhapi/bug/models/bug-response.interface';
 import { FishResponseInterface } from '../../acnhapi/fish/models/fish-response.interface';
 import { SeaResponseInterface } from '../../acnhapi/sea/models/sea-response.interface';
-import { MonthArrayTypeEnum } from '../models/month-array-type.enum';
+import { HemisphereTypeEnum } from '../models/hemisphere-type.enum';
 import { SongModel } from '../../acnhapi/song/models/song.model';
 import { SongResponseInterface } from '../../acnhapi/song/models/song-response.interface';
 import { LanguageTypeEnum } from '../models/language-type.enum';
@@ -59,7 +59,6 @@ export class CritterService {
   fossils$ = new BehaviorSubject<FossilModel[]>([]);
   fossilsAmount = 0;
   fossilsGrid$ = new BehaviorSubject<FossilModel[]>([]);
-  language$ = new BehaviorSubject<LanguageTypeEnum>(LanguageTypeEnum.NameUSen);
   model = new BehaviorSubject<ModelModel>({} as ModelModel);
   sea = new BehaviorSubject<SeaModel>({} as SeaModel);
   sea$ = new BehaviorSubject<SeaModel[]>([]);

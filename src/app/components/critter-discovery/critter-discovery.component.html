@@ -1,4 +1,4 @@
-<ng-container *ngIf="mode === modeTypeEnum.Discovery">
+<ng-container *ngIf="(preferencesService.mode$ | async) === modeTypeEnum.Discovery">
   <ng-container *ngIf="
   !critter.catch &&
   !(critter.availability[hemisphere].indexOf(month) === -1)
@@ -46,7 +46,7 @@
     </ng-container>
   </ng-container>
 </ng-container>
-<ng-container *ngIf="mode === modeTypeEnum.Collection">
+<ng-container *ngIf="(preferencesService.mode$ | async) === modeTypeEnum.Collection">
   <img
     class="img-fluid"
     [src]="critter.iconUri"
@@ -63,7 +63,7 @@
 
 
 
-<ng-container *ngIf="mode === modeTypeEnum.Available">
+<ng-container *ngIf="(preferencesService.mode$ | async) === modeTypeEnum.Available">
   <ng-container *ngIf="
   !(critter.availability[hemisphere].indexOf(month) === -1)
 ">
@@ -106,7 +106,7 @@
 
 
 
-<ng-container *ngIf="mode === modeTypeEnum.All">
+<ng-container *ngIf="(preferencesService.mode$ | async) === modeTypeEnum.All">
   <img class="img-fluid" [src]="critter.iconUri" data-bs-toggle="tooltip" data-bs-placement="top"
        [title]="critter.name[language]">
 </ng-container>

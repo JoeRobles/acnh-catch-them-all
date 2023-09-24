@@ -6,6 +6,8 @@ import { SeaModel } from '../../acnhapi/sea/models/sea.model';
 import { CritterTypeEnum } from '../../shared/models/critter-type.enum';
 import { CritterService } from '../../shared/services/critter.service';
 import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
+import { LanguageType } from '../../shared/models/language.type';
+import { PreferencesService } from '../../shared/services/preferences.service';
 
 @Component({
   selector: 'app-critter-detail',
@@ -20,11 +22,16 @@ export class CritterDetailComponent implements OnInit {
   sea: SeaModel = {} as SeaModel;
   seaName = '';
   critterType: CritterTypeEnum = '' as CritterTypeEnum;
-  language: LanguageTypeEnum = LanguageTypeEnum.NameUSen;
-  constructor(public critterService: CritterService) {
+  language: LanguageType = LanguageTypeEnum.NameUSen;
+
+  constructor(
+    public critterService: CritterService,
+    public preferencesService: PreferencesService
+    ) {
   }
+
   ngOnInit(): void {
-    this.critterService.language$.subscribe(l => this.language = l);
+    this.preferencesService.language$.subscribe(l => this.language = l);
     this.critterService.critterType$.subscribe(critterType => {
       this.critterType = critterType;
       switch (critterType) {

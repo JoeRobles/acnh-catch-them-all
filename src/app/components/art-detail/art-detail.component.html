@@ -3,7 +3,7 @@
     <h1 class="text-center">{{art.name[language]}}</h1>
     <div class="text-center">
       <ng-container *ngIf="art">
-        <img class="img-fluid text-center" [src]="art.imageUri" [title]="art.name[language]">
+        <img alt="art detail" class="img-fluid text-center" [src]="art.imageUri" [title]="art.name[language]">
       </ng-container>
     </div>
     <span>{{art.hasFake ? 'Has fake' : 'Always original'}}</span>

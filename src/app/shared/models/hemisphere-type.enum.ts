@@ -1,4 +1,4 @@
-export enum MonthArrayTypeEnum {
+export enum HemisphereTypeEnum {
   MonthArraySouthern = 'monthArraySouthern',
   MonthArrayNorthern = 'monthArrayNorthern'
 }

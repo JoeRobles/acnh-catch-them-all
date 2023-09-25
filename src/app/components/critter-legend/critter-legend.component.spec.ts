@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CritterLegendComponent } from './critter-legend.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CritterLegendComponent', () => {
   let component: CritterLegendComponent;
@@ -8,6 +9,9 @@ describe('CritterLegendComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+      ],
       declarations: [ CritterLegendComponent ]
     })
     .compileComponents();

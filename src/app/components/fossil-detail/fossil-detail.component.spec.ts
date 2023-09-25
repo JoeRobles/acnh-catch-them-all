@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FossilDetailComponent } from './fossil-detail.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('FossilDetailComponent', () => {
   let component: FossilDetailComponent;
@@ -8,6 +9,9 @@ describe('FossilDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+      ],
       declarations: [ FossilDetailComponent ]
     })
     .compileComponents();

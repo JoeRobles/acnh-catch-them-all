@@ -1,15 +1,44 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { AppComponent } from './app.component';
+import { MaterialModule } from './shared/modules/material/material.module';
+import { DatetimeDisplayComponent } from './components/datetime-display/datetime-display.component';
+import { LanguageSelectComponent } from './components/language-select/language-select.component';
+import { HemisphereSelectComponent } from './components/hemisphere-select/hemisphere-select.component';
+import { HourlyMusicComponent } from './components/hourly-music/hourly-music.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToggleControlsComponent } from './components/toggle-controls/toggle-controls.component';
+import { CritterDisplayComponent } from './components/critter-display/critter-display.component';
+import { CritterLegendComponent } from './components/critter-legend/critter-legend.component';
+import { CritterDetailComponent } from './components/critter-detail/critter-detail.component';
+import { ArtDetailComponent } from './components/art-detail/art-detail.component';
+import { FossilDetailComponent } from './components/fossil-detail/fossil-detail.component';
+import { SongDetailComponent } from './components/song-detail/song-detail.component';
+import { ModelDetailComponent } from './components/model-detail/model-detail.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MaterialModule,
+        HttpClientTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        ArtDetailComponent,
+        CritterDetailComponent,
+        CritterDisplayComponent,
+        CritterLegendComponent,
+        DatetimeDisplayComponent,
+        FossilDetailComponent,
+        HemisphereSelectComponent,
+        HourlyMusicComponent,
+        LanguageSelectComponent,
+        ModelDetailComponent,
+        SongDetailComponent,
+        ToggleControlsComponent,
       ],
     }).compileComponents();
   });
@@ -18,12 +47,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('discovery-acnh app is running!');
   });
 });

@@ -3,6 +3,7 @@ import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
 import { CritterService } from '../../shared/services/critter.service';
 import { FossilModel } from '../../acnhapi/fossil/models/fossil.model';
 import { PreferencesService } from '../../shared/services/preferences.service';
+import { LanguageType } from '../../shared/models/language.type';
 
 @Component({
   selector: 'app-fossil-detail',
@@ -10,7 +11,7 @@ import { PreferencesService } from '../../shared/services/preferences.service';
   styleUrls: ['./fossil-detail.component.scss']
 })
 export class FossilDetailComponent {
-  language: LanguageTypeEnum = LanguageTypeEnum.NameUSen;
+  language: LanguageType = LanguageTypeEnum.NameUSen;
   fossil: FossilModel = {} as FossilModel;
 
   constructor(

@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 
 import { SongModel } from '../../acnhapi/song/models/song.model';
-import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
 import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
 import { PreferencesService } from '../../shared/services/preferences.service';
 
@@ -13,12 +12,12 @@ import { PreferencesService } from '../../shared/services/preferences.service';
 export class SongComponent {
   @Input() song: SongModel = {} as SongModel;
 
-  language: LanguageTypeEnum = LanguageTypeEnum.NameUSen;
   modeTypeEnum = ModeTypeEnum;
+  title = 'Song';
 
   constructor(
     public preferencesService: PreferencesService
   ) {
-    this.preferencesService.language$.subscribe(l => this.language = l);
+    this.preferencesService.language$.subscribe(l => this.title = this.song.name[l]);
   }
 }

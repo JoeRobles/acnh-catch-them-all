@@ -14,12 +14,12 @@ import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
 export class FossilComponent {
   @Input() fossil: FossilModel = {} as FossilModel;
 
-  language: LanguageType = LanguageTypeEnum.NameUSen;
+  title = 'Fossil';
   modeTypeEnum = ModeTypeEnum;
 
   constructor(
     public preferencesService: PreferencesService,
   ) {
-    this.preferencesService.language$.subscribe(l => this.language = l);
+    this.preferencesService.language$.subscribe(l => this.title = this.fossil.name[l]);
   }
 }

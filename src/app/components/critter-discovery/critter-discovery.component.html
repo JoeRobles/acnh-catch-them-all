@@ -1,6 +1,9 @@
 <ng-container *ngIf="(preferencesService.mode$ | async) === modeTypeEnum.Discovery">
   <ng-container *ngIf="
-  !critter.catch &&
+   critter &&
+  !critter?.catch &&
+  critter.availability &&
+  critter.availability[hemisphere] &&
   !(critter.availability[hemisphere].indexOf(month) === -1)
 ">
     <div class="remaining">
@@ -9,7 +12,7 @@
       </div>
       <div [ngStyle]="{
   'background-color': !(critter.availability[hemisphere].length === 12 && critter.availability.timeArray.length !== 24) ? '' : 'rgba(0, 153, 0, 0.25)'}"
-           *ngIf="critter.availability.timeArray.length < 24 && !(critter.availability.timeArray.indexOf(hours) === -1)"
+           *ngIf="critter.availability.timeArray.length < 24 && !(critter.availability.timeArray?.indexOf(hours) === -1)"
            class="hours-remaining">{{
         remainingHours(
           critter.availability.timeArray,
@@ -18,13 +21,14 @@
       </div>
       <div class="hours-left"
            [ngStyle]="{'background-color': !(critter.availability[hemisphere].length === 12 && critter.availability.timeArray.length !== 24) ? '' : 'rgba(153, 0, 0, 0.25)' }"
-           *ngIf="critter.availability.timeArray.length < 24 && critter.availability.timeArray.indexOf(hours) === -1">
+           *ngIf="critter.availability.timeArray.length < 24 && critter.availability.timeArray?.indexOf(hours) === -1">
         {{ hoursLeft(critter.availability.timeArray,
         hours)}}:{{remainingMinutes(minutes)}}
       </div>
     </div>
   </ng-container>
   <img
+    alt="critter icon"
     class="img-fluid"
     [ngClass]="
     critter.availability[hemisphere].length === 12 && critter.availability.timeArray.length === 24 ? 'always-available' : (
@@ -37,35 +41,33 @@
       )
     )"
     [src]="critter.iconUri"
-    *ngIf="!critter.catch" data-bs-toggle="tooltip" data-bs-placement="top" [title]="critter.name[language]">
-  <ng-container *ngIf="critter.catch">
+    *ngIf="critter && !critter.catch" data-bs-toggle="tooltip" data-bs-placement="top" [title]="critter.name[language]">
+  <ng-container *ngIf="critter && critter.catch">
     <ng-container [ngSwitch]="critterType">
-      <img *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid" src="assets/images/default-bug.png">
-      <img *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid" src="assets/images/default-fish.png">
-      <img *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid" src="assets/images/default-sea.png">
+      <img alt="bug default" *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid" src="assets/images/default-bug.png">
+      <img alt="fish default" *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid" src="assets/images/default-fish.png">
+      <img alt="sea creature default" *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid" src="assets/images/default-sea.png">
     </ng-container>
   </ng-container>
 </ng-container>
 <ng-container *ngIf="(preferencesService.mode$ | async) === modeTypeEnum.Collection">
   <img
+    alt="critter caught"
     class="img-fluid"
     [src]="critter.iconUri"
-    *ngIf="critter.catch" data-bs-toggle="tooltip" data-bs-placement="top" [title]="critter.name[language]">
-  <ng-container *ngIf="!critter.catch">
+    *ngIf="critter && critter.catch" data-bs-toggle="tooltip" data-bs-placement="top" [title]="critter.name[language]">
+  <ng-container *ngIf="critter && !critter.catch">
     <ng-container [ngSwitch]="critterType">
-      <img *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid" src="assets/images/default-bug.png">
-      <img *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid" src="assets/images/default-fish.png">
-      <img *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid" src="assets/images/default-sea.png">
+      <img alt="bug default" *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid" src="assets/images/default-bug.png">
+      <img alt="fish default" *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid" src="assets/images/default-fish.png">
+      <img alt="sea creature default" *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid" src="assets/images/default-sea.png">
     </ng-container>
   </ng-container>
 </ng-container>
 
-
-
-
 <ng-container *ngIf="(preferencesService.mode$ | async) === modeTypeEnum.Available">
   <ng-container *ngIf="
-  !(critter.availability[hemisphere].indexOf(month) === -1)
+  !(critter.availability[hemisphere]?.indexOf(month) === -1)
 ">
     <div class="remaining">
       <div class="days-remaining" *ngIf="critter.availability[hemisphere].length < 12">
@@ -73,7 +75,7 @@
       </div>
       <div [ngStyle]="{
   'background-color': !(critter.availability[hemisphere].length === 12 && critter.availability.timeArray.length !== 24) ? '' : 'rgba(0, 153, 0, 0.25)'}"
-           *ngIf="critter.availability.timeArray.length < 24 && !(critter.availability.timeArray.indexOf(hours) === -1)"
+           *ngIf="critter.availability.timeArray.length < 24 && !(critter.availability.timeArray?.indexOf(hours) === -1)"
            class="hours-remaining">{{
         remainingHours(
           critter.availability.timeArray,
@@ -82,13 +84,14 @@
       </div>
       <div class="hours-left"
            [ngStyle]="{'background-color': !(critter.availability[hemisphere].length === 12 && critter.availability.timeArray.length !== 24) ? '' : 'rgba(153, 0, 0, 0.25)' }"
-           *ngIf="critter.availability.timeArray.length < 24 && critter.availability.timeArray.indexOf(hours) === -1">
+           *ngIf="critter.availability.timeArray.length < 24 && critter.availability.timeArray?.indexOf(hours) === -1">
         {{ hoursLeft(critter.availability.timeArray,
         hours)}}:{{remainingMinutes(minutes)}}
       </div>
     </div>
   </ng-container>
   <img
+    alt="critter icon"
     class="img-fluid"
     [ngClass]="
     critter.availability[hemisphere].length === 12 && critter.availability.timeArray.length === 24 ? 'always-available' : (
@@ -104,9 +107,7 @@
      data-bs-toggle="tooltip" data-bs-placement="top" [title]="critter.name[language]">
 </ng-container>
 
-
-
 <ng-container *ngIf="(preferencesService.mode$ | async) === modeTypeEnum.All">
-  <img class="img-fluid" [src]="critter.iconUri" data-bs-toggle="tooltip" data-bs-placement="top"
+  <img alt="critter" class="img-fluid" [src]="critter.iconUri" data-bs-toggle="tooltip" data-bs-placement="top"
        [title]="critter.name[language]">
 </ng-container>

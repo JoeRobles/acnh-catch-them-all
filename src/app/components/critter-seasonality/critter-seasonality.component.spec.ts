@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CritterSeasonalityComponent } from './critter-seasonality.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CritterSeasonalityComponent', () => {
   let component: CritterSeasonalityComponent;
@@ -8,6 +9,9 @@ describe('CritterSeasonalityComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+      ],
       declarations: [ CritterSeasonalityComponent ]
     })
     .compileComponents();

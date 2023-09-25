@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ToggleControlsService } from '../../shared/services/toggle-controls.service';
 import { CritterService } from '../../shared/services/critter.service';
 import { CritterTypeEnum } from '../../shared/models/critter-type.enum';
@@ -30,39 +31,41 @@ export class CritterDisplayComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {this.critterService.critterType$.subscribe(c => this.critterType = c);
-    this.formModal = new window.bootstrap.Modal(
-      document.getElementById('myModal')
-    );
-    let myModalEl = document.getElementById('myModal');
-    // @ts-ignore
-    myModalEl.addEventListener('shown.bs.modal', () => {
+  ngOnInit(): void {
+    this.critterService.critterType$.subscribe(c => this.critterType = c);
+    if (window.bootstrap !== undefined) {
+      this.formModal = new window.bootstrap.Modal(
+        document.getElementById('myModal')
+      );
+      let myModalEl = document.getElementById('myModal');
       // @ts-ignore
-      document.getElementById('songPlayer')?.play();
-    });
-    // @ts-ignore
-    myModalEl.addEventListener('hide.bs.modal', () => {
+      myModalEl.addEventListener('shown.bs.modal', () => {
+        // @ts-ignore
+        document.getElementById('songPlayer')?.play();
+      });
       // @ts-ignore
-      document.getElementById('songPlayer')?.pause();
-      this.critterService.bug.next({} as BugModel);
-      this.critterService.fish.next({} as FishModel);
-      this.critterService.sea.next({} as SeaModel);
-      this.critterService.song.next({} as SongModel);
-    });
-    let myMusicPlayerEl = document.getElementById('musicPlayer');
-    console.log('myMusicPlayerEl: ', myMusicPlayerEl);
-    // @ts-ignore
-    myMusicPlayerEl.addEventListener('ended', () => {
-      console.log('audio Ended');
+      myModalEl.addEventListener('hide.bs.modal', () => {
+        // @ts-ignore
+        document.getElementById('songPlayer')?.pause();
+        this.critterService.bug.next({} as BugModel);
+        this.critterService.fish.next({} as FishModel);
+        this.critterService.sea.next({} as SeaModel);
+        this.critterService.song.next({} as SongModel);
+      });
+      let myMusicPlayerEl = document.getElementById('musicPlayer');
       // @ts-ignore
-      myMusicPlayerEl.pause();
-      // @ts-ignore
-      myMusicPlayerEl.src = this.musicBackground[0];
-      // @ts-ignore
-      myMusicPlayerEl.load();
-      // @ts-ignore
-      myMusicPlayerEl.play();
-    });
+      myMusicPlayerEl.addEventListener('ended', () => {
+        console.log('audio Ended');
+        // @ts-ignore
+        myMusicPlayerEl.pause();
+        // @ts-ignore
+        myMusicPlayerEl.src = this.musicBackground[0];
+        // @ts-ignore
+        myMusicPlayerEl.load();
+        // @ts-ignore
+        myMusicPlayerEl.play();
+      });
+    }
   }
 
   selectCritter(critterModel: any, critterType: CritterTypeEnum) {

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HemisphereSelectComponent } from './hemisphere-select.component';
+import { MaterialModule } from '../../shared/modules/material/material.module';
 
 describe('HemisphereSelectComponent', () => {
   let component: HemisphereSelectComponent;
@@ -8,6 +9,9 @@ describe('HemisphereSelectComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        MaterialModule
+      ],
       declarations: [ HemisphereSelectComponent ]
     })
     .compileComponents();

@@ -25,6 +25,8 @@ import { HourlyMusicComponent } from './components/hourly-music/hourly-music.com
 import { MaterialModule } from './shared/modules/material/material.module';
 import { ToggleControlsComponent } from './components/toggle-controls/toggle-controls.component';
 import { CritterDisplayComponent } from './components/critter-display/critter-display.component';
+import { ToggleGenreComponent } from './components/toggle-genre/toggle-genre.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { CritterDisplayComponent } from './components/critter-display/critter-di
     SongDetailComponent,
     ToggleControlsComponent,
     CritterDisplayComponent,
+    ToggleGenreComponent,
+    SearchComponent,
   ],
   imports: [
     AppRoutingModule,

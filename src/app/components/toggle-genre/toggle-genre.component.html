@@ -1,0 +1,50 @@
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Songs">
+  <input hidden (change)="toggleGenreAll()" type="checkbox" class="btn-check" id="btncheck0"
+         autocomplete="off" [checked]="songGenresFilter.length === 9">
+  <label class="btn btn-outline-primary" for="btncheck0">All</label>
+  <input hidden (change)="toggleGenre(songGenreTypeEnum.Classic)" type="checkbox" class="btn-check" id="btncheck1"
+         autocomplete="off" [checked]="songGenresFilter.indexOf(songGenreTypeEnum.Classic) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': songGenresFilter.indexOf(songGenreTypeEnum.Classic) > -1}"
+         for="btncheck1">Classic</label>
+  <input hidden (change)="toggleGenre(songGenreTypeEnum.Animal)" type="checkbox" class="btn-check" id="btncheck2"
+         autocomplete="off" [checked]="songGenresFilter.indexOf(songGenreTypeEnum.Animal) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': songGenresFilter.indexOf(songGenreTypeEnum.Animal) > -1}"
+         for="btncheck2">Animal</label>
+  <input hidden (change)="toggleGenre(songGenreTypeEnum.Dance)" type="checkbox" class="btn-check" id="btncheck3"
+         autocomplete="off" [checked]="songGenresFilter.indexOf(songGenreTypeEnum.Dance) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': songGenresFilter.indexOf(songGenreTypeEnum.Dance) > -1}"
+         for="btncheck3">Dance</label>
+  <input hidden (change)="toggleGenre(songGenreTypeEnum.Japanese)" type="checkbox" class="btn-check" id="btncheck4"
+         autocomplete="off" [checked]="songGenresFilter.indexOf(songGenreTypeEnum.Japanese) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': songGenresFilter.indexOf(songGenreTypeEnum.Japanese) > -1}"
+         for="btncheck4">Japanese</label>
+  <input hidden (change)="toggleGenre(songGenreTypeEnum.Jazz)" type="checkbox" class="btn-check" id="btncheck5"
+         autocomplete="off" [checked]="songGenresFilter.indexOf(songGenreTypeEnum.Jazz) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': songGenresFilter.indexOf(songGenreTypeEnum.Jazz) > -1}"
+         for="btncheck5">Jazz</label>
+  <input hidden (change)="toggleGenre(songGenreTypeEnum.Rock)" type="checkbox" class="btn-check" id="btncheck6"
+         autocomplete="off" [checked]="songGenresFilter.indexOf(songGenreTypeEnum.Rock) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': songGenresFilter.indexOf(songGenreTypeEnum.Rock) > -1}"
+         for="btncheck6">Rock</label>
+  <input hidden (change)="toggleGenre(songGenreTypeEnum.Soul)" type="checkbox" class="btn-check" id="btncheck7"
+         autocomplete="off" [checked]="songGenresFilter.indexOf(songGenreTypeEnum.Soul) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': songGenresFilter.indexOf(songGenreTypeEnum.Soul) > -1}"
+         for="btncheck7">Soul</label>
+  <input hidden (change)="toggleGenre(songGenreTypeEnum.Soundtrack)" type="checkbox" class="btn-check" id="btncheck8"
+         autocomplete="off" [checked]="songGenresFilter.indexOf(songGenreTypeEnum.Soundtrack) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': songGenresFilter.indexOf(songGenreTypeEnum.Soundtrack) > -1}"
+         for="btncheck8">Soundtrack</label>
+  <input hidden (change)="toggleGenre(songGenreTypeEnum.World)" type="checkbox" class="btn-check" id="btncheck9"
+         autocomplete="off" [checked]="songGenresFilter.indexOf(songGenreTypeEnum.World) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': songGenresFilter.indexOf(songGenreTypeEnum.World) > -1}"
+         for="btncheck9">World</label>
+</div>

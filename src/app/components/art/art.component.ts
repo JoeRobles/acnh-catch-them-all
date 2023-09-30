@@ -1,18 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { ArtModel } from '../../acnhapi/art/models/art.model';
-import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
 import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
 import { PreferencesService } from '../../shared/services/preferences.service';
-import { ModeType } from '../../shared/models/mode.type';
-import { LanguageType } from '../../shared/models/language.type';
 
 @Component({
   selector: 'app-art',
   templateUrl: './art.component.html',
   styleUrls: ['./art.component.scss']
 })
-export class ArtComponent {
+export class ArtComponent implements OnInit {
   @Input() art: ArtModel = {} as ArtModel;
 
   title = 'Art';
@@ -21,6 +18,9 @@ export class ArtComponent {
   constructor(
     public preferencesService: PreferencesService
   ) {
+  }
+
+  ngOnInit(): void {
     this.preferencesService.language$.subscribe(l => this.title = this.art.name[l]);
   }
 }

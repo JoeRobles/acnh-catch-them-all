@@ -12,13 +12,8 @@ import { BugModel } from '../../acnhapi/bug/models/bug.model';
 import { BugResponseInterface } from '../../acnhapi/bug/models/bug-response.interface';
 import { FishResponseInterface } from '../../acnhapi/fish/models/fish-response.interface';
 import { SeaResponseInterface } from '../../acnhapi/sea/models/sea-response.interface';
-import { HemisphereTypeEnum } from '../models/hemisphere-type.enum';
 import { SongModel } from '../../acnhapi/song/models/song.model';
 import { SongResponseInterface } from '../../acnhapi/song/models/song-response.interface';
-import { LanguageTypeEnum } from '../models/language-type.enum';
-import { ModeTypeEnum } from '../models/mode-type.enum';
-import { MusicModel } from '../../acnhapi/music/models/music.model';
-import { MusicResponseInterface } from '../../acnhapi/music/models/music-response.interface';
 import { FossilModel } from '../../acnhapi/fossil/models/fossil.model';
 import { ArtModel } from '../../acnhapi/art/models/art.model';
 import { FossilResponseInterface } from '../../acnhapi/fossil/models/fossils-response.interface';
@@ -64,6 +59,7 @@ export class CritterService {
   sea$ = new BehaviorSubject<SeaModel[]>([]);
   seaAmount = 0;
   seaGrid$ = new BehaviorSubject<SeaModel[][]>([]);
+  search$ = new BehaviorSubject('');
   shadow: string[] = [];
   song = new BehaviorSubject<SongModel>({} as SongModel);
   songGenresFilter$ = new BehaviorSubject<SongGenreTypeEnum[]>([

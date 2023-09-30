@@ -1,0 +1,24 @@
+
+<div>
+  <form class="form-search" [formGroup]="searchForm" novalidate>
+    <label for="searchText" class="form-label">Search here:</label>&nbsp;
+    <span
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Bugs">{{critterService.bugs$.value.length}}</span>
+    <span
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Fish">{{critterService.fish$.value.length}}</span>
+    <span
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Sea">{{critterService.sea$.value.length}}</span>
+    <span
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Fossils">{{critterService.fossilsGrid$.value.length}}</span>
+    <span
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Art">{{critterService.artsGrid$.value.length}}</span>
+    <span
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Songs">{{critterService.songsGrid$.value.length}}</span>
+    <span
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.BugModels">{{critterService.bugModels$.value.length}}</span>
+    <span
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.FishModels">{{critterService.fishModels$.value.length}}</span>
+    <input aria-describedby="search-text" formControlName="key" type="text" class="form-control" id="searchText"
+           autocomplete="off">
+  </form>
+</div>

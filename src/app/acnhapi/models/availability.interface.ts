@@ -1,12 +1,12 @@
 export interface AvailabilityInterface {
-  monthNorthern: string;
-  monthSouthern: string;
-  time: string;
   isAllDay: boolean;
   isAllYear: boolean;
   location: string;
-  rarity: string;
   monthArrayNorthern: number[];
   monthArraySouthern: number[];
+  monthNorthern: string;
+  monthSouthern: string;
+  rarity: string;
+  time: string;
   timeArray: number[];
 }

@@ -1,9 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ModelModel } from '../../acnhapi/models/model.model';
-import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
 import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
 import { PreferencesService } from '../../shared/services/preferences.service';
-import { LanguageType } from '../../shared/models/language.type';
 
 @Component({
   selector: 'app-model',
@@ -13,12 +11,15 @@ import { LanguageType } from '../../shared/models/language.type';
 export class ModelComponent {
   @Input() model: ModelModel = {} as ModelModel;
 
-  title = 'Model';
+  title = '';
   modeTypeEnum = ModeTypeEnum;
 
   constructor(
     public preferencesService: PreferencesService
   ) {
+  }
+
+  ngOnInit(): void {
     this.preferencesService.language$.subscribe(l => this.title = this.model.name[l]);
   }
 }

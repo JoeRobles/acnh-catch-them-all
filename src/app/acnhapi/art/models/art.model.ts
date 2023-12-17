@@ -11,6 +11,7 @@ export class ArtModel implements ArtInterface {
   public hasFake: boolean;
   public buyPrice: number;
   public sellPrice: number;
+  public iconUri: string;
   public imageUri: string;
   public museumDesc: string;
   public realName: string;
@@ -22,6 +23,7 @@ export class ArtModel implements ArtInterface {
     this.hasFake = art.hasFake;
     this.buyPrice = art['buy-price'];
     this.sellPrice = art['sell-price'];
+    this.iconUri = '/assets/api/icons/art/' + this.fileName + '.png';
     this.imageUri = '/assets/api/images/art/' + this.fileName + '.png';
     this.museumDesc = art['museum-desc'];
     this.realName = art['real-name'];

@@ -9,7 +9,7 @@ export class ModelModel  implements ModelInterface {
   public name: NameModel;
   public sellPrice: number;
   public size: string;
-  public imageUri: string;
+  public iconUri: string;
 
   constructor(model: ModelResponseInterface) {
     this.id = model.id;
@@ -18,6 +18,6 @@ export class ModelModel  implements ModelInterface {
     this.name = new NameModel(model.name);
     this.sellPrice = model['sell-price'];
     this.size = model.size;
-    this.imageUri = '';
+    this.iconUri = '';
   }
 }

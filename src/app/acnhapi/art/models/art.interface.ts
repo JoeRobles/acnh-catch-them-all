@@ -8,6 +8,7 @@ export interface ArtInterface {
   hasFake: boolean;
   buyPrice: number;
   sellPrice: number;
+  iconUri: string;
   imageUri: string;
   museumDesc: string;
   realName: string;

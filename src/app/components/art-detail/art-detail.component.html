@@ -6,10 +6,10 @@
         <img alt="art detail" class="img-fluid text-center" [src]="art.imageUri" [title]="art.name[language]">
       </ng-container>
     </div>
-    <span>{{art.hasFake ? 'Has fake' : 'Always original'}}</span>
-    <span>{{art.realName}}</span>
-    <span>Description: {{art.museumDesc}}</span>
-    <span>Buy price: {{art.buyPrice}}</span>
-    <span>Sell price: {{art.sellPrice}}</span>
+    <span><strong>{{art.hasFake ? 'HAS FAKE' : 'Always original'}}</strong></span>
+    <span><strong>{{art.realName}}</strong></span>
+    <span><strong>Description:</strong> {{art.museumDesc}}</span>
+    <span><strong>Buy price:</strong> {{art.buyPrice}}</span>
+    <span><strong>Sell price:</strong> {{art.sellPrice}}</span>
   </div>
 </div>

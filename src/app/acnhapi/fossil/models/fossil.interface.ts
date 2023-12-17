@@ -7,6 +7,7 @@ export interface FossilInterface {
   name: NameInterface;
   price: number;
   museumPhrase: string;
+  iconUri: string;
   imageUri: string;
   partOf: string;
 }

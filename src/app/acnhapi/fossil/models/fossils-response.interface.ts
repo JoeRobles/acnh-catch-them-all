@@ -6,6 +6,7 @@ export interface FossilResponseInterface {
   name: NameResponseInterface;
   price: number;
   'museum-phrase': string;
+  'icon_uri': string;
   'image_uri': string;
   'part-of': string;
 }

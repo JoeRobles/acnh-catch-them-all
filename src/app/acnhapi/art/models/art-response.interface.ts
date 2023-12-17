@@ -7,6 +7,7 @@ export interface ArtResponseInterface {
   hasFake: boolean
   'buy-price': number;
   'sell-price': number;
+  'icon_uri': string;
   'image_uri': string;
   'museum-desc': string;
   'real-name': string;

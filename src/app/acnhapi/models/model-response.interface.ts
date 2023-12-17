@@ -6,5 +6,5 @@ export interface ModelResponseInterface {
   name: NameResponseInterface;
   'sell-price': number;
   size: string;
-  'image_uri': string;
+  'icon_uri': string;
 }

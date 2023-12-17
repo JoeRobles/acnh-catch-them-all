@@ -6,8 +6,8 @@
         <img alt="fossil" class="img-fluid text-center" [src]="fossil.imageUri" [title]="fossil.name[language]">
       </ng-container>
     </div>
-    <span>Price: {{fossil.price}}</span>
-    <span>Part of: {{fossil.partOf}}</span>
-    <span>Museum phrase: {{fossil.museumPhrase}}</span>
+    <span><strong>Price:</strong> {{fossil.price}}</span>
+    <span><strong>Part of:</strong> {{fossil.partOf | titlecase}}</span>
+    <span><strong>Museum phrase:</strong> {{fossil.museumPhrase}}</span>
   </div>
 </div>

@@ -9,6 +9,7 @@ export class FossilModel implements FossilInterface {
   public catch: boolean;
   public price: number;
   public museumPhrase: string;
+  public iconUri: string;
   public imageUri: string;
   public partOf: string;
 
@@ -19,6 +20,7 @@ export class FossilModel implements FossilInterface {
     this.catch = false;
     this.price = fossil.price;
     this.museumPhrase = fossil['museum-phrase'];
+    this.iconUri = '/assets/api/icons/fossils/' + this.fileName + '.png';
     this.imageUri = '/assets/api/images/fossils/' + this.fileName + '.png';
     this.partOf = fossil['part-of'];
   }

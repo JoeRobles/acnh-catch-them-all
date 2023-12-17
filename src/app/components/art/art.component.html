@@ -1,3 +1,3 @@
 <ng-container *ngIf="art">
-  <img alt="art" class="img-fluid text-center" [class.not-available]="(preferencesService.mode$ | async) !== modeTypeEnum.All && !art.catch" [src]="art.imageUri" [title]="title">
+  <img alt="art" class="img-fluid text-center" [class.not-available]="(preferencesService.mode$ | async) !== modeTypeEnum.All && !art.catch" [src]="art.iconUri" [title]="title">
 </ng-container>

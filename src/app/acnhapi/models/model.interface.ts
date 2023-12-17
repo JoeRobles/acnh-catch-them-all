@@ -7,5 +7,5 @@ export interface ModelInterface {
   name: NameInterface;
   sellPrice: number;
   size: string;
-  imageUri: string;
+  iconUri: string;
 }

@@ -8,10 +8,10 @@ import { LanguageSelectComponent } from './components/language-select/language-s
 import { HemisphereSelectComponent } from './components/hemisphere-select/hemisphere-select.component';
 import { HourlyMusicComponent } from './components/hourly-music/hourly-music.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ToggleControlsComponent } from './components/toggle-controls/toggle-controls.component';
+import { ToggleSelectDisplayComponent } from './components/toggle-controls/toggle-select-display/toggle-select-display.component';
 import { CritterDisplayComponent } from './components/critter-display/critter-display.component';
-import { CritterLegendComponent } from './components/critter-legend/critter-legend.component';
-import { CritterDetailComponent } from './components/critter-detail/critter-detail.component';
+import { CritterLegendComponent } from './components/critter-display/critter-legend/critter-legend.component';
+import { CritterDetailComponent } from './components/critter-display/critter-detail/critter-detail.component';
 import { ArtDetailComponent } from './components/art-detail/art-detail.component';
 import { FossilDetailComponent } from './components/fossil-detail/fossil-detail.component';
 import { SongDetailComponent } from './components/song-detail/song-detail.component';
@@ -38,7 +38,7 @@ describe('AppComponent', () => {
         LanguageSelectComponent,
         ModelDetailComponent,
         SongDetailComponent,
-        ToggleControlsComponent,
+        ToggleSelectDisplayComponent,
       ],
     }).compileComponents();
   });

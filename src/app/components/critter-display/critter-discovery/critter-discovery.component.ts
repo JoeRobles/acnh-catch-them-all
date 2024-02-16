@@ -1,18 +1,18 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
-import * as Helpers from '../../shared/utils/helpers';
-import { ClockService } from '../../shared/services/clock.service';
-import { CritterModel } from '../../acnhapi/models/critter.model';
-import { CritterService } from '../../shared/services/critter.service';
-import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
-import { CritterTypeEnum } from '../../shared/models/critter-type.enum';
-import { HemisphereSelectService } from '../../shared/services/hemisphere-select.service';
-import { HemisphereTypeEnum } from '../../shared/models/hemisphere-type.enum';
-import { PreferencesService } from '../../shared/services/preferences.service';
-import { HemisphereType } from '../../shared/models/hemisphere.type';
-import { LanguageType } from '../../shared/models/language.type';
-import { LanguageTypeEnum } from '../../shared/models/language-type.enum';
-import { ModeType } from '../../shared/models/mode.type';
+import * as Helpers from '../../../shared/utils/helpers';
+import { ClockService } from '../../../shared/services/clock.service';
+import { CritterModel } from '../../../acnhapi/models/critter.model';
+import { CritterService } from '../../../shared/services/critter.service';
+import { ModeTypeEnum } from '../../../shared/models/mode-type.enum';
+import { CritterTypeEnum } from '../../../shared/models/critter-type.enum';
+import { HemisphereSelectService } from '../../../shared/services/hemisphere-select.service';
+import { HemisphereTypeEnum } from '../../../shared/models/hemisphere-type.enum';
+import { PreferencesService } from '../../../shared/services/preferences.service';
+import { HemisphereType } from '../../../shared/models/hemisphere.type';
+import { LanguageType } from '../../../shared/models/language.type';
+import { LanguageTypeEnum } from '../../../shared/models/language-type.enum';
+import { ModeType } from '../../../shared/models/mode.type';
 
 @Component({
   selector: 'app-critter-discovery',

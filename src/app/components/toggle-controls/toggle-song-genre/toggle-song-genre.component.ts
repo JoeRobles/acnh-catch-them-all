@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { SongGenreTypeEnum } from '../../shared/models/song-genre-type.enum';
+import { SongGenreTypeEnum } from '../../../shared/models/song-genre-type.enum';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { CritterService } from '../../shared/services/critter.service';
-import { SongModel } from '../../acnhapi/song/models/song.model';
-import { PreferencesService } from '../../shared/services/preferences.service';
-import { CritterTypeEnum } from '../../shared/models/critter-type.enum';
+import { CritterService } from '../../../shared/services/critter.service';
+import { SongModel } from '../../../acnhapi/song/models/song.model';
+import { PreferencesService } from '../../../shared/services/preferences.service';
+import { CritterTypeEnum } from '../../../shared/models/critter-type.enum';
 
 @Component({
-  selector: 'app-toggle-genre',
-  templateUrl: './toggle-genre.component.html',
-  styleUrls: ['./toggle-genre.component.scss']
+  selector: 'app-toggle-song-genre',
+  templateUrl: './toggle-song-genre.component.html',
+  styleUrls: ['./toggle-song-genre.component.scss']
 })
-export class ToggleGenreComponent implements OnInit {
+export class ToggleSongGenreComponent implements OnInit {
 
   critterTypeEnum = CritterTypeEnum;
   songGenresFilter = [

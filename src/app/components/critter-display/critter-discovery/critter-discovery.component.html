@@ -44,9 +44,9 @@
     *ngIf="critter && !critter.catch" data-bs-toggle="tooltip" data-bs-placement="top" [title]="critter.name[language]">
   <ng-container *ngIf="critter && critter.catch">
     <ng-container [ngSwitch]="critterType">
-      <img alt="bug default" *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid" src="assets/images/default-bug.png">
-      <img alt="fish default" *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid" src="assets/images/default-fish.png">
-      <img alt="sea creature default" *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid" src="assets/images/default-sea.png">
+      <img alt="bug default" *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid" src="../../../../assets/images/default-bug.png">
+      <img alt="fish default" *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid" src="../../../../assets/images/default-fish.png">
+      <img alt="sea creature default" *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid" src="../../../../assets/images/default-sea.png">
     </ng-container>
   </ng-container>
 </ng-container>
@@ -58,9 +58,9 @@
     *ngIf="critter && critter.catch" data-bs-toggle="tooltip" data-bs-placement="top" [title]="critter.name[language]">
   <ng-container *ngIf="critter && !critter.catch">
     <ng-container [ngSwitch]="critterType">
-      <img alt="bug default" *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid" src="assets/images/default-bug.png">
-      <img alt="fish default" *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid" src="assets/images/default-fish.png">
-      <img alt="sea creature default" *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid" src="assets/images/default-sea.png">
+      <img alt="bug default" *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid" src="../../../../assets/images/default-bug.png">
+      <img alt="fish default" *ngSwitchCase="critterTypeEnum.Fish" class="img-fluid" src="../../../../assets/images/default-fish.png">
+      <img alt="sea creature default" *ngSwitchCase="critterTypeEnum.Sea" class="img-fluid" src="../../../../assets/images/default-sea.png">
     </ng-container>
   </ng-container>
 </ng-container>

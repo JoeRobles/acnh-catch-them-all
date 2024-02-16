@@ -1,11 +1,11 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
-import { ClockService } from '../../shared/services/clock.service';
-import { AvailabilityModel } from '../../acnhapi/models/availability.model';
-import { HemisphereTypeEnum } from '../../shared/models/hemisphere-type.enum';
-import { CritterService } from '../../shared/services/critter.service';
-import { PreferencesService } from '../../shared/services/preferences.service';
-import { HemisphereType } from '../../shared/models/hemisphere.type';
+import { ClockService } from '../../../shared/services/clock.service';
+import { AvailabilityModel } from '../../../acnhapi/models/availability.model';
+import { HemisphereTypeEnum } from '../../../shared/models/hemisphere-type.enum';
+import { CritterService } from '../../../shared/services/critter.service';
+import { PreferencesService } from '../../../shared/services/preferences.service';
+import { HemisphereType } from '../../../shared/models/hemisphere.type';
 
 @Component({
   selector: 'app-critter-seasonality',

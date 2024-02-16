@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { CritterService } from '../../shared/services/critter.service';
-import { ToggleControlsService } from '../../shared/services/toggle-controls.service';
-import { PreferencesService } from '../../shared/services/preferences.service';
+import { CritterService } from '../../../shared/services/critter.service';
+import { ToggleControlsService } from '../../../shared/services/toggle-controls.service';
+import { PreferencesService } from '../../../shared/services/preferences.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { CritterTypeEnum } from '../../shared/models/critter-type.enum';
+import { CritterTypeEnum } from '../../../shared/models/critter-type.enum';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({

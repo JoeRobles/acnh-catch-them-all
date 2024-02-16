@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToggleControlsComponent } from './toggle-controls.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ToggleControlsComponent', () => {
   let component: ToggleControlsComponent;
@@ -9,9 +8,6 @@ describe('ToggleControlsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule,
-      ],
       declarations: [ ToggleControlsComponent ]
     })
     .compileComponents();

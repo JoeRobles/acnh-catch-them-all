@@ -4,11 +4,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CritterDiscoveryComponent } from './components/critter-discovery/critter-discovery.component';
-import { CritterLegendComponent } from './components/critter-legend/critter-legend.component';
-import { CritterDetailComponent } from './components/critter-detail/critter-detail.component';
-import { CritterSeasonalityComponent } from './components/critter-seasonality/critter-seasonality.component';
-import { CritterActivityComponent } from './components/critter-activity/critter-activity.component';
+import { CritterDiscoveryComponent } from './components/critter-display/critter-discovery/critter-discovery.component';
+import { CritterLegendComponent } from './components/critter-display/critter-legend/critter-legend.component';
+import { CritterDetailComponent } from './components/critter-display/critter-detail/critter-detail.component';
+import { CritterSeasonalityComponent } from './components/critter-display/critter-seasonality/critter-seasonality.component';
+import { CritterActivityComponent } from './components/critter-display/critter-activity/critter-activity.component';
 import { SongComponent } from './components/song/song.component';
 import { SongDetailComponent } from './components/song-detail/song-detail.component';
 import { FossilComponent } from './components/fossil/fossil.component';
@@ -23,10 +23,13 @@ import { LanguageSelectComponent } from './components/language-select/language-s
 import { HemisphereSelectComponent } from './components/hemisphere-select/hemisphere-select.component';
 import { HourlyMusicComponent } from './components/hourly-music/hourly-music.component';
 import { MaterialModule } from './shared/modules/material/material.module';
-import { ToggleControlsComponent } from './components/toggle-controls/toggle-controls.component';
+import { ToggleSelectDisplayComponent } from './components/toggle-controls/toggle-select-display/toggle-select-display.component';
 import { CritterDisplayComponent } from './components/critter-display/critter-display.component';
-import { ToggleGenreComponent } from './components/toggle-genre/toggle-genre.component';
-import { SearchComponent } from './components/search/search.component';
+import { ToggleSongGenreComponent } from './components/toggle-controls/toggle-song-genre/toggle-song-genre.component';
+import { SearchComponent } from './components/toggle-controls/search/search.component';
+import { ToggleFilterComponent } from './components/toggle-controls/toggle-filter/toggle-filter.component';
+import { ToggleBugLocationComponent } from './components/toggle-controls/toggle-bug-location/toggle-bug-location.component';
+import { ToggleControlsComponent } from './components/toggle-controls/toggle-controls.component';
 
 @NgModule({
   declarations: [
@@ -48,10 +51,13 @@ import { SearchComponent } from './components/search/search.component';
     ModelDetailComponent,
     SongComponent,
     SongDetailComponent,
-    ToggleControlsComponent,
+    ToggleSelectDisplayComponent,
     CritterDisplayComponent,
-    ToggleGenreComponent,
+    ToggleSongGenreComponent,
     SearchComponent,
+    ToggleFilterComponent,
+    ToggleBugLocationComponent,
+    ToggleControlsComponent,
   ],
   imports: [
     AppRoutingModule,

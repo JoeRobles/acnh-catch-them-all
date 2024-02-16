@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToggleGenreComponent } from './toggle-genre.component';
+import { ToggleFilterComponent } from './toggle-filter.component';
 
-describe('ToggleGenreComponent', () => {
-  let component: ToggleGenreComponent;
-  let fixture: ComponentFixture<ToggleGenreComponent>;
+describe('ToggleFilterComponent', () => {
+  let component: ToggleFilterComponent;
+  let fixture: ComponentFixture<ToggleFilterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ToggleGenreComponent ]
+      declarations: [ ToggleFilterComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ToggleGenreComponent);
+    fixture = TestBed.createComponent(ToggleFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

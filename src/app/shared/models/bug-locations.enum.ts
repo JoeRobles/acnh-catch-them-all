@@ -1,0 +1,23 @@
+export enum BugLocationsEnum {
+  Flying = 'Flying',
+  FlyingByLight = 'Flying by light',
+  FlyingNearHybridFlowers = 'Flying near hybrid flowers',
+  FlyingNearWater = 'Flying (near water)',
+  HittingRocks = 'Hitting rocks',
+  NearTrash = 'Near trash',
+  OnBeachRocks = 'On beach rocks',
+  OnFlowers = 'On flowers',
+  OnPalmTrees = 'On palm trees',
+  OnPondsAndRivers = 'On ponds and rivers',
+  OnRocksAndBushWhenRaining = 'On rocks and bush (when raining)',
+  OnRottenFood = 'On rotten food',
+  OnTheBeach = 'On the beach',
+  OnTheGround = 'On the ground',
+  OnTrees = 'On trees',
+  OnTreeStumps = 'On tree stumps',
+  OnVillagers = 'On villagers',
+  OnWhiteFlowers = 'On white flowers',
+  ShakingTrees = 'Shaking trees',
+  Underground = 'Underground',
+  UnderTrees = 'Under trees'
+}

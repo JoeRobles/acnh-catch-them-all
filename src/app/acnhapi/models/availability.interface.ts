@@ -1,7 +1,9 @@
+import { CritterLocationsType } from '../../shared/models/critter-locations.type';
+
 export interface AvailabilityInterface {
   isAllDay: boolean;
   isAllYear: boolean;
-  location: string;
+  location: CritterLocationsType;
   monthArrayNorthern: number[];
   monthArraySouthern: number[];
   monthNorthern: string;

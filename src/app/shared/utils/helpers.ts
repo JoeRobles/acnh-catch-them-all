@@ -6,12 +6,23 @@ export function toFiveRows(items: any[]): any[][] {
   const rows = 5;
   for (let i = 0; i < items.length; i += rows) {
     const chunk = items.slice(i, i + rows);
-    column[0].push(chunk[0]);
-    column[1].push(chunk[1]);
-    column[2].push(chunk[2]);
-    column[3].push(chunk[3]);
-    column[4].push(chunk[4]);
+    if (chunk.length > 0) {
+      column[0].push(chunk[0]);
+    }
+    if (chunk.length > 1) {
+      column[1].push(chunk[1]);
+    }
+    if (chunk.length > 2) {
+      column[2].push(chunk[2]);
+    }
+    if (chunk.length > 3) {
+      column[3].push(chunk[3]);
+    }
+    if (chunk.length > 4) {
+      column[4].push(chunk[4]);
+    }
   }
+
   return column;
 }
 export function toFiveColumns(items: any[]): any[][] {
@@ -20,13 +31,24 @@ export function toFiveColumns(items: any[]): any[][] {
   for (let i = 0; i < items.length; i += rowsAmount) {
     let columns: SongModel[] = [] as SongModel[];
     const chunk = items.slice(i, i + rowsAmount);
-    columns.push(chunk[0]);
-    columns.push(chunk[1]);
-    columns.push(chunk[2]);
-    columns.push(chunk[3]);
-    columns.push(chunk[4]);
+    if (chunk.length > 0) {
+      columns.push(chunk[0]);
+    }
+    if (chunk.length > 1) {
+      columns.push(chunk[1]);
+    }
+    if (chunk.length > 2) {
+      columns.push(chunk[2]);
+    }
+    if (chunk.length > 3) {
+      columns.push(chunk[3]);
+    }
+    if (chunk.length > 4) {
+      columns.push(chunk[4]);
+    }
     rows.push(columns);
   }
+
   return rows;
 }
 export function toTenColumns(items: any[]): any[][] {
@@ -35,18 +57,39 @@ export function toTenColumns(items: any[]): any[][] {
   for (let i = 0; i < items.length; i += rowsAmount) {
     let columns: SongModel[] = [] as SongModel[];
     const chunk = items.slice(i, i + rowsAmount);
-    columns.push(chunk[0]);
-    columns.push(chunk[1]);
-    columns.push(chunk[2]);
-    columns.push(chunk[3]);
-    columns.push(chunk[4]);
-    columns.push(chunk[5]);
-    columns.push(chunk[6]);
-    columns.push(chunk[7]);
-    columns.push(chunk[8]);
-    columns.push(chunk[9]);
+    if (chunk.length > 0) {
+      columns.push(chunk[0]);
+    }
+    if (chunk.length > 1) {
+      columns.push(chunk[1]);
+    }
+    if (chunk.length > 2) {
+      columns.push(chunk[2]);
+    }
+    if (chunk.length > 3) {
+      columns.push(chunk[3]);
+    }
+    if (chunk.length > 4) {
+      columns.push(chunk[4]);
+    }
+    if (chunk.length > 5) {
+      columns.push(chunk[5]);
+    }
+    if (chunk.length > 6) {
+      columns.push(chunk[6]);
+    }
+    if (chunk.length > 7) {
+      columns.push(chunk[7]);
+    }
+    if (chunk.length > 8) {
+      columns.push(chunk[8]);
+    }
+    if (chunk.length > 9) {
+      columns.push(chunk[9]);
+    }
     rows.push(columns);
   }
+
   return rows;
 }
 export function isValidDate(date: Date): boolean {

@@ -30,6 +30,8 @@ import { SearchComponent } from './components/toggle-controls/search/search.comp
 import { ToggleFilterComponent } from './components/toggle-controls/toggle-filter/toggle-filter.component';
 import { ToggleBugLocationComponent } from './components/toggle-controls/toggle-bug-location/toggle-bug-location.component';
 import { ToggleControlsComponent } from './components/toggle-controls/toggle-controls.component';
+import { ToggleFishLocationComponent } from './components/toggle-controls/toggle-fish-location/toggle-fish-location.component';
+import { ToggleFishShadowComponent } from './components/toggle-controls/toggle-fish-shadow/toggle-fish-shadow.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { ToggleControlsComponent } from './components/toggle-controls/toggle-con
     ToggleFilterComponent,
     ToggleBugLocationComponent,
     ToggleControlsComponent,
+    ToggleFishLocationComponent,
+    ToggleFishShadowComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ToggleControlsService } from '../../shared/services/toggle-controls.service';
 import { CritterService } from '../../shared/services/critter.service';
 import { CritterTypeEnum } from '../../shared/models/critter-type.enum';
 import { ModeTypeEnum } from '../../shared/models/mode-type.enum';
@@ -26,7 +25,6 @@ export class CritterDisplayComponent implements OnInit {
 
   constructor(
     public critterService: CritterService,
-    public toggleControlsService: ToggleControlsService,
     public preferencesService: PreferencesService
   ) {
   }

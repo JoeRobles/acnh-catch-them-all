@@ -1,0 +1,50 @@
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Fish">
+  <input hidden (change)="toggleShadowAll()" type="checkbox" class="btn-check" id="fsbtncheck0"
+         autocomplete="off" [checked]="fishShadowFilter.length === 9">
+  <label class="btn btn-outline-primary" for="fsbtncheck0">All</label>
+  <input hidden (change)="toggleShadow(fishShadowsEnum.Smallest)" type="checkbox" class="btn-check" id="fsbtncheck1"
+         autocomplete="off" [checked]="fishShadowFilter.indexOf(fishShadowsEnum.Smallest) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishShadowFilter.indexOf(fishShadowsEnum.Smallest) > -1}"
+         for="fsbtncheck1">{{fishShadowsEnum.Smallest}}</label>
+  <input hidden (change)="toggleShadow(fishShadowsEnum.Small)" type="checkbox" class="btn-check" id="fsbtncheck2"
+         autocomplete="off" [checked]="fishShadowFilter.indexOf(fishShadowsEnum.Small) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishShadowFilter.indexOf(fishShadowsEnum.Small) > -1}"
+         for="fsbtncheck2">{{fishShadowsEnum.Small}}</label>
+  <input hidden (change)="toggleShadow(fishShadowsEnum.Medium)" type="checkbox" class="btn-check" id="fsbtncheck3"
+         autocomplete="off" [checked]="fishShadowFilter.indexOf(fishShadowsEnum.Medium) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishShadowFilter.indexOf(fishShadowsEnum.Medium) > -1}"
+         for="fsbtncheck3">{{fishShadowsEnum.Medium}}</label>
+  <input hidden (change)="toggleShadow(fishShadowsEnum.Medium4)" type="checkbox" class="btn-check" id="fsbtncheck4"
+         autocomplete="off" [checked]="fishShadowFilter.indexOf(fishShadowsEnum.Medium4) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishShadowFilter.indexOf(fishShadowsEnum.Medium4) > -1}"
+         for="fsbtncheck4">{{fishShadowsEnum.Medium4}}</label>
+  <input hidden (change)="toggleShadow(fishShadowsEnum.Large)" type="checkbox" class="btn-check" id="fsbtncheck5"
+         autocomplete="off" [checked]="fishShadowFilter.indexOf(fishShadowsEnum.Large) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishShadowFilter.indexOf(fishShadowsEnum.Large) > -1}"
+         for="fsbtncheck5">{{fishShadowsEnum.Large}}</label>
+  <input hidden (change)="toggleShadow(fishShadowsEnum.Largest)" type="checkbox" class="btn-check" id="fsbtncheck6"
+         autocomplete="off" [checked]="fishShadowFilter.indexOf(fishShadowsEnum.Largest) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishShadowFilter.indexOf(fishShadowsEnum.Largest) > -1}"
+         for="fsbtncheck6">{{fishShadowsEnum.Largest}}</label>
+  <input hidden (change)="toggleShadow(fishShadowsEnum.LargestWithFin)" type="checkbox" class="btn-check" id="fsbtncheck7"
+         autocomplete="off" [checked]="fishShadowFilter.indexOf(fishShadowsEnum.LargestWithFin) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishShadowFilter.indexOf(fishShadowsEnum.LargestWithFin) > -1}"
+         for="fsbtncheck7">{{fishShadowsEnum.LargestWithFin}}</label>
+  <input hidden (change)="toggleShadow(fishShadowsEnum.MediumWithFin)" type="checkbox" class="btn-check" id="fsbtncheck8"
+         autocomplete="off" [checked]="fishShadowFilter.indexOf(fishShadowsEnum.MediumWithFin) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishShadowFilter.indexOf(fishShadowsEnum.MediumWithFin) > -1}"
+         for="fsbtncheck8">{{fishShadowsEnum.MediumWithFin}}</label>
+  <input hidden (change)="toggleShadow(fishShadowsEnum.Narrow)" type="checkbox" class="btn-check" id="fsbtncheck9"
+         autocomplete="off" [checked]="fishShadowFilter.indexOf(fishShadowsEnum.Narrow) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishShadowFilter.indexOf(fishShadowsEnum.Narrow) > -1}"
+         for="fsbtncheck9">{{fishShadowsEnum.Narrow}}</label>
+</div>

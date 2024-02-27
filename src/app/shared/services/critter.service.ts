@@ -4,7 +4,6 @@ import { BehaviorSubject, forkJoin, map, Observable } from 'rxjs';
 
 import { LocalStorageService } from './local-storage.service';
 import { CritterTypeEnum } from '../models/critter-type.enum';
-import { CatchedCrittersInterface } from '../models/catched-critters.interface';
 import { FishModel } from '../../acnhapi/fish/models/fish.model';
 import { ascByNumber, toFiveRows } from '../utils/helpers';
 import { SeaModel } from '../../acnhapi/sea/models/sea.model';
@@ -25,6 +24,10 @@ import { FishModelModel } from '../../acnhapi/fish-model/models/fish-model.model
 import { ModelModel } from '../../acnhapi/models/model.model';
 import { CritterType } from '../models/critter.type';
 import { PreferencesService } from './preferences.service';
+import { BugLocationsEnum } from '../models/bug-locations.enum';
+import { CritterLocationsType } from '../models/critter-locations.type';
+import { FishLocationsEnum } from '../models/fish-locations.enum';
+import { CatchedCrittersInterface } from '../models/catched-critters.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +44,39 @@ export class CritterService {
   bugs$ = new BehaviorSubject<BugModel[]>([]);
   bugsAmount = 0;
   bugsGrid$ = new BehaviorSubject<BugModel[][]>([]);
+  bugLocationsFilter$ = new BehaviorSubject<CritterLocationsType[]>([
+    BugLocationsEnum.Flying,
+    BugLocationsEnum.FlyingByLight,
+    BugLocationsEnum.FlyingNearHybridFlowers,
+    BugLocationsEnum.FlyingNearWater,
+    BugLocationsEnum.HittingRocks,
+    BugLocationsEnum.NearTrash,
+    BugLocationsEnum.OnBeachRocks,
+    BugLocationsEnum.OnFlowers,
+    BugLocationsEnum.OnPalmTrees,
+    BugLocationsEnum.OnPondsAndRivers,
+    BugLocationsEnum.OnRocksAndBushWhenRaining,
+    BugLocationsEnum.OnRottenFood,
+    BugLocationsEnum.OnTheBeach,
+    BugLocationsEnum.OnTheGround,
+    BugLocationsEnum.OnTrees,
+    BugLocationsEnum.OnTreeStumps,
+    BugLocationsEnum.OnVillagers,
+    BugLocationsEnum.OnWhiteFlowers,
+    BugLocationsEnum.ShakingTrees,
+    BugLocationsEnum.Underground,
+    BugLocationsEnum.UnderTrees
+  ]);
+  fishLocationsFilter$ = new BehaviorSubject<CritterLocationsType[]>([
+    FishLocationsEnum.Pier,
+    FishLocationsEnum.Pond,
+    FishLocationsEnum.River,
+    FishLocationsEnum.RiverClifftop,
+    FishLocationsEnum.RiverClifftopPond,
+    FishLocationsEnum.RiverMouth,
+    FishLocationsEnum.Sea,
+    FishLocationsEnum.SeaRainingSnowing
+  ]);
   critters: CatchedCrittersInterface;
   critterType$ = new BehaviorSubject<CritterTypeEnum>('' as CritterTypeEnum);
   fish = new BehaviorSubject<FishModel>({} as FishModel);
@@ -330,6 +366,9 @@ export class CritterService {
       case CritterTypeEnum.Bugs:
         this.bugs$.next(critters as BugModel[]);
         this.bugsGrid$.next(toFiveRows(critters));
+        this.bugLocationsFilter$.subscribe(locations =>
+          this.bugs$.next(this.bugs$.value.filter((b: BugModel) => locations.indexOf(b.availability.location) > -1))
+        );
         break;
       case CritterTypeEnum.Fish:
         this.fish$.next(critters as FishModel[]);

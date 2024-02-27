@@ -1,0 +1,45 @@
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Fish">
+  <input hidden (change)="toggleLocationAll()" type="checkbox" class="btn-check" id="flbtncheck0"
+         autocomplete="off" [checked]="fishLocationFilter.length === 8">
+  <label class="btn btn-outline-primary" for="flbtncheck0">All</label>
+  <input hidden (change)="toggleLocation(fishLocationsEnum.Pier)" type="checkbox" class="btn-check" id="flbtncheck1"
+         autocomplete="off" [checked]="fishLocationFilter.indexOf(fishLocationsEnum.Pier) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishLocationFilter.indexOf(fishLocationsEnum.Pier) > -1}"
+         for="flbtncheck1">{{fishLocationsEnum.Pier}}</label>
+  <input hidden (change)="toggleLocation(fishLocationsEnum.Pond)" type="checkbox" class="btn-check" id="flbtncheck2"
+         autocomplete="off" [checked]="fishLocationFilter.indexOf(fishLocationsEnum.Pond) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishLocationFilter.indexOf(fishLocationsEnum.Pond) > -1}"
+         for="flbtncheck2">{{fishLocationsEnum.Pond}}</label>
+  <input hidden (change)="toggleLocation(fishLocationsEnum.River)" type="checkbox" class="btn-check" id="flbtncheck3"
+         autocomplete="off" [checked]="fishLocationFilter.indexOf(fishLocationsEnum.River) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishLocationFilter.indexOf(fishLocationsEnum.River) > -1}"
+         for="flbtncheck3">{{fishLocationsEnum.River}}</label>
+  <input hidden (change)="toggleLocation(fishLocationsEnum.RiverClifftop)" type="checkbox" class="btn-check" id="flbtncheck4"
+         autocomplete="off" [checked]="fishLocationFilter.indexOf(fishLocationsEnum.RiverClifftop) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishLocationFilter.indexOf(fishLocationsEnum.RiverClifftop) > -1}"
+         for="flbtncheck4">{{fishLocationsEnum.RiverClifftop}}</label>
+  <input hidden (change)="toggleLocation(fishLocationsEnum.RiverClifftopPond)" type="checkbox" class="btn-check" id="flbtncheck5"
+         autocomplete="off" [checked]="fishLocationFilter.indexOf(fishLocationsEnum.RiverClifftopPond) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishLocationFilter.indexOf(fishLocationsEnum.RiverClifftopPond) > -1}"
+         for="flbtncheck5">{{fishLocationsEnum.RiverClifftopPond}}</label>
+  <input hidden (change)="toggleLocation(fishLocationsEnum.RiverMouth)" type="checkbox" class="btn-check" id="flbtncheck6"
+         autocomplete="off" [checked]="fishLocationFilter.indexOf(fishLocationsEnum.RiverMouth) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishLocationFilter.indexOf(fishLocationsEnum.RiverMouth) > -1}"
+         for="flbtncheck6">{{fishLocationsEnum.RiverMouth}}</label>
+  <input hidden (change)="toggleLocation(fishLocationsEnum.Sea)" type="checkbox" class="btn-check" id="flbtncheck7"
+         autocomplete="off" [checked]="fishLocationFilter.indexOf(fishLocationsEnum.Sea) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishLocationFilter.indexOf(fishLocationsEnum.Sea) > -1}"
+         for="flbtncheck7">{{fishLocationsEnum.Sea}}</label>
+  <input hidden (change)="toggleLocation(fishLocationsEnum.SeaRainingSnowing)" type="checkbox" class="btn-check" id="flbtncheck8"
+         autocomplete="off" [checked]="fishLocationFilter.indexOf(fishLocationsEnum.SeaRainingSnowing) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishLocationFilter.indexOf(fishLocationsEnum.SeaRainingSnowing) > -1}"
+         for="flbtncheck8">{{fishLocationsEnum.SeaRainingSnowing}}</label>
+</div>

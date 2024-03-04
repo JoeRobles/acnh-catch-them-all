@@ -27,6 +27,7 @@ import { CritterRarityType } from '../models/critter-rarity.type';
 import { SeaShadowsEnum } from '../models/sea-shadows.enum';
 import { SeaSpeedsEnum } from '../models/sea-speeds.enum';
 import { CritterApiService } from './critter-api.service';
+import { ArtCertEnum } from '../models/art-cert.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,10 @@ export class CritterService {
   art = new BehaviorSubject<ArtModel>({} as ArtModel);
   art$ = new BehaviorSubject<ArtModel[]>([]);
   artAmount = 0;
+  artCertFilter$ = new BehaviorSubject<boolean[]>([
+    true,
+    false
+  ]);
   artsGrid$ = new BehaviorSubject<ArtModel[]>([]);
   bug = new BehaviorSubject<BugModel>({} as BugModel);
   bugModels$ = new BehaviorSubject<BugModelModel[]>([]);
@@ -395,6 +400,7 @@ export class CritterService {
       case CritterTypeEnum.Art:
         this.art$.next(critters as ArtModel[]);
         this.artsGrid$.next(critters as ArtModel[]);
+
         break;
       case CritterTypeEnum.Songs:
         // @ts-ignore

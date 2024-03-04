@@ -1,7 +1,5 @@
 import { AvailabilityResponseInterface } from './availability-response.interface';
 import { AvailabilityInterface } from './availability.interface';
-import { BugLocationsType } from '../../shared/models/bug-locations.type';
-import { FishLocationsType } from '../../shared/models/fish-locations.type';
 import { CritterLocationsType } from '../../shared/models/critter-locations.type';
 import { CritterRarityType } from '../../shared/models/critter-rarity.type';
 

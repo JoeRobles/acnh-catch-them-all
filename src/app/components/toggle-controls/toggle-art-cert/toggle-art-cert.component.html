@@ -1,0 +1,15 @@
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Art">
+  <input hidden (change)="toggleCertAll()" type="checkbox" class="btn-check" id="acbtncheck0"
+         autocomplete="off" [checked]="artCertFilter.length === 2">
+  <label class="btn btn-outline-primary" for="acbtncheck0">All</label>
+  <input hidden (change)="toggleCert(true)" type="checkbox" class="btn-check" id="acbtncheck1"
+         autocomplete="off" [checked]="artCertFilter.indexOf(true) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': artCertFilter.indexOf(true) > -1}"
+         for="acbtncheck1">{{artCertEnum.HasFake}}</label>
+  <input hidden (change)="toggleCert(false)" type="checkbox" class="btn-check" id="acbtncheck2"
+         autocomplete="off" [checked]="artCertFilter.indexOf(false) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': artCertFilter.indexOf(false) > -1}"
+         for="acbtncheck2">{{artCertEnum.AlwaysOriginal}}</label>
+</div>

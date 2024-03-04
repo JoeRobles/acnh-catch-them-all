@@ -36,6 +36,7 @@ import { ToggleBugRarityComponent } from './components/toggle-controls/toggle-bu
 import { ToggleSeaShadowsComponent } from './components/toggle-controls/toggle-sea-shadows/toggle-sea-shadows.component';
 import { ToggleSeaSpeedsComponent } from './components/toggle-controls/toggle-sea-speeds/toggle-sea-speeds.component';
 import { ToggleFishRarityComponent } from './components/toggle-controls/toggle-fish-rarity/toggle-fish-rarity.component';
+import { ToggleArtCertComponent } from './components/toggle-controls/toggle-art-cert/toggle-art-cert.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { ToggleFishRarityComponent } from './components/toggle-controls/toggle-f
     ToggleSeaShadowsComponent,
     ToggleSeaSpeedsComponent,
     ToggleFishRarityComponent,
+    ToggleArtCertComponent,
   ],
   imports: [
     AppRoutingModule,

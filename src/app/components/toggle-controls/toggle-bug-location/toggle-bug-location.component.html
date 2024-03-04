@@ -1,110 +1,110 @@
 <div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Bugs">
-  <input hidden (change)="toggleLocationAll()" type="checkbox" class="btn-check" id="btncheck0"
+  <input hidden (change)="toggleLocationAll()" type="checkbox" class="btn-check" id="blbtncheck0"
          autocomplete="off" [checked]="bugLocationFilter.length === 21">
-  <label class="btn btn-outline-primary" for="btncheck0">All</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.Flying)" type="checkbox" class="btn-check" id="btncheck1"
+  <label class="btn btn-outline-primary" for="blbtncheck0">All</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.Flying)" type="checkbox" class="btn-check" id="blbtncheck1"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.Flying) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.Flying) > -1}"
-         for="btncheck1">{{bugLocationsEnum.Flying}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.FlyingByLight)" type="checkbox" class="btn-check" id="btncheck2"
+         for="blbtncheck1">{{bugLocationsEnum.Flying}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.FlyingByLight)" type="checkbox" class="btn-check" id="blbtncheck2"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.FlyingByLight) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.FlyingByLight) > -1}"
-         for="btncheck2">{{bugLocationsEnum.FlyingByLight}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.FlyingNearHybridFlowers)" type="checkbox" class="btn-check" id="btncheck3"
+         for="blbtncheck2">{{bugLocationsEnum.FlyingByLight}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.FlyingNearHybridFlowers)" type="checkbox" class="btn-check" id="blbtncheck3"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.FlyingNearHybridFlowers) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.FlyingNearHybridFlowers) > -1}"
-         for="btncheck3">{{bugLocationsEnum.FlyingNearHybridFlowers}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.FlyingNearWater)" type="checkbox" class="btn-check" id="btncheck4"
+         for="blbtncheck3">{{bugLocationsEnum.FlyingNearHybridFlowers}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.FlyingNearWater)" type="checkbox" class="btn-check" id="blbtncheck4"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.FlyingNearWater) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.FlyingNearWater) > -1}"
-         for="btncheck4">{{bugLocationsEnum.FlyingNearWater}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.HittingRocks)" type="checkbox" class="btn-check" id="btncheck5"
+         for="blbtncheck4">{{bugLocationsEnum.FlyingNearWater}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.HittingRocks)" type="checkbox" class="btn-check" id="blbtncheck5"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.HittingRocks) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.HittingRocks) > -1}"
-         for="btncheck5">{{bugLocationsEnum.HittingRocks}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.NearTrash)" type="checkbox" class="btn-check" id="btncheck6"
+         for="blbtncheck5">{{bugLocationsEnum.HittingRocks}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.NearTrash)" type="checkbox" class="btn-check" id="blbtncheck6"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.NearTrash) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.NearTrash) > -1}"
-         for="btncheck6">{{bugLocationsEnum.NearTrash}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.OnBeachRocks)" type="checkbox" class="btn-check" id="btncheck7"
+         for="blbtncheck6">{{bugLocationsEnum.NearTrash}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.OnBeachRocks)" type="checkbox" class="btn-check" id="blbtncheck7"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.OnBeachRocks) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.OnBeachRocks) > -1}"
-         for="btncheck7">{{bugLocationsEnum.OnBeachRocks}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.OnFlowers)" type="checkbox" class="btn-check" id="btncheck8"
+         for="blbtncheck7">{{bugLocationsEnum.OnBeachRocks}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.OnFlowers)" type="checkbox" class="btn-check" id="blbtncheck8"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.OnFlowers) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.OnFlowers) > -1}"
-         for="btncheck8">{{bugLocationsEnum.OnFlowers}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.OnPalmTrees)" type="checkbox" class="btn-check" id="btncheck9"
+         for="blbtncheck8">{{bugLocationsEnum.OnFlowers}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.OnPalmTrees)" type="checkbox" class="btn-check" id="blbtncheck9"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.OnPalmTrees) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.OnPalmTrees) > -1}"
-         for="btncheck9">{{bugLocationsEnum.OnPalmTrees}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.OnPondsAndRivers)" type="checkbox" class="btn-check" id="btncheck10"
+         for="blbtncheck9">{{bugLocationsEnum.OnPalmTrees}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.OnPondsAndRivers)" type="checkbox" class="btn-check" id="blbtncheck10"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.OnPondsAndRivers) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.OnPondsAndRivers) > -1}"
-         for="btncheck10">{{bugLocationsEnum.OnPondsAndRivers}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.OnRocksAndBushWhenRaining)" type="checkbox" class="btn-check" id="btncheck11"
+         for="blbtncheck10">{{bugLocationsEnum.OnPondsAndRivers}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.OnRocksAndBushWhenRaining)" type="checkbox" class="btn-check" id="blbtncheck11"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.OnRocksAndBushWhenRaining) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.OnRocksAndBushWhenRaining) > -1}"
-         for="btncheck11">{{bugLocationsEnum.OnRocksAndBushWhenRaining}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.OnRottenFood)" type="checkbox" class="btn-check" id="btncheck12"
+         for="blbtncheck11">{{bugLocationsEnum.OnRocksAndBushWhenRaining}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.OnRottenFood)" type="checkbox" class="btn-check" id="blbtncheck12"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.OnRottenFood) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.OnRottenFood) > -1}"
-         for="btncheck12">{{bugLocationsEnum.OnRottenFood}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.OnTheBeach)" type="checkbox" class="btn-check" id="btncheck13"
+         for="blbtncheck12">{{bugLocationsEnum.OnRottenFood}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.OnTheBeach)" type="checkbox" class="btn-check" id="blbtncheck13"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.OnTheBeach) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.OnTheBeach) > -1}"
-         for="btncheck13">{{bugLocationsEnum.OnTheBeach}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.OnTheGround)" type="checkbox" class="btn-check" id="btncheck14"
+         for="blbtncheck13">{{bugLocationsEnum.OnTheBeach}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.OnTheGround)" type="checkbox" class="btn-check" id="blbtncheck14"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.OnTheGround) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.OnTheGround) > -1}"
-         for="btncheck14">{{bugLocationsEnum.OnTheGround}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.OnTrees)" type="checkbox" class="btn-check" id="btncheck15"
+         for="blbtncheck14">{{bugLocationsEnum.OnTheGround}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.OnTrees)" type="checkbox" class="btn-check" id="blbtncheck15"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.OnTrees) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.OnTrees) > -1}"
-         for="btncheck15">{{bugLocationsEnum.OnTrees}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.OnTreeStumps)" type="checkbox" class="btn-check" id="btncheck16"
+         for="blbtncheck15">{{bugLocationsEnum.OnTrees}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.OnTreeStumps)" type="checkbox" class="btn-check" id="blbtncheck16"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.OnTreeStumps) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.OnTreeStumps) > -1}"
-         for="btncheck16">{{bugLocationsEnum.OnTreeStumps}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.OnVillagers)" type="checkbox" class="btn-check" id="btncheck17"
+         for="blbtncheck16">{{bugLocationsEnum.OnTreeStumps}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.OnVillagers)" type="checkbox" class="btn-check" id="blbtncheck17"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.OnVillagers) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.OnVillagers) > -1}"
-         for="btncheck17">{{bugLocationsEnum.OnVillagers}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.OnWhiteFlowers)" type="checkbox" class="btn-check" id="btncheck18"
+         for="blbtncheck17">{{bugLocationsEnum.OnVillagers}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.OnWhiteFlowers)" type="checkbox" class="btn-check" id="blbtncheck18"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.OnWhiteFlowers) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.OnWhiteFlowers) > -1}"
-         for="btncheck18">{{bugLocationsEnum.OnWhiteFlowers}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.ShakingTrees)" type="checkbox" class="btn-check" id="btncheck19"
+         for="blbtncheck18">{{bugLocationsEnum.OnWhiteFlowers}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.ShakingTrees)" type="checkbox" class="btn-check" id="blbtncheck19"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.ShakingTrees) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.ShakingTrees) > -1}"
-         for="btncheck19">{{bugLocationsEnum.ShakingTrees}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.Underground)" type="checkbox" class="btn-check" id="btncheck20"
+         for="blbtncheck19">{{bugLocationsEnum.ShakingTrees}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.Underground)" type="checkbox" class="btn-check" id="blbtncheck20"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.Underground) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.Underground) > -1}"
-         for="btncheck20">{{bugLocationsEnum.Underground}}</label>
-  <input hidden (change)="toggleLocation(bugLocationsEnum.UnderTrees)" type="checkbox" class="btn-check" id="btncheck21"
+         for="blbtncheck20">{{bugLocationsEnum.Underground}}</label>
+  <input hidden (change)="toggleLocation(bugLocationsEnum.UnderTrees)" type="checkbox" class="btn-check" id="blbtncheck21"
          autocomplete="off" [checked]="bugLocationFilter.indexOf(bugLocationsEnum.UnderTrees) > -1">
   <label class="btn btn-outline-primary"
          [ngClass]="{'checked': bugLocationFilter.indexOf(bugLocationsEnum.UnderTrees) > -1}"
-         for="btncheck21">{{bugLocationsEnum.UnderTrees}}</label>
+         for="blbtncheck21">{{bugLocationsEnum.UnderTrees}}</label>
 </div>

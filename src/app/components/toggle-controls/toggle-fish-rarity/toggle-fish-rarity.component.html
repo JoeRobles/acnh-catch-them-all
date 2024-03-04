@@ -1,0 +1,25 @@
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Fish">
+  <input hidden (change)="toggleRarityAll()" type="checkbox" class="btn-check" id="frbrbtncheck0"
+         autocomplete="off" [checked]="fishRarityFilter.length === 4">
+  <label class="btn btn-outline-primary" for="frbrbtncheck0">All</label>
+  <input hidden (change)="toggleRarity(fishRarityEnum.Common)" type="checkbox" class="btn-check" id="frbrbtncheck1"
+         autocomplete="off" [checked]="fishRarityFilter.indexOf(fishRarityEnum.Common) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishRarityFilter.indexOf(fishRarityEnum.Common) > -1}"
+         for="frbrbtncheck1">{{fishRarityEnum.Common}}</label>
+  <input hidden (change)="toggleRarity(fishRarityEnum.Uncommon)" type="checkbox" class="btn-check" id="frbrbtncheck2"
+         autocomplete="off" [checked]="fishRarityFilter.indexOf(fishRarityEnum.Uncommon) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishRarityFilter.indexOf(fishRarityEnum.Uncommon) > -1}"
+         for="frbrbtncheck2">{{fishRarityEnum.Uncommon}}</label>
+  <input hidden (change)="toggleRarity(fishRarityEnum.Rare)" type="checkbox" class="btn-check" id="frbrbtncheck3"
+         autocomplete="off" [checked]="fishRarityFilter.indexOf(fishRarityEnum.Rare) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishRarityFilter.indexOf(fishRarityEnum.Rare) > -1}"
+         for="frbrbtncheck3">{{fishRarityEnum.Rare}}</label>
+  <input hidden (change)="toggleRarity(fishRarityEnum.UltraRare)" type="checkbox" class="btn-check" id="frbrbtncheck4"
+         autocomplete="off" [checked]="fishRarityFilter.indexOf(fishRarityEnum.UltraRare) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': fishRarityFilter.indexOf(fishRarityEnum.UltraRare) > -1}"
+         for="frbrbtncheck4">{{fishRarityEnum.UltraRare}}</label>
+</div>

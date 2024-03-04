@@ -1,0 +1,30 @@
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Sea">
+  <input hidden (change)="toggleShadowAll()" type="checkbox" class="btn-check" id="sshbtncheck0"
+         autocomplete="off" [checked]="seaShadowFilter.length === 5">
+  <label class="btn btn-outline-primary" for="sshbtncheck0">All</label>
+  <input hidden (change)="toggleShadow(seaShadowsEnum.Smallest)" type="checkbox" class="btn-check" id="sshbtncheck1"
+         autocomplete="off" [checked]="seaShadowFilter.indexOf(seaShadowsEnum.Smallest) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': seaShadowFilter.indexOf(seaShadowsEnum.Smallest) > -1}"
+         for="sshbtncheck1">{{seaShadowsEnum.Smallest}}</label>
+  <input hidden (change)="toggleShadow(seaShadowsEnum.Small)" type="checkbox" class="btn-check" id="sshbtncheck2"
+         autocomplete="off" [checked]="seaShadowFilter.indexOf(seaShadowsEnum.Small) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': seaShadowFilter.indexOf(seaShadowsEnum.Small) > -1}"
+         for="sshbtncheck2">{{seaShadowsEnum.Small}}</label>
+  <input hidden (change)="toggleShadow(seaShadowsEnum.Medium)" type="checkbox" class="btn-check" id="sshbtncheck3"
+         autocomplete="off" [checked]="seaShadowFilter.indexOf(seaShadowsEnum.Medium) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': seaShadowFilter.indexOf(seaShadowsEnum.Medium) > -1}"
+         for="sshbtncheck3">{{seaShadowsEnum.Medium}}</label>
+  <input hidden (change)="toggleShadow(seaShadowsEnum.Large)" type="checkbox" class="btn-check" id="sshbtncheck4"
+         autocomplete="off" [checked]="seaShadowFilter.indexOf(seaShadowsEnum.Large) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': seaShadowFilter.indexOf(seaShadowsEnum.Large) > -1}"
+         for="sshbtncheck4">{{seaShadowsEnum.Large}}</label>
+  <input hidden (change)="toggleShadow(seaShadowsEnum.Largest)" type="checkbox" class="btn-check" id="sshbtncheck5"
+         autocomplete="off" [checked]="seaShadowFilter.indexOf(seaShadowsEnum.Largest) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': seaShadowFilter.indexOf(seaShadowsEnum.Largest) > -1}"
+         for="sshbtncheck5">{{seaShadowsEnum.Largest}}</label>
+</div>

@@ -1,4 +1,5 @@
 import { CritterLocationsType } from '../../shared/models/critter-locations.type';
+import { CritterRarityType } from '../../shared/models/critter-rarity.type';
 
 export interface AvailabilityInterface {
   isAllDay: boolean;
@@ -8,7 +9,7 @@ export interface AvailabilityInterface {
   monthArraySouthern: number[];
   monthNorthern: string;
   monthSouthern: string;
-  rarity: string;
+  rarity: CritterRarityType;
   time: string;
   timeArray: number[];
 }

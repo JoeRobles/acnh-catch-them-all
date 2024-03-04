@@ -1,0 +1,35 @@
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Sea">
+  <input hidden (change)="toggleSpeedAll()" type="checkbox" class="btn-check" id="sspbtncheck0"
+         autocomplete="off" [checked]="seaSpeedFilter.length === 6">
+  <label class="btn btn-outline-primary" for="sspbtncheck0">All</label>
+  <input hidden (change)="toggleSpeed(seaSpeedsEnum.Stationary)" type="checkbox" class="btn-check" id="sspbtncheck1"
+         autocomplete="off" [checked]="seaSpeedFilter.indexOf(seaSpeedsEnum.Stationary) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': seaSpeedFilter.indexOf(seaSpeedsEnum.Stationary) > -1}"
+         for="sspbtncheck1">{{seaSpeedsEnum.Stationary}}</label>
+  <input hidden (change)="toggleSpeed(seaSpeedsEnum.VerySlow)" type="checkbox" class="btn-check" id="sspbtncheck2"
+         autocomplete="off" [checked]="seaSpeedFilter.indexOf(seaSpeedsEnum.VerySlow) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': seaSpeedFilter.indexOf(seaSpeedsEnum.VerySlow) > -1}"
+         for="sspbtncheck2">{{seaSpeedsEnum.VerySlow}}</label>
+  <input hidden (change)="toggleSpeed(seaSpeedsEnum.Slow)" type="checkbox" class="btn-check" id="sspbtncheck3"
+         autocomplete="off" [checked]="seaSpeedFilter.indexOf(seaSpeedsEnum.Slow) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': seaSpeedFilter.indexOf(seaSpeedsEnum.Slow) > -1}"
+         for="sspbtncheck3">{{seaSpeedsEnum.Slow}}</label>
+  <input hidden (change)="toggleSpeed(seaSpeedsEnum.Medium)" type="checkbox" class="btn-check" id="sspbtncheck4"
+         autocomplete="off" [checked]="seaSpeedFilter.indexOf(seaSpeedsEnum.Medium) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': seaSpeedFilter.indexOf(seaSpeedsEnum.Medium) > -1}"
+         for="sspbtncheck4">{{seaSpeedsEnum.Medium}}</label>
+  <input hidden (change)="toggleSpeed(seaSpeedsEnum.Fast)" type="checkbox" class="btn-check" id="sspbtncheck5"
+         autocomplete="off" [checked]="seaSpeedFilter.indexOf(seaSpeedsEnum.Fast) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': seaSpeedFilter.indexOf(seaSpeedsEnum.Fast) > -1}"
+         for="sspbtncheck5">{{seaSpeedsEnum.Fast}}</label>
+  <input hidden (change)="toggleSpeed(seaSpeedsEnum.VeryFast)" type="checkbox" class="btn-check" id="sspbtncheck6"
+         autocomplete="off" [checked]="seaSpeedFilter.indexOf(seaSpeedsEnum.VeryFast) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': seaSpeedFilter.indexOf(seaSpeedsEnum.VeryFast) > -1}"
+         for="sspbtncheck6">{{seaSpeedsEnum.VeryFast}}</label>
+</div>

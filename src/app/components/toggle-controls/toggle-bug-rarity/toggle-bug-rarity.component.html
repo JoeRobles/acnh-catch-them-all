@@ -1,0 +1,25 @@
+<div *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Bugs">
+  <input hidden (change)="toggleRarityAll()" type="checkbox" class="btn-check" id="brbtncheck0"
+         autocomplete="off" [checked]="bugRarityFilter.length === 4">
+  <label class="btn btn-outline-primary" for="brbtncheck0">All</label>
+  <input hidden (change)="toggleRarity(bugRarityEnum.Common)" type="checkbox" class="btn-check" id="brbtncheck1"
+         autocomplete="off" [checked]="bugRarityFilter.indexOf(bugRarityEnum.Common) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': bugRarityFilter.indexOf(bugRarityEnum.Common) > -1}"
+         for="brbtncheck1">{{bugRarityEnum.Common}}</label>
+  <input hidden (change)="toggleRarity(bugRarityEnum.Uncommon)" type="checkbox" class="btn-check" id="brbtncheck2"
+         autocomplete="off" [checked]="bugRarityFilter.indexOf(bugRarityEnum.Uncommon) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': bugRarityFilter.indexOf(bugRarityEnum.Uncommon) > -1}"
+         for="brbtncheck2">{{bugRarityEnum.Uncommon}}</label>
+  <input hidden (change)="toggleRarity(bugRarityEnum.Rare)" type="checkbox" class="btn-check" id="brbtncheck3"
+         autocomplete="off" [checked]="bugRarityFilter.indexOf(bugRarityEnum.Rare) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': bugRarityFilter.indexOf(bugRarityEnum.Rare) > -1}"
+         for="brbtncheck3">{{bugRarityEnum.Rare}}</label>
+  <input hidden (change)="toggleRarity(bugRarityEnum.UltraRare)" type="checkbox" class="btn-check" id="brbtncheck4"
+         autocomplete="off" [checked]="bugRarityFilter.indexOf(bugRarityEnum.UltraRare) > -1">
+  <label class="btn btn-outline-primary"
+         [ngClass]="{'checked': bugRarityFilter.indexOf(bugRarityEnum.UltraRare) > -1}"
+         for="brbtncheck4">{{bugRarityEnum.UltraRare}}</label>
+</div>

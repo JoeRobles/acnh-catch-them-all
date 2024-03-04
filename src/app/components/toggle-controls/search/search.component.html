@@ -3,11 +3,11 @@
   <form class="form-search" [formGroup]="searchForm" novalidate>
     <label for="searchText" class="form-label">Search here:</label>&nbsp;
     <span
-      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Bugs">{{critterService.bugs$.value.length}}</span>
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Bugs">{{critterService.bugsFiltered$.value.length}}</span>
     <span
-      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Fish">{{critterService.fish$.value.length}}</span>
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Fish">{{critterService.fishFiltered$.value.length}}</span>
     <span
-      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Sea">{{critterService.sea$.value.length}}</span>
+      *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Sea">{{critterService.seaFiltered$.value.length}}</span>
     <span
       *ngIf="(preferencesService.display$ | async) === critterTypeEnum.Fossils">{{critterService.fossilsGrid$.value.length}}</span>
     <span

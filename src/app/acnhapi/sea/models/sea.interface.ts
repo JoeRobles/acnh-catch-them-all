@@ -1,13 +1,15 @@
 import { NameInterface } from '../../models/name.interface';
 import { AvailabilityInterface } from '../../models/availability.interface';
+import { SeaShadowsEnum } from '../../../shared/models/sea-shadows.enum';
+import { SeaSpeedsEnum } from '../../../shared/models/sea-speeds.enum';
 
 export interface SeaInterface {
   id: number;
   fileName: string;
   name: NameInterface;
   availability: AvailabilityInterface;
-  shadow: string;
-  speed: string;
+  shadow: SeaShadowsEnum;
+  speed: SeaSpeedsEnum;
   price: number;
   priceCj: number;
   catchPhrase: string;

@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, forkJoin, map, Observable } from 'rxjs';
+import { BehaviorSubject, forkJoin, map } from 'rxjs';
 
 import { LocalStorageService } from './local-storage.service';
 import { CritterTypeEnum } from '../models/critter-type.enum';
@@ -8,18 +7,11 @@ import { FishModel } from '../../acnhapi/fish/models/fish.model';
 import { ascByNumber, toFiveRows } from '../utils/helpers';
 import { SeaModel } from '../../acnhapi/sea/models/sea.model';
 import { BugModel } from '../../acnhapi/bug/models/bug.model';
-import { BugResponseInterface } from '../../acnhapi/bug/models/bug-response.interface';
-import { FishResponseInterface } from '../../acnhapi/fish/models/fish-response.interface';
-import { SeaResponseInterface } from '../../acnhapi/sea/models/sea-response.interface';
 import { SongModel } from '../../acnhapi/song/models/song.model';
-import { SongResponseInterface } from '../../acnhapi/song/models/song-response.interface';
 import { FossilModel } from '../../acnhapi/fossil/models/fossil.model';
 import { ArtModel } from '../../acnhapi/art/models/art.model';
-import { FossilResponseInterface } from '../../acnhapi/fossil/models/fossils-response.interface';
-import { ArtResponseInterface } from '../../acnhapi/art/models/art-response.interface';
 import { SongGenreTypeEnum } from '../models/song-genre-type.enum';
 import { BugModelModel } from '../../acnhapi/bug-model/models/bug-model.model';
-import { ModelResponseInterface } from '../../acnhapi/models/model-response.interface';
 import { FishModelModel } from '../../acnhapi/fish-model/models/fish-model.model';
 import { ModelModel } from '../../acnhapi/models/model.model';
 import { CritterType } from '../models/critter.type';
@@ -28,6 +20,13 @@ import { BugLocationsEnum } from '../models/bug-locations.enum';
 import { CritterLocationsType } from '../models/critter-locations.type';
 import { FishLocationsEnum } from '../models/fish-locations.enum';
 import { CatchedCrittersInterface } from '../models/catched-critters.interface';
+import { FishShadowsType } from '../models/fish-shadows.type';
+import { FishShadowsEnum } from '../models/fish-shadows.enum';
+import { CritterRarityEnum } from '../models/critter-rarity.enum';
+import { CritterRarityType } from '../models/critter-rarity.type';
+import { SeaShadowsEnum } from '../models/sea-shadows.enum';
+import { SeaSpeedsEnum } from '../models/sea-speeds.enum';
+import { CritterApiService } from './critter-api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +42,7 @@ export class CritterService {
   bugModelsGrid$ = new BehaviorSubject<BugModelModel[][]>([]);
   bugs$ = new BehaviorSubject<BugModel[]>([]);
   bugsAmount = 0;
+  bugsFiltered$ = new BehaviorSubject<BugModel[]>([]);
   bugsGrid$ = new BehaviorSubject<BugModel[][]>([]);
   bugLocationsFilter$ = new BehaviorSubject<CritterLocationsType[]>([
     BugLocationsEnum.Flying,
@@ -67,6 +67,12 @@ export class CritterService {
     BugLocationsEnum.Underground,
     BugLocationsEnum.UnderTrees
   ]);
+  bugRarityFilter$ = new BehaviorSubject<CritterRarityType[]>([
+    CritterRarityEnum.Common,
+    CritterRarityEnum.Uncommon,
+    CritterRarityEnum.Rare,
+    CritterRarityEnum.UltraRare
+  ]);
   fishLocationsFilter$ = new BehaviorSubject<CritterLocationsType[]>([
     FishLocationsEnum.Pier,
     FishLocationsEnum.Pond,
@@ -82,10 +88,28 @@ export class CritterService {
   fish = new BehaviorSubject<FishModel>({} as FishModel);
   fish$ = new BehaviorSubject<FishModel[]>([]);
   fishAmount = 0;
+  fishFiltered$ = new BehaviorSubject<FishModel[]>([]);
   fishGrid$ = new BehaviorSubject<FishModel[][]>([]);
   fishModels$ = new BehaviorSubject<FishModelModel[]>([]);
   fishModelsAmount = 0;
   fishModelsGrid$ = new BehaviorSubject<FishModelModel[][]>([]);
+  fishShadowFilter$ = new BehaviorSubject<FishShadowsType[]>( [
+    FishShadowsEnum.Large,
+    FishShadowsEnum.Largest,
+    FishShadowsEnum.LargestWithFin,
+    FishShadowsEnum.Medium,
+    FishShadowsEnum.Medium4,
+    FishShadowsEnum.MediumWithFin,
+    FishShadowsEnum.Narrow,
+    FishShadowsEnum.Small,
+    FishShadowsEnum.Smallest
+  ]);
+  fishRarityFilter$ = new BehaviorSubject<CritterRarityType[]>([
+    CritterRarityEnum.Common,
+    CritterRarityEnum.Uncommon,
+    CritterRarityEnum.Rare,
+    CritterRarityEnum.UltraRare
+  ]);
   fossil = new BehaviorSubject<FossilModel>({} as FossilModel);
   fossils$ = new BehaviorSubject<FossilModel[]>([]);
   fossilsAmount = 0;
@@ -94,8 +118,23 @@ export class CritterService {
   sea = new BehaviorSubject<SeaModel>({} as SeaModel);
   sea$ = new BehaviorSubject<SeaModel[]>([]);
   seaAmount = 0;
+  seaFiltered$ = new BehaviorSubject<SeaModel[]>([]);
   seaGrid$ = new BehaviorSubject<SeaModel[][]>([]);
-  search$ = new BehaviorSubject('');
+  seaShadowFilter$ = new BehaviorSubject<SeaShadowsEnum[]>([
+    SeaShadowsEnum.Smallest,
+    SeaShadowsEnum.Small,
+    SeaShadowsEnum.Medium,
+    SeaShadowsEnum.Large,
+    SeaShadowsEnum.Largest
+  ]);
+  seaSpeedFilter$ = new BehaviorSubject<SeaSpeedsEnum[]>([
+    SeaSpeedsEnum.Stationary,
+    SeaSpeedsEnum.VerySlow,
+    SeaSpeedsEnum.Slow,
+    SeaSpeedsEnum.Medium,
+    SeaSpeedsEnum.Fast,
+    SeaSpeedsEnum.VeryFast
+  ]);
   shadow: string[] = [];
   song = new BehaviorSubject<SongModel>({} as SongModel);
   songGenresFilter$ = new BehaviorSubject<SongGenreTypeEnum[]>([
@@ -115,8 +154,8 @@ export class CritterService {
 
   constructor(
     private localStorageService: LocalStorageService,
-    private http: HttpClient,
-    private preferencesService: PreferencesService
+    private preferencesService: PreferencesService,
+    private critterApiService: CritterApiService
   ) {
     this.critters = {bugs: [], fish: [], sea: [], songs: [], fossils: [], art: [], bugModels: [], fishModels: []};
     this.getCritters();
@@ -263,80 +302,16 @@ export class CritterService {
       })).subscribe();
   }
 
-  getBugs(): Observable<BugModel[]> {
-    const url = `/assets/api/v1a/bugs.json`;
-    return this.http.get<BugResponseInterface[]>(url)
-      .pipe(
-        map(bugs => bugs.map(bug => new BugModel(bug)))
-      );
-  }
-
-  getBugModels(): Observable<BugModelModel[]> {
-    const url = `/assets/api/v1a/bug-models.json`;
-    return this.http.get<ModelResponseInterface[]>(url)
-      .pipe(
-        map(bugModels => bugModels.map(bugModel => new BugModelModel(bugModel)))
-      );
-  }
-
-  getFish(): Observable<FishModel[]> {
-    const url = `/assets/api/v1a/fish.json`;
-    return this.http.get<FishResponseInterface[]>(url)
-      .pipe(
-        map(fish => fish.map(f => new FishModel(f)))
-      );
-  }
-
-  getFishModels(): Observable<FishModelModel[]> {
-    const url = `/assets/api/v1a/fish-models.json`;
-    return this.http.get<ModelResponseInterface[]>(url)
-      .pipe(
-        map(fishModels => fishModels.map(fishModel => new FishModelModel(fishModel)))
-      );
-  }
-
-  getSea(): Observable<SeaModel[]> {
-    const url = `/assets/api/v1a/sea.json`;
-    return this.http.get<SeaResponseInterface[]>(url)
-      .pipe(
-        map(sea => sea.map(s => new SeaModel(s)))
-      );
-  }
-
-  getSongs(): Observable<SongModel[]> {
-    const url = `/assets/api/v1a/songs.json`;
-    return this.http.get<SongResponseInterface[]>(url)
-      .pipe(
-        map(songs => songs.map(s => new SongModel(s)))
-      );
-  }
-
-  getFossils(): Observable<FossilModel[]> {
-    const url = `/assets/api/v1a/fossils.json`;
-    return this.http.get<FossilResponseInterface[]>(url)
-      .pipe(
-        map(fossil => fossil.map(f => new FossilModel(f)))
-      );
-  }
-
-  getArt(): Observable<ArtModel[]> {
-    const url = `/assets/api/v1a/art.json`;
-    return this.http.get<ArtResponseInterface[]>(url)
-      .pipe(
-        map(art => art.map(a => new ArtModel(a)))
-      );
-  }
-
   resolveCritters() {
     const observable = forkJoin({
-      bugs: this.getBugs(),
-      bugModels: this.getBugModels(),
-      fish: this.getFish(),
-      fishModels: this.getFishModels(),
-      sea: this.getSea(),
-      songs: this.getSongs(),
-      fossils: this.getFossils(),
-      art: this.getArt(),
+      bugs: this.critterApiService.getBugs(),
+      bugModels: this.critterApiService.getBugModels(),
+      fish: this.critterApiService.getFish(),
+      fishModels: this.critterApiService.getFishModels(),
+      sea: this.critterApiService.getSea(),
+      songs: this.critterApiService.getSongs(),
+      fossils: this.critterApiService.getFossils(),
+      art: this.critterApiService.getArt(),
     });
     observable.subscribe({
       next: data => {
@@ -365,18 +340,53 @@ export class CritterService {
     switch (critterType) {
       case CritterTypeEnum.Bugs:
         this.bugs$.next(critters as BugModel[]);
+        this.bugsFiltered$.next(critters as BugModel[]);
         this.bugsGrid$.next(toFiveRows(critters));
-        this.bugLocationsFilter$.subscribe(locations =>
-          this.bugs$.next(this.bugs$.value.filter((b: BugModel) => locations.indexOf(b.availability.location) > -1))
-        );
+        this.bugLocationsFilter$.subscribe(locations => {
+          const filtered = this.bugsFiltered$.value.filter((b: BugModel) => locations.indexOf(b.availability.location) > -1);
+          this.bugsFiltered$.next(filtered);
+          this.bugsGrid$.next(toFiveRows(filtered));
+        });
+        this.bugRarityFilter$.subscribe(rarities => {
+          const filtered = this.bugsFiltered$.value.filter((b: BugModel) => rarities.indexOf(b.availability.rarity) > -1);
+          this.bugsFiltered$.next(filtered);
+          this.bugsGrid$.next(toFiveRows(filtered));
+        });
         break;
       case CritterTypeEnum.Fish:
         this.fish$.next(critters as FishModel[]);
+        this.fishFiltered$.next(critters as FishModel[]);
         this.fishGrid$.next(toFiveRows(critters));
+        this.fishLocationsFilter$.subscribe(locations => {
+          const filtered = this.fishFiltered$.value.filter((f: FishModel) => locations.indexOf(f.availability.location) > -1);
+          this.fishFiltered$.next(filtered);
+          this.fishGrid$.next(toFiveRows(filtered));
+        });
+        this.fishShadowFilter$.subscribe(shadows => {
+          const filtered = this.fishFiltered$.value.filter((f: FishModel) => shadows.indexOf(f.shadow) > -1);
+          this.fishFiltered$.next(filtered);
+          this.fishGrid$.next(toFiveRows(filtered));
+        });
+        this.fishRarityFilter$.subscribe(rarities => {
+          const filtered = this.fishFiltered$.value.filter((f: FishModel) => rarities.indexOf(f.availability.rarity) > -1);
+          this.fishFiltered$.next(filtered);
+          this.fishGrid$.next(toFiveRows(filtered));
+        });
         break;
       case CritterTypeEnum.Sea:
         this.sea$.next(critters as SeaModel[]);
+        this.seaFiltered$.next(critters as SeaModel[]);
         this.seaGrid$.next(toFiveRows(critters));
+        this.seaShadowFilter$.subscribe(shadows => {
+          const filtered = this.seaFiltered$.value.filter((s: SeaModel) => shadows.indexOf(s.shadow) > -1);
+          this.seaFiltered$.next(filtered);
+          this.seaGrid$.next(toFiveRows(filtered));
+        });
+        this.seaSpeedFilter$.subscribe(speeds => {
+          const filtered = this.seaFiltered$.value.filter((s: SeaModel) => speeds.indexOf(s.speed) > -1);
+          this.seaFiltered$.next(filtered);
+          this.seaGrid$.next(toFiveRows(filtered));
+        });
         break;
       case CritterTypeEnum.Fossils:
         this.fossils$.next(critters as FossilModel[]);

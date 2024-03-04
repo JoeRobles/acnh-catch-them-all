@@ -3,6 +3,7 @@ import { BehaviorSubject, forkJoin, map, Observable } from 'rxjs';
 import { MusicModel } from '../../acnhapi/music/models/music.model';
 import { MusicResponseInterface } from '../../acnhapi/music/models/music-response.interface';
 import { HttpClient } from '@angular/common/http';
+import { CritterApiService } from './critter-api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,11 @@ export class HourlyMusicService {
   music$ = new BehaviorSubject<MusicModel[]>([]);
   musicUri$: BehaviorSubject<string> = new BehaviorSubject<string>('/assets/music/welcome-horizons.mp3');
 
-  constructor(private http: HttpClient) { }
+  constructor(private critterApiService: CritterApiService) { }
 
   resolveMusic() {
     const observable = forkJoin({
-      music: this.getMusic()
+      music: this.critterApiService.getMusic()
     });
     observable.subscribe({
       next: data => this.setMusicList(data.music),
@@ -23,13 +24,6 @@ export class HourlyMusicService {
     });
   }
 
-  getMusic(): Observable<MusicModel[]> {
-    const url = `/assets/api/v1a/hourly.json`;
-    return this.http.get<MusicResponseInterface[]>(url)
-      .pipe(
-        map(music => music.map(m => new MusicModel(m)))
-      );
-  }
   setMusicList(songs: MusicModel[]) {
     this.music$.next(songs);
   }

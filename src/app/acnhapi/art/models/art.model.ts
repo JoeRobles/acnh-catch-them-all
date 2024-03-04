@@ -1,4 +1,3 @@
-import { NameResponseInterface } from '../../models/name-response.interface';
 import { ArtResponseInterface } from './art-response.interface';
 import { NameModel } from '../../models/name.model';
 import { ArtInterface } from './art.interface';

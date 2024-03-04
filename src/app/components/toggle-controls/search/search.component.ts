@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { CritterService } from '../../../shared/services/critter.service';
-import { ToggleControlsService } from '../../../shared/services/toggle-controls.service';
 import { PreferencesService } from '../../../shared/services/preferences.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CritterTypeEnum } from '../../../shared/models/critter-type.enum';
-import { BehaviorSubject } from 'rxjs';
+import { toFiveRows } from '../../../shared/utils/helpers';
 
 @Component({
   selector: 'app-search',
@@ -13,72 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SearchComponent {
 
-  bugDistinctLocations = [
-    'Flying',
-    'Flying (near water)',
-    'Flying by light',
-    'Flying near hybrid flowers',
-    'Hitting rocks',
-    'Near trash',
-    'On beach rocks',
-    'On flowers',
-    'On palm trees',
-    'On ponds and rivers',
-    'On rocks and bush (when raining)',
-    'On rotten food',
-    'On the beach',
-    'On the ground',
-    'On tree stumps',
-    'On trees',
-    'On villagers',
-    'On white flowers',
-    'Shaking trees',
-    'Under trees',
-    'Underground',
-  ];
-  bugFishDisctinctRarity = [
-    'Common',
-    'Uncommon',
-    'Rare',
-    'Ultra-rare'
-  ];
-  critterTypeEnum = CritterTypeEnum;
-  fishDistinctLocations = [
-    'Pier',
-    'Pond',
-    'River',
-    'River (Clifftop)',
-    'River (Clifftop) & Pond',
-    'River (Mouth)',
-    'Sea',
-    'Sea (when raining or snowing)'
-  ];
-  fishDistinctShadowSizes = [
-    'Smallest (1)',
-    'Small (2)',
-    'Medium (3)',
-    'Medium (4)',
-    'Medium with fin (4)',
-    'Large (5)',
-    'Largest (6)',
-    'Largest with fin (6)',
-    'Narrow',
-  ]
-  seaDistinctShadowSizes = [
-    'Smallest',
-    'Small',
-    'Medium',
-    'Large',
-    'Largest',
-  ];
-  seaDistinctSpeeds = [
-    'Stationary',
-    'Very slow',
-    'Slow',
-    'Medium',
-    'Fast',
-    'Very fast',
-  ];
+  protected readonly critterTypeEnum = CritterTypeEnum;
   searchForm: FormGroup = this.fb.group({
     key: [''],
   });
@@ -86,12 +20,39 @@ export class SearchComponent {
   constructor(
     public critterService: CritterService,
     private fb: FormBuilder,
-    public toggleControlsService: ToggleControlsService,
     public preferencesService: PreferencesService
   ) {
     this.searchForm.valueChanges.subscribe(value => {
-      console.log('value: ', value);
-      this.critterService.search$.next(value.key);
+      let bugsFiltered = this.critterService.bugs$.value;
+      let fishFiltered = this.critterService.fish$.value;
+      let seaFiltered = this.critterService.sea$.value;
+      let fossilsFiltered = this.critterService.fossils$.value;
+      let artFiltered = this.critterService.art$.value;
+      let songsFiltered = this.critterService.songs$.value;
+      let bugModelsFiltered = this.critterService.bugModels$.value;
+      let fishModelsFiltered = this.critterService.fishModels$.value;
+      if (value.key !== '') {
+        const language = this.preferencesService.language$.value;
+        bugsFiltered = this.critterService.bugs$.value.filter(bug => bug.name[language].toLowerCase().includes(value.key.toLowerCase()));
+        fishFiltered = this.critterService.fish$.value.filter(fish => fish.name[language].toLowerCase().includes(value.key.toLowerCase()));
+        seaFiltered = this.critterService.sea$.value.filter(sea => sea.name[language].toLowerCase().includes(value.key.toLowerCase()));
+        fossilsFiltered = this.critterService.fossils$.value.filter(fossil => fossil.name[language].toLowerCase().includes(value.key.toLowerCase()));
+        artFiltered = this.critterService.art$.value.filter(art => art.name[language].toLowerCase().includes(value.key.toLowerCase()));
+        songsFiltered = this.critterService.songs$.value.filter(song => song.name[language].toLowerCase().includes(value.key.toLowerCase()));
+        bugModelsFiltered = this.critterService.bugModels$.value.filter(bug => bug.name[language].toLowerCase().includes(value.key.toLowerCase()));
+        fishModelsFiltered = this.critterService.fishModels$.value.filter(fish => fish.name[language].toLowerCase().includes(value.key.toLowerCase()));
+      }
+      this.critterService.bugsFiltered$.next(bugsFiltered);
+      this.critterService.bugsGrid$.next(toFiveRows(bugsFiltered));
+      this.critterService.fishFiltered$.next(fishFiltered);
+      this.critterService.fishGrid$.next(toFiveRows(fishFiltered));
+      this.critterService.seaFiltered$.next(seaFiltered);
+      this.critterService.seaGrid$.next(toFiveRows(seaFiltered));
+      this.critterService.fossilsGrid$.next(fossilsFiltered);
+      this.critterService.artsGrid$.next(artFiltered);
+      this.critterService.songsGrid$.next(songsFiltered);
+      this.critterService.bugModelsGrid$.next(toFiveRows(bugModelsFiltered));
+      this.critterService.fishModelsGrid$.next(toFiveRows(fishModelsFiltered));
     });
   }
 }

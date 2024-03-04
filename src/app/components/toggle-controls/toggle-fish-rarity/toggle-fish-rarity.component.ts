@@ -1,24 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FishModel } from '../../../acnhapi/fish/models/fish.model';
-import { CritterLocationsType } from '../../../shared/models/critter-locations.type';
 import { CritterTypeEnum } from '../../../shared/models/critter-type.enum';
-import { FishLocationsEnum } from '../../../shared/models/fish-locations.enum';
+import { CritterRarityEnum } from '../../../shared/models/critter-rarity.enum';
 import { CritterService } from '../../../shared/services/critter.service';
 import { PreferencesService } from '../../../shared/services/preferences.service';
 import { toFiveRows } from '../../../shared/utils/helpers';
-import { FishShadowsEnum } from '../../../shared/models/fish-shadows.enum';
+import { CritterLocationsType } from '../../../shared/models/critter-locations.type';
+import { FishLocationsEnum } from '../../../shared/models/fish-locations.enum';
 import { FishShadowsType } from '../../../shared/models/fish-shadows.type';
-import { CritterRarityEnum } from '../../../shared/models/critter-rarity.enum';
+import { FishShadowsEnum } from '../../../shared/models/fish-shadows.enum';
 
 @Component({
-  selector: 'app-toggle-fish-location',
-  templateUrl: './toggle-fish-location.component.html',
-  styleUrls: ['./toggle-fish-location.component.scss']
+  selector: 'app-toggle-fish-rarity',
+  templateUrl: './toggle-fish-rarity.component.html',
+  styleUrls: ['./toggle-fish-rarity.component.scss']
 })
-export class ToggleFishLocationComponent implements OnInit {
+export class ToggleFishRarityComponent implements OnInit {
 
   critterTypeEnum = CritterTypeEnum;
+  fishRarityFilter: CritterRarityEnum[] = [
+    CritterRarityEnum.Common,
+    CritterRarityEnum.Uncommon,
+    CritterRarityEnum.Rare,
+    CritterRarityEnum.UltraRare
+  ];
   fishLocationFilter: CritterLocationsType[] = [
     FishLocationsEnum.Pond,
     FishLocationsEnum.River,
@@ -29,8 +35,6 @@ export class ToggleFishLocationComponent implements OnInit {
     FishLocationsEnum.Pier,
     FishLocationsEnum.SeaRainingSnowing
   ];
-  fishLocationsEnum = FishLocationsEnum;
-  fishList: FishModel[] = [];
   fishShadowFilter: FishShadowsType[] = [
     FishShadowsEnum.Large,
     FishShadowsEnum.Largest,
@@ -42,27 +46,27 @@ export class ToggleFishLocationComponent implements OnInit {
     FishShadowsEnum.Small,
     FishShadowsEnum.Smallest
   ];
-  fishRarityFilter: CritterRarityEnum[] = [
-    CritterRarityEnum.Common,
-    CritterRarityEnum.Uncommon,
-    CritterRarityEnum.Rare,
-    CritterRarityEnum.UltraRare
-  ];
-
+  fishRarityEnum = CritterRarityEnum;
+  fishList: FishModel[] = [];
   constructor(
     public critterService: CritterService,
     public preferencesService: PreferencesService
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.critterService.fish$.subscribe(fish => this.fishList = fish);
-    this.critterService.fishLocationsFilter$.subscribe(locations => this.fishLocationFilter = locations);
+    this.critterService.fishRarityFilter$.subscribe(rarity => this.fishRarityFilter = rarity);
   }
 
-  toggleLocationAll(): void {
+  toggleRarityAll(): void {
     let fishFiltered: FishModel[] = [];
-    if (this.fishLocationFilter.length === 0) {
+    if (this.fishRarityFilter.length === 0) {
+      this.fishRarityFilter = [
+        CritterRarityEnum.Common,
+        CritterRarityEnum.Uncommon,
+        CritterRarityEnum.Rare,
+        CritterRarityEnum.UltraRare
+      ];
       this.fishLocationFilter = [
         FishLocationsEnum.Pond,
         FishLocationsEnum.River,
@@ -84,41 +88,35 @@ export class ToggleFishLocationComponent implements OnInit {
         FishShadowsEnum.Small,
         FishShadowsEnum.Smallest
       ];
-      this.fishRarityFilter = [
-        CritterRarityEnum.Common,
-        CritterRarityEnum.Uncommon,
-        CritterRarityEnum.Rare,
-        CritterRarityEnum.UltraRare
-      ];
       fishFiltered = this.fishList;
     } else {
+      this.fishRarityFilter = [];
       this.fishLocationFilter = [];
       this.fishShadowFilter = [];
-      this.fishRarityFilter = [];
       fishFiltered = [];
     }
+    this.critterService.fishRarityFilter$.next(this.fishRarityFilter);
     this.critterService.fishLocationsFilter$.next(this.fishLocationFilter);
     this.critterService.fishShadowFilter$.next(this.fishShadowFilter);
-    this.critterService.fishRarityFilter$.next(this.fishRarityFilter);
-    this.critterService.fishFiltered$.next(fishFiltered)
+    this.critterService.fishFiltered$.next(fishFiltered);
     this.critterService.fishGrid$.next(toFiveRows(fishFiltered));
   }
 
-  toggleLocation(location: FishLocationsEnum): void {
+  toggleRarity(rarity: CritterRarityEnum): void {
     let filtered: FishModel[] = [];
-    const locationIndex = this.fishLocationFilter.indexOf(location);
-    if (locationIndex > -1) {
-      this.fishLocationFilter.splice(locationIndex, 1);
-      const filteredLocation = this.critterService.fishFiltered$.getValue().filter(f => this.fishLocationFilter.includes(f.availability.location));
-      const filteredShadow = filteredLocation.filter(f => this.critterService.fishShadowFilter$.getValue().includes(f.shadow));
-      filtered = filteredShadow.filter(f => this.critterService.fishRarityFilter$.getValue().includes(f.availability.rarity));
+    const rarityIndex = this.fishRarityFilter.indexOf(rarity);
+    if (rarityIndex > -1) {
+      this.fishRarityFilter.splice(rarityIndex, 1);
+      const filteredRarity = this.critterService.fishFiltered$.getValue().filter(fish => this.fishRarityFilter.includes(fish.availability.rarity));
+      const filteredLocation = filteredRarity.filter(fish => this.critterService.fishLocationsFilter$.getValue().includes(fish.availability.location));
+      filtered = filteredLocation.filter(fish => this.critterService.fishShadowFilter$.getValue().includes(fish.shadow));
     } else {
-      this.fishLocationFilter.push(location);
-      const filteredLocation = this.fishList.filter(f => this.fishLocationFilter.includes(f.availability.location));
-      const filteredShadow = filteredLocation.filter(f => this.critterService.fishShadowFilter$.getValue().includes(f.shadow));
-      filtered = filteredShadow.filter(f => this.critterService.fishRarityFilter$.getValue().includes(f.availability.rarity));
+      this.fishRarityFilter.push(rarity);
+      const filteredRarity = this.fishList.filter(fish => this.fishRarityFilter.includes(fish.availability.rarity));
+      const filteredLocation = filteredRarity.filter(fish => this.critterService.fishLocationsFilter$.getValue().includes(fish.availability.location));
+      filtered = filteredLocation.filter(fish => this.critterService.fishShadowFilter$.getValue().includes(fish.shadow));
     }
-    this.critterService.fishFiltered$.next(filtered)
+    this.critterService.fishFiltered$.next(filtered);
     this.critterService.fishGrid$.next(toFiveRows(filtered));
   }
 }

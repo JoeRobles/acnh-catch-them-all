@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BugModel } from '../../../acnhapi/bug/models/bug.model';
-import { BugLocationsEnum } from '../../../shared/models/bug-locations.enum';
 import { CritterTypeEnum } from '../../../shared/models/critter-type.enum';
-import { CritterService } from '../../../shared/services/critter.service';
-import { PreferencesService } from '../../../shared/services/preferences.service';
-import { CritterLocationsType } from '../../../shared/models/critter-locations.type';
-import { toFiveRows } from '../../../shared/utils/helpers';
 import { CritterRarityEnum } from '../../../shared/models/critter-rarity.enum';
+import { PreferencesService } from '../../../shared/services/preferences.service';
+import { CritterService } from '../../../shared/services/critter.service';
+import { BugModel } from '../../../acnhapi/bug/models/bug.model';
+import { toFiveRows } from '../../../shared/utils/helpers';
+import { BugLocationsEnum } from '../../../shared/models/bug-locations.enum';
+import { CritterLocationsType } from '../../../shared/models/critter-locations.type';
 
 @Component({
-  selector: 'app-toggle-bug-location',
-  templateUrl: './toggle-bug-location.component.html',
-  styleUrls: ['./toggle-bug-location.component.scss']
+  selector: 'app-toggle-bug-rarity',
+  templateUrl: './toggle-bug-rarity.component.html',
+  styleUrls: ['./toggle-bug-rarity.component.scss']
 })
-export class ToggleBugLocationComponent implements OnInit {
+export class ToggleBugRarityComponent implements OnInit {
 
   critterTypeEnum = CritterTypeEnum;
   bugLocationFilter: CritterLocationsType[] = [
@@ -40,14 +40,13 @@ export class ToggleBugLocationComponent implements OnInit {
     BugLocationsEnum.Underground,
     BugLocationsEnum.UnderTrees
   ];
-
   bugRarityFilter: CritterRarityEnum[] = [
     CritterRarityEnum.Common,
     CritterRarityEnum.Uncommon,
     CritterRarityEnum.Rare,
     CritterRarityEnum.UltraRare
   ];
-  bugLocationsEnum = BugLocationsEnum;
+  bugRarityEnum = CritterRarityEnum;
   bugList: BugModel[] = [];
 
   constructor(
@@ -57,13 +56,19 @@ export class ToggleBugLocationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.critterService.bugs$.subscribe(bug => this.bugList = bug);
-    this.critterService.bugLocationsFilter$.subscribe(locations => this.bugLocationFilter = locations);
+    this.critterService.bugs$.subscribe(bugs => this.bugList = bugs);
+    this.critterService.bugRarityFilter$.subscribe(rarity => this.bugRarityFilter = rarity);
   }
 
-  toggleLocationAll(): void {
+  toggleRarityAll(): void {
     let bugFiltered: BugModel[] = [];
-    if (this.bugLocationFilter.length === 0) {
+    if (this.bugRarityFilter.length === 0) {
+      this.bugRarityFilter = [
+        CritterRarityEnum.Common,
+        CritterRarityEnum.Uncommon,
+        CritterRarityEnum.Rare,
+        CritterRarityEnum.UltraRare
+      ];
       this.bugLocationFilter = [
         BugLocationsEnum.Flying,
         BugLocationsEnum.FlyingByLight,
@@ -87,35 +92,29 @@ export class ToggleBugLocationComponent implements OnInit {
         BugLocationsEnum.Underground,
         BugLocationsEnum.UnderTrees
       ];
-      this.bugRarityFilter = [
-        CritterRarityEnum.Common,
-        CritterRarityEnum.Uncommon,
-        CritterRarityEnum.Rare,
-        CritterRarityEnum.UltraRare
-      ];
       bugFiltered = this.bugList;
     } else {
-      this.bugLocationFilter = [];
       this.bugRarityFilter = [];
+      this.bugLocationFilter = [];
       bugFiltered = [];
     }
-    this.critterService.bugLocationsFilter$.next(this.bugLocationFilter);
     this.critterService.bugRarityFilter$.next(this.bugRarityFilter);
+    this.critterService.bugLocationsFilter$.next(this.bugLocationFilter);
     this.critterService.bugsFiltered$.next(bugFiltered);
     this.critterService.bugsGrid$.next(toFiveRows(bugFiltered));
   }
 
-  toggleLocation(location: BugLocationsEnum): void {
+  toggleRarity(rarity: CritterRarityEnum): void {
     let filtered: BugModel[] = [];
-    const locationIndex = this.bugLocationFilter.indexOf(location);
-    if (locationIndex > -1) {
-      this.bugLocationFilter.splice(locationIndex, 1);
-      const filteredLocation = this.critterService.bugsFiltered$.getValue().filter(b => this.bugLocationFilter.includes(b.availability.location));
-      filtered = filteredLocation.filter(b => this.critterService.bugRarityFilter$.getValue().includes(b.availability.rarity));
+    const rarityIndex = this.bugRarityFilter.indexOf(rarity);
+    if (rarityIndex > -1) {
+      this.bugRarityFilter.splice(rarityIndex, 1);
+      const filteredRarity = this.critterService.bugsFiltered$.getValue().filter(bug => this.bugRarityFilter.includes(bug.availability.rarity));
+      filtered = filteredRarity.filter(bug => this.critterService.bugLocationsFilter$.getValue().includes(bug.availability.location));
     } else {
-      this.bugLocationFilter.push(location);
-      const filteredLocation = this.bugList.filter(b => this.bugLocationFilter.includes(b.availability.location));
-      filtered = filteredLocation.filter(b => this.critterService.bugRarityFilter$.getValue().includes(b.availability.rarity));
+      this.bugRarityFilter.push(rarity);
+      const filteredRarity = this.bugList.filter(bug => this.bugRarityFilter.includes(bug.availability.rarity));
+      filtered = filteredRarity.filter(bug => this.critterService.bugLocationsFilter$.getValue().includes(bug.availability.location));
     }
     this.critterService.bugsFiltered$.next(filtered);
     this.critterService.bugsGrid$.next(toFiveRows(filtered));

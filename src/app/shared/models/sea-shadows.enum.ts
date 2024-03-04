@@ -1,7 +1,7 @@
 export enum SeaShadowsEnum {
-  Large = 'Large',
+  Smallest = 'Smallest',
   Small = 'Small',
   Medium = 'Medium',
-  Smallest = 'Smallest',
+  Large = 'Large',
   Largest = 'Largest'
 }

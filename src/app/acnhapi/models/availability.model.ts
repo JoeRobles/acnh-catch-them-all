@@ -3,6 +3,7 @@ import { AvailabilityInterface } from './availability.interface';
 import { BugLocationsType } from '../../shared/models/bug-locations.type';
 import { FishLocationsType } from '../../shared/models/fish-locations.type';
 import { CritterLocationsType } from '../../shared/models/critter-locations.type';
+import { CritterRarityType } from '../../shared/models/critter-rarity.type';
 
 export class AvailabilityModel implements AvailabilityInterface {
   monthNorthern: string;
@@ -11,7 +12,7 @@ export class AvailabilityModel implements AvailabilityInterface {
   isAllDay: boolean;
   isAllYear: boolean;
   location: CritterLocationsType;
-  rarity: string;
+  rarity: CritterRarityType;
   monthArrayNorthern: number[];
   monthArraySouthern: number[];
   timeArray: number[];
@@ -23,7 +24,7 @@ export class AvailabilityModel implements AvailabilityInterface {
     this.isAllDay = availability.isAllDay;
     this.isAllYear = availability.isAllYear;
     this.location = availability.location as CritterLocationsType;
-    this.rarity = availability.rarity;
+    this.rarity = availability.rarity as CritterRarityType;
     this.monthArrayNorthern = availability['month-array-northern'];
     this.monthArraySouthern = availability['month-array-southern'];
     this.timeArray = availability['time-array'];

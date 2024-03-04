@@ -32,6 +32,10 @@ import { ToggleBugLocationComponent } from './components/toggle-controls/toggle-
 import { ToggleControlsComponent } from './components/toggle-controls/toggle-controls.component';
 import { ToggleFishLocationComponent } from './components/toggle-controls/toggle-fish-location/toggle-fish-location.component';
 import { ToggleFishShadowComponent } from './components/toggle-controls/toggle-fish-shadow/toggle-fish-shadow.component';
+import { ToggleBugRarityComponent } from './components/toggle-controls/toggle-bug-rarity/toggle-bug-rarity.component';
+import { ToggleSeaShadowsComponent } from './components/toggle-controls/toggle-sea-shadows/toggle-sea-shadows.component';
+import { ToggleSeaSpeedsComponent } from './components/toggle-controls/toggle-sea-speeds/toggle-sea-speeds.component';
+import { ToggleFishRarityComponent } from './components/toggle-controls/toggle-fish-rarity/toggle-fish-rarity.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +66,10 @@ import { ToggleFishShadowComponent } from './components/toggle-controls/toggle-f
     ToggleControlsComponent,
     ToggleFishLocationComponent,
     ToggleFishShadowComponent,
+    ToggleBugRarityComponent,
+    ToggleSeaShadowsComponent,
+    ToggleSeaSpeedsComponent,
+    ToggleFishRarityComponent,
   ],
   imports: [
     AppRoutingModule,

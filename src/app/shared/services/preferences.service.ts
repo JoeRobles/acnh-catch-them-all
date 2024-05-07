@@ -18,7 +18,7 @@ import { PreferenceTypeEnum } from '../models/preference-type.enum';
   providedIn: 'root'
 })
 export class PreferencesService {
-  autoplay$ = new BehaviorSubject<boolean>(false);
+  autoplay$ = new BehaviorSubject<boolean>(true);
   display$ = new BehaviorSubject<CritterType>(CritterTypeEnum.Bugs);
   hemisphere$ = new BehaviorSubject<HemisphereType>(HemisphereTypeEnum.MonthArraySouthern);
   language$ = new BehaviorSubject<LanguageType>(LanguageTypeEnum.NameUSen);

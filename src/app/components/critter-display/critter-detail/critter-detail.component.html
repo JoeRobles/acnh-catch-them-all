@@ -2,7 +2,7 @@
   <div *ngIf="bug.id" class="row">
     <div class="critter-label text-center col-8">
       <div class="critter-image">
-        <img alt="bug" class="img-fluid" [src]="bug.imageUri">
+        <img alt="bug" class="img-fluid" [defaultImage]="'../../../../assets/images/default-bug.png'" [lazyLoad]="bug.imageUri">
       </div>
       <div class="critter-name">
         {{bugName}}
@@ -29,7 +29,7 @@
   <div *ngIf="fish.id" class="col">
     <div class="critter-label text-center col">
       <div class="critter-image">
-        <img alt="fish" class="img-fluid" [src]="fish.imageUri">
+        <img alt="fish" class="img-fluid" [defaultImage]="'../../../../assets/images/default-fish.png'" [lazyLoad]="fish.imageUri">
       </div>
       <div class="critter-name">
         {{fishName}}
@@ -139,7 +139,7 @@
   <div *ngIf="sea.id" class="row">
     <div class="critter-label text-center col-8">
       <div class="critter-image">
-        <img alt="sea creature" class="img-fluid" [src]="sea.imageUri">
+        <img alt="sea creature" class="img-fluid" [defaultImage]="'../../../../assets/images/default-sea.png'" [lazyLoad]="sea.imageUri">
       </div>
       <div class="critter-name">
         {{seaName}}

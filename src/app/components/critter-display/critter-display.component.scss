@@ -8,6 +8,91 @@ $soul-music: blue;
 $soundtrack: darkolivegreen;
 $world-music: coral;
 
+td.critter-name-active {
+  background-image: repeating-linear-gradient(-45deg, orange 0px, orange 8.49px, yellow 8.49px, yellow 16.97px);
+  height: 64px;
+  width: 64px;
+  border: 1px solid black;
+  background-size: 200% 200%;
+  -webkit-animation: Animation 5s linear infinite;
+  -moz-animation: Animation 5s linear infinite;
+  animation: Animation 5s linear infinite;
+  border-radius: 50%;
+}
+
+@-webkit-keyframes Animation {
+  0% {
+    background-position: 10% 0%
+  }
+  50% {
+    background-position: 91% 100%
+  }
+  100% {
+    background-position: 10% 0%
+  }
+}
+
+@-moz-keyframes Animation {
+  0% {
+    background-position: 10% 0%
+  }
+  50% {
+    background-position: 91% 100%
+  }
+  100% {
+    background-position: 10% 0%
+  }
+}
+
+@keyframes Animation {
+  0% {
+    background-position: 10% 0%
+  }
+  50% {
+    background-position: 91% 100%
+  }
+  100% {
+    background-position: 10% 0%
+  }
+}
+::ng-deep {
+
+div.bootstrapMenu {
+
+
+  ul.dropdown-menu {
+    min-width: 160px !important;
+    padding: 5px 0 !important;
+    margin: 2px 0 0 !important;
+    text-align: left !important;
+    list-style: none !important;
+    background-color: #fff !important;
+    background-clip: padding-box !important;
+    border: 1px solid rgba(0, 0, 0, .15) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175) !important;
+
+    li.contextual {
+      display: list-item !important;
+      text-align: -webkit-match-parent !important;
+      unicode-bidi: isolate !important;
+      padding: 5px;
+
+      a {
+        text-decoration: none;
+        color: black;
+        &:hover {
+          text-decoration: none;
+        }
+        &:visited {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+}
+
 td {
   border: 2px solid rgb(153, 153, 153);
   cursor: pointer;

@@ -37,6 +37,7 @@ import { ToggleSeaShadowsComponent } from './components/toggle-controls/toggle-s
 import { ToggleSeaSpeedsComponent } from './components/toggle-controls/toggle-sea-speeds/toggle-sea-speeds.component';
 import { ToggleFishRarityComponent } from './components/toggle-controls/toggle-fish-rarity/toggle-fish-rarity.component';
 import { ToggleArtCertComponent } from './components/toggle-controls/toggle-art-cert/toggle-art-cert.component';
+import { LazyLoadImageModule } from "ng-lazyload-image";
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { ToggleArtCertComponent } from './components/toggle-controls/toggle-art-
     BrowserModule,
     FormsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LazyLoadImageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

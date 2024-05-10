@@ -11,6 +11,7 @@ import { SongModel } from '../../acnhapi/song/models/song.model';
 import { ModelModel } from '../../acnhapi/models/model.model';
 import { BugModel } from '../../acnhapi/bug/models/bug.model';
 import { PreferencesService } from '../../shared/services/preferences.service';
+import * as BootstrapMenu from 'bootstrap-menu';
 declare var window: any;
 
 @Component({
@@ -143,10 +144,63 @@ export class CritterDisplayComponent implements OnInit {
         this.formModal.show();
         break;
       case ModeTypeEnum.Collection:
-        this.critterService.updateCritterList(critterModel, critterType);
+        if (critterType === CritterTypeEnum.Bugs || critterType === CritterTypeEnum.Fish || critterType === CritterTypeEnum.Sea) {
+          this.catchDonate(critterModel, critterType);
+        }
+        if (critterType === CritterTypeEnum.BugModels || critterType === CritterTypeEnum.FishModels) {
+          this.threeToModel(critterModel, critterType);
+        }
         break;
       default:
         break;
     }
+  }
+
+  catchDonate(critterModel: any,  critterType: CritterTypeEnum) {
+    var menu1 = new BootstrapMenu('.critter-name', {
+      menuEvent: 'click',
+      menuSource: 'element',
+      menuPosition: 'belowLeft',
+      actions: [
+        {
+          name: 'Donate',
+          classNames: 'contextual',
+          iconClass: 'bi bi-building-fill',
+          onClick: () =>
+            this.critterService.donate(critterModel, critterType)
+        },
+        {
+          name: 'Catch',
+          classNames: 'contextual',
+          iconClass: 'bi bi-basket2-fill',
+          onClick: () =>
+            this.critterService.updateCritterList(critterModel, critterType)
+        }
+      ]
+    });
+  }
+
+  threeToModel(critterModel: any,  critterType: CritterTypeEnum) {
+    var menu2 = new BootstrapMenu('.model-name', {
+      menuEvent: 'click',
+      menuSource: 'element',
+      menuPosition: 'belowLeft',
+      actions: [
+        {
+          name: 'To commission',
+          classNames: 'contextual',
+          iconClass: 'bi bi-3-circle-fill',
+          onClick: () =>
+            this.critterService.threeOfAKind(critterModel, critterType)
+        },
+        {
+          name: 'Arrived',
+          classNames: 'contextual',
+          iconClass: 'bi bi-gift-fill',
+          onClick: () =>
+            this.critterService.updateCritterList(critterModel, critterType)
+        }
+      ]
+    });
   }
 }

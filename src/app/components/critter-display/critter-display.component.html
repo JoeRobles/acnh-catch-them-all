@@ -4,7 +4,7 @@
     <table class="table">
       <tbody>
       <tr *ngFor="let fiveBugs of critterService.bugsGrid$ | async">
-        <td class="text-center align-middle" *ngFor="let bug of fiveBugs"
+        <td class="critter-name text-center align-middle" *ngFor="let bug of fiveBugs"
             (click)="selectCritter(bug, critterTypeEnum.Bugs)">
           <app-critter-discovery [critter]="bug" [critterType]="critterTypeEnum.Bugs"></app-critter-discovery>
         </td>
@@ -20,7 +20,7 @@
     <table class="table">
       <tbody>
       <tr *ngFor="let fiveFish of critterService.fishGrid$ | async">
-        <td class="text-center align-middle" *ngFor="let fish of fiveFish"
+        <td class="critter-name text-center align-middle" *ngFor="let fish of fiveFish"
             (click)="selectCritter(fish, critterTypeEnum.Fish)">
           <app-critter-discovery [critter]="fish" [critterType]="critterTypeEnum.Fish"></app-critter-discovery>
         </td>
@@ -36,7 +36,7 @@
     <table class="table w-50">
       <tbody>
       <tr *ngFor="let fiveSea of critterService.seaGrid$ | async">
-        <td class="text-center align-middle" *ngFor="let sea of fiveSea"
+        <td class="critter-name text-center align-middle" *ngFor="let sea of fiveSea"
             (click)="selectCritter(sea, critterTypeEnum.Sea)">
           <app-critter-discovery [critter]="sea" [critterType]="critterTypeEnum.Sea"></app-critter-discovery>
         </td>
@@ -96,7 +96,7 @@
     <table class="table">
       <tbody>
       <tr *ngFor="let fiveBugModels of critterService.bugModelsGrid$ | async">
-        <td class="text-center align-middle" *ngFor="let bugModel of fiveBugModels"
+        <td class="model-name text-center align-middle" *ngFor="let bugModel of fiveBugModels"
             (click)="selectCritter(bugModel, critterTypeEnum.BugModels)">
           <app-model [model]="bugModel"></app-model>
         </td>
@@ -112,7 +112,7 @@
     <table class="table">
       <tbody>
       <tr *ngFor="let fiveFishModels of critterService.fishModelsGrid$ | async">
-        <td class="text-center align-middle" *ngFor="let fishModel of fiveFishModels"
+        <td class="model-name text-center align-middle" *ngFor="let fishModel of fiveFishModels"
             (click)="selectCritter(fishModel, critterTypeEnum.FishModels)">
           <app-model [model]="fishModel"></app-model>
         </td>

@@ -1,6 +1,7 @@
 import { ArtResponseInterface } from './art-response.interface';
 import { NameModel } from '../../models/name.model';
 import { ArtInterface } from './art.interface';
+import { environment } from '../../../../environments/environment';
 
 export class ArtModel implements ArtInterface {
   public id: number;
@@ -22,8 +23,8 @@ export class ArtModel implements ArtInterface {
     this.hasFake = art.hasFake;
     this.buyPrice = art['buy-price'];
     this.sellPrice = art['sell-price'];
-    this.iconUri = '/assets/api/icons/art/' + this.fileName + '.png';
-    this.imageUri = '/assets/api/images/art/' + this.fileName + '.png';
+    this.iconUri = environment.cdnUrl + '/nh/v1/icons/art/' + this.fileName + '.png';
+    this.imageUri = environment.cdnUrl + '/nh/v1/images/art/' + this.fileName + '.png';
     this.museumDesc = art['museum-desc'];
     this.realName = art['real-name'];
   }

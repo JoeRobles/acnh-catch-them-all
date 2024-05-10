@@ -162,7 +162,21 @@ export class CritterService {
     private preferencesService: PreferencesService,
     private critterApiService: CritterApiService
   ) {
-    this.critters = {bugs: [], fish: [], sea: [], songs: [], fossils: [], art: [], bugModels: [], fishModels: []};
+    this.critters = {
+      bugs: [],
+      bugsDonated: [],
+      fish: [],
+      fishDonated: [],
+      sea: [],
+      seaDonated: [],
+      songs: [],
+      fossils: [],
+      art: [],
+      bugModels: [],
+      bugsThreeOfAKind: [],
+      fishModels: [],
+      fishThreeOfAKind: [],
+    };
     this.getCritters();
     this.preferencesService.getPreferences();
   }
@@ -422,5 +436,12 @@ export class CritterService {
       default:
         break;
     }
+  }
+
+  donate(critterModel: any, critterType: CritterType) {
+    console.log('Donating: ', critterModel, critterType);
+  }
+  threeOfAKind(critterModel: any, critterType: CritterType) {
+    console.log('Donating: ', critterModel, critterType);
   }
 }

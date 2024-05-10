@@ -2,6 +2,7 @@ import { SongResponseInterface } from './song-response.interface';
 import { NameModel } from '../../models/name.model';
 import { SongInterface } from './song.interface';
 import { SongGenreTypeEnum } from '../../../shared/models/song-genre-type.enum';
+import { environment } from '../../../../environments/environment';
 
 export class SongModel implements SongInterface {
   public id: number;
@@ -30,7 +31,7 @@ export class SongModel implements SongInterface {
     this.buyPrice = song['buy-price'];
     this.sellPrice = song['sell-price'];
     this.isOrderable = song['is-orderable'];
-    this.musicUri = '/assets/api/music/kk/' + this.fileName + '.mp3';
-    this.imageUri = '/assets/api/images/music/' + this.fileName + '.png';
+    this.musicUri = environment.cdnUrl + '/nh/v1/music/kk/' + this.fileName + '.mp3';
+    this.imageUri = environment.cdnUrl + '/nh/v1/images/music/' + this.fileName + '.png';
   }
 }

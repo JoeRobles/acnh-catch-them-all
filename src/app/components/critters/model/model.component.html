@@ -1,3 +1,9 @@
 <ng-container *ngIf="model">
   <img alt="model" class="img-fluid text-center" [class.not-available]="(preferencesService.mode$ | async) !== modeTypeEnum.All && !model.catch" [src]="model.iconUri" [title]="title">
+
+  <div *ngIf="model && model.threeOfAKind" class="remaining">
+    <div class="threeOfAKind">
+      <img alt="Three of a kind icon" class="img-fluid" src="../../../../assets/images/threeOfAKind.png" />
+    </div>
+  </div>
 </ng-container>

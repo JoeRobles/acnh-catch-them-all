@@ -5,6 +5,5 @@ import { ModelResponseInterface } from '../../models/model-response.interface';
 export class BugModelModel extends ModelModel implements ModelInterface {
   constructor(bugModel: ModelResponseInterface) {
     super(bugModel);
-    this.iconUri = bugModel['icon_uri'];
   }
 }

@@ -1,3 +1,17 @@
 img.not-available {
   -webkit-filter: grayscale(100%);
 }
+.remaining {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.threeOfAKind {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  max-height: 1.8em;
+  max-width: 1.8em;
+  filter: brightness(0) opacity(0.5);
+}

@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://api.anicros.com/public/index.php',
+  test: false,
+  apiUrl: 'http://localhost:8000',
   cdnUrl: 'http://localhost:8001',
 };

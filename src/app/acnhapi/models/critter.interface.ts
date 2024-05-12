@@ -6,10 +6,12 @@ export interface CritterInterface {
   availability: AvailabilityInterface;
   catch: boolean;
   catchPhrase: string;
+  donated: boolean;
   fileName: string;
   iconUri: string;
   imageUri: string;
   museumPhrase: string;
   name: NameInterface;
   price: number;
+  threeOfAKind: boolean;
 }

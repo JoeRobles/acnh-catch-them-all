@@ -56,6 +56,11 @@
     class="img-fluid"
     [src]="critter.iconUri"
     *ngIf="critter && critter.catch" data-bs-toggle="tooltip" data-bs-placement="top" [title]="critter.name[language]">
+  <div *ngIf="critter && critter.catch && critter.donated" class="remaining">
+    <div class="donated">
+      <img alt="Donate icon" class="img-fluid" src="../../../../assets/images/donate.png" />
+    </div>
+  </div>
   <ng-container *ngIf="critter && !critter.catch">
     <ng-container [ngSwitch]="critterType">
       <img alt="bug default" *ngSwitchCase="critterTypeEnum.Bugs" class="img-fluid" src="../../../../assets/images/default-bug.png">

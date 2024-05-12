@@ -5,6 +5,5 @@ import { ModelResponseInterface } from '../../models/model-response.interface';
 export class FishModelModel extends ModelModel implements ModelInterface {
   constructor(fishModel: ModelResponseInterface) {
     super(fishModel);
-    this.iconUri = fishModel['icon_uri'];
   }
 }

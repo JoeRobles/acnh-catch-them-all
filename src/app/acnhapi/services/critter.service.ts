@@ -389,6 +389,26 @@ export class CritterService {
     critters.map((b, i) => {
       if (this.critters[critterType]?.length > 0) {
         critters[i].catch = (this.critters[critterType].indexOf(b.id) > -1);
+        if (critterType === CritterTypeEnum.Bugs) {
+          // @ts-ignore
+          critters[i].donated = (this.critters.bugsDonated.indexOf(b.id) > -1);
+        }
+        if (critterType === CritterTypeEnum.Fish) {
+          // @ts-ignore
+          critters[i].donated = (this.critters.fishDonated.indexOf(b.id) > -1);
+        }
+        if (critterType === CritterTypeEnum.Sea) {
+          // @ts-ignore
+          critters[i].donated = (this.critters.seaDonated.indexOf(b.id) > -1);
+        }
+        if (critterType === CritterTypeEnum.BugModels) {
+          // @ts-ignore
+          critters[i].threeOfAKind = (this.critters.bugModelsThreeOfAKind.indexOf(b.id) > -1);
+        }
+        if (critterType === CritterTypeEnum.FishModels) {
+          // @ts-ignore
+          critters[i].threeOfAKind = (this.critters.fishModelsThreeOfAKind.indexOf(b.id) > -1);
+        }
       }
     });
     switch (critterType) {
@@ -480,9 +500,11 @@ export class CritterService {
         if (indexBD > -1) {
           if (indexBD != null) {
             this.critters.bugsDonated?.splice(indexBD, 1);
+            critterModel.donated = false;
           }
         } else {
           this.critters.bugsDonated?.push(critterModel.id);
+          critterModel.donated = true;
         }
         this.bugsDonatedAmount.next(this.critters.bugsDonated.length);
         break;
@@ -491,9 +513,11 @@ export class CritterService {
         if (indexFD > -1) {
           if (indexFD != null) {
             this.critters.fishDonated?.splice(indexFD, 1);
+            critterModel.donated = false;
           }
         } else {
           this.critters.fishDonated?.push(critterModel.id);
+          critterModel.donated = true;
         }
         this.fishDonatedAmount.next(this.critters.fishDonated.length);
         break;
@@ -502,9 +526,11 @@ export class CritterService {
         if (indexSD > -1) {
           if (indexSD != null) {
             this.critters.seaDonated?.splice(indexSD, 1);
+            critterModel.donated = false;
           }
         } else {
           this.critters.seaDonated?.push(critterModel.id);
+          critterModel.donated = true;
         }
         this.seaDonatedAmount.next(this.critters.seaDonated.length);
         break;
@@ -521,9 +547,11 @@ export class CritterService {
         if (indexBMT > -1) {
           if (indexBMT != null) {
             this.critters.bugModelsThreeOfAKind?.splice(indexBMT, 1);
+            critterModel.threeOfAKind = false;
           }
         } else {
           this.critters.bugModelsThreeOfAKind?.push(critterModel.id);
+          critterModel.threeOfAKind = true;
         }
         this.bugModelsThreeOfAKindAmount.next(this.critters.bugModelsThreeOfAKind.length);
         break;
@@ -532,9 +560,11 @@ export class CritterService {
         if (indexFMT > -1) {
           if (indexFMT != null) {
             this.critters.fishModelsThreeOfAKind?.splice(indexFMT, 1);
+            critterModel.threeOfAKind = false;
           }
         } else {
           this.critters.fishModelsThreeOfAKind?.push(critterModel.id);
+          critterModel.threeOfAKind = true;
         }
         this.fishModelsThreeOfAKindAmount.next(this.critters.fishModelsThreeOfAKind.length);
         break;

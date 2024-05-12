@@ -7,6 +7,7 @@ export class MusicModel implements MusicInterface {
   public hour: number;
   public weather: string;
   public musicUri: string;
+  public imageUri: string;
 
   constructor(music: MusicResponseInterface) {
     this.id = music.id;
@@ -14,5 +15,6 @@ export class MusicModel implements MusicInterface {
     this.hour = music.hour;
     this.weather = music.weather;
     this.musicUri = music.music_uri;
+    this.imageUri = music.image_uri;
   }
 }

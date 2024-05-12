@@ -27,9 +27,6 @@ import { environment } from '../../../environments/environment';
 export class CritterApiService {
 
   options = {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    }
   }
   apiUrl = environment.apiUrl + '/nh/v1';
 

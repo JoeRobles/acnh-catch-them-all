@@ -4,4 +4,5 @@ export interface MusicResponseInterface {
   hour: number;
   weather: string;
   music_uri: string
+  image_uri: string;
 }

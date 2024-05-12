@@ -3,5 +3,6 @@ export interface MusicInterface {
   fileName: string;
   hour: number;
   weather: string;
-   musicUri: string;
+  musicUri: string;
+  imageUri: string;
 }

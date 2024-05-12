@@ -7,11 +7,11 @@ import { LanguageTypeEnum } from '../models/language-type.enum';
 import { BehaviorSubject } from 'rxjs';
 import { HemisphereType } from '../models/hemisphere.type';
 import { LanguageType } from '../models/language.type';
-import { CritterType } from '../models/critter.type';
-import { CritterTypeEnum } from '../models/critter-type.enum';
+import { CritterType } from '../../acnhapi/models/critter.type';
+import { CritterTypeEnum } from '../../acnhapi/models/critter-type.enum';
 import { PreferenceType } from '../models/preference.type';
-import { ModeType } from '../models/mode.type';
-import { ModeTypeEnum } from '../models/mode-type.enum';
+import { ModeType } from '../../acnhapi/models/mode.type';
+import { ModeTypeEnum } from '../../acnhapi/models/mode-type.enum';
 import { PreferenceTypeEnum } from '../models/preference-type.enum';
 
 @Injectable({

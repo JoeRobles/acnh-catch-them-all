@@ -4,7 +4,7 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 
-import { CritterService } from '../shared/services/critter.service';
+import { CritterService } from '../acnhapi/services/critter.service';
 
 @Injectable({
   providedIn: 'root'

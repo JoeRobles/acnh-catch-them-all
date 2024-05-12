@@ -1,5 +1,5 @@
-import { CritterLocationsType } from '../../shared/models/critter-locations.type';
-import { CritterRarityType } from '../../shared/models/critter-rarity.type';
+import { CritterLocationsType } from './critter-locations.type';
+import { CritterRarityType } from './critter-rarity.type';
 
 export interface AvailabilityInterface {
   isAllDay: boolean;

@@ -1,0 +1,4 @@
+Total caught: {{ critterService.bugsAmount | async }}
+Total donated: {{ critterService.bugsDonatedAmount | async }}
+Caught %: {{ Number(critterService.bugsAmount | async) / Number((critterService.bugs$ | async)?.length) * 100 }}%
+Donated %: {{ Number(critterService.bugsDonatedAmount | async) / Number((critterService.bugs$ | async)?.length) * 100 }}%

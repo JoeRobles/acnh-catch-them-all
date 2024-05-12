@@ -1,7 +1,6 @@
 import { FossilInterface } from './fossil.interface';
 import { FossilResponseInterface } from './fossils-response.interface';
 import { NameModel } from '../../models/name.model';
-import { environment } from '../../../../environments/environment';
 
 export class FossilModel implements FossilInterface {
   public id: number;
@@ -21,8 +20,8 @@ export class FossilModel implements FossilInterface {
     this.catch = false;
     this.price = fossil.price;
     this.museumPhrase = fossil['museum-phrase'];
-    this.iconUri = environment.cdnUrl + '/nh/v1/icons/fossils/' + this.fileName + '.png';
-    this.imageUri = environment.cdnUrl + '/nh/v1/images/fossils/' + this.fileName + '.png';
+    this.iconUri = fossil['icon_uri'];
+    this.imageUri = fossil['image_uri'];
     this.partOf = fossil['part-of'];
   }
 }

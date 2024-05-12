@@ -1,7 +1,7 @@
 import { NameInterface } from '../../models/name.interface';
 import { AvailabilityInterface } from '../../models/availability.interface';
-import { SeaShadowsEnum } from '../../../shared/models/sea-shadows.enum';
-import { SeaSpeedsEnum } from '../../../shared/models/sea-speeds.enum';
+import { SeaShadowsEnum } from '../../models/sea-shadows.enum';
+import { SeaSpeedsEnum } from '../../models/sea-speeds.enum';
 
 export interface SeaInterface {
   id: number;

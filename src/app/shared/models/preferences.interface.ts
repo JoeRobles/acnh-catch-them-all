@@ -1,7 +1,7 @@
 import { HemisphereType } from './hemisphere.type';
 import { LanguageType } from './language.type';
-import { CritterType } from './critter.type';
-import { ModeType } from './mode.type';
+import { CritterType } from '../../acnhapi/models/critter.type';
+import { ModeType } from '../../acnhapi/models/mode.type';
 
 export interface PreferencesInterface {
   autoplay: boolean;

@@ -8,14 +8,14 @@ import { LanguageSelectComponent } from './components/language-select/language-s
 import { HemisphereSelectComponent } from './components/hemisphere-select/hemisphere-select.component';
 import { HourlyMusicComponent } from './components/hourly-music/hourly-music.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ToggleSelectDisplayComponent } from './components/toggle-controls/toggle-select-display/toggle-select-display.component';
-import { CritterDisplayComponent } from './components/critter-display/critter-display.component';
-import { CritterLegendComponent } from './components/critter-display/critter-legend/critter-legend.component';
-import { CritterDetailComponent } from './components/critter-display/critter-detail/critter-detail.component';
-import { ArtDetailComponent } from './components/art-detail/art-detail.component';
-import { FossilDetailComponent } from './components/fossil-detail/fossil-detail.component';
-import { SongDetailComponent } from './components/song-detail/song-detail.component';
-import { ModelDetailComponent } from './components/model-detail/model-detail.component';
+import { ToggleSelectDisplayComponent } from './components/critters/toggle-controls/toggle-select-display/toggle-select-display.component';
+import { CritterDisplayComponent } from './components/critters/critter-display/critter-display.component';
+import { CritterLegendComponent } from './components/critters/critter-display/critter-legend/critter-legend.component';
+import { CritterDetailComponent } from './components/critters/critter-display/critter-detail/critter-detail.component';
+import { ArtDetailComponent } from './components/critters/art-detail/art-detail.component';
+import { FossilDetailComponent } from './components/critters/fossil-detail/fossil-detail.component';
+import { SongDetailComponent } from './components/critters/song-detail/song-detail.component';
+import { ModelDetailComponent } from './components/critters/model-detail/model-detail.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {

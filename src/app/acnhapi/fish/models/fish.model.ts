@@ -1,8 +1,7 @@
 import { FishInterface} from './fish.interface';
 import { FishResponseInterface } from './fish-response.interface';
 import { CritterModel } from '../../models/critter.model';
-import { FishShadowsType } from '../../../shared/models/fish-shadows.type';
-import { environment } from '../../../../environments/environment';
+import { FishShadowsType } from '../../models/fish-shadows.type';
 
 export class FishModel extends CritterModel implements FishInterface {
 
@@ -13,7 +12,7 @@ export class FishModel extends CritterModel implements FishInterface {
     super(fish);
     this.priceCj = fish['price-cj'];
     this.shadow = fish.shadow as FishShadowsType;
-    this.iconUri = environment.cdnUrl + '/nh/v1/icons/fish/' + this.fileName + '.png';
-    this.imageUri = environment.cdnUrl + '/nh/v1/images/fish/' + this.fileName + '.png';
+    this.iconUri = fish['icon_uri'];
+    this.imageUri = fish['image_uri'];
   }
 }

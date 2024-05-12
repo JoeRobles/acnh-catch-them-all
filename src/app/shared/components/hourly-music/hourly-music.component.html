@@ -1,0 +1,17 @@
+<div class="row align-items-start align-items-center">
+  <div class="col-auto">
+    <audio id="musicPlayer" [src]="hourlyMusicService.musicUri$ | async" controls loop preload="auto"
+           [autoplay]="preferencesService.autoplay$ | async"></audio>
+  </div>
+  <div class="col-auto">
+    <mat-slide-toggle (change)="onAutoplayChange($event)" [checked]="preferencesService.autoplay$ | async">Autoplay
+    </mat-slide-toggle>
+  </div>
+  <div class="col-auto">
+    <mat-chip-listbox (change)="onMoodChange($event)" aria-label="Mood">
+      <mat-chip-option color="accent" [selected]="(preferencesService.mood$ | async) === 0">{{ hourlyMusicMoodEnum.Rainy }}</mat-chip-option>
+      <mat-chip-option color="primary" [selected]="(preferencesService.mood$ | async) === 1">{{ hourlyMusicMoodEnum.Snowy }}</mat-chip-option>
+      <mat-chip-option color="warn" [selected]="(preferencesService.mood$ | async) === 2">{{ hourlyMusicMoodEnum.Sunny }}</mat-chip-option>
+    </mat-chip-listbox>
+  </div>
+</div>

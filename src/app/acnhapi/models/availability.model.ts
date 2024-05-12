@@ -1,7 +1,7 @@
 import { AvailabilityResponseInterface } from './availability-response.interface';
 import { AvailabilityInterface } from './availability.interface';
-import { CritterLocationsType } from '../../shared/models/critter-locations.type';
-import { CritterRarityType } from '../../shared/models/critter-rarity.type';
+import { CritterLocationsType } from './critter-locations.type';
+import { CritterRarityType } from './critter-rarity.type';
 
 export class AvailabilityModel implements AvailabilityInterface {
   monthNorthern: string;

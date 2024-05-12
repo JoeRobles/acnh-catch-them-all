@@ -1,5 +1,5 @@
 import { NameResponseInterface } from '../../models/name-response.interface';
-import { SongGenreTypeEnum } from '../../../shared/models/song-genre-type.enum';
+import { SongGenreTypeEnum } from '../../models/song-genre-type.enum';
 
 export interface SongResponseInterface {
   id: number;

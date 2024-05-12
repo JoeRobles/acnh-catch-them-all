@@ -1,0 +1,15 @@
+export interface CaughtCrittersInterface {
+  bugs: number[],
+  bugsDonated: number[],
+  fish: number[],
+  fishDonated: number[],
+  sea: number[],
+  seaDonated: number[],
+  songs: number[],
+  fossils: number[],
+  art: number[],
+  bugModels: number[],
+  bugModelsThreeOfAKind: number[],
+  fishModels: number[],
+  fishModelsThreeOfAKind: number[],
+}

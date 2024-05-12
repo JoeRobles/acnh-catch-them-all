@@ -3,7 +3,7 @@ import { BehaviorSubject, forkJoin, map, Observable } from 'rxjs';
 import { MusicModel } from '../../acnhapi/music/models/music.model';
 import { MusicResponseInterface } from '../../acnhapi/music/models/music-response.interface';
 import { HttpClient } from '@angular/common/http';
-import { CritterApiService } from './critter-api.service';
+import { CritterApiService } from '../../acnhapi/services/critter-api.service';
 
 @Injectable({
   providedIn: 'root'
